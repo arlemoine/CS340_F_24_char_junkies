@@ -1,0 +1,51 @@
+Version: <V1>
+
+Description:
+    <Main and user interface>
+
+Authors:
+    <Nicholas Burgo>
+
+Date Created     :  <11/13/24>
+Date Last Updated:  <11/13/24>
+
+def main():
+  while True:
+    print("\nOptions:")
+    print("1. Create record for individual")
+    print("2. Create department")
+    print("3. Add individuals to department")
+    print("4. Process department data")
+    print("5. View graphs")
+    print("6. Quit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == '1':
+      import_individual_from_csv("personName")
+      process_individual_data()
+    elif choice == '2':
+      create_department()
+    elif choice == '3':
+      add_to_department()
+    elif choice == '4':
+      process_department_data()
+    elif choice == '5':
+      view_graphs()
+    elif choice == '6':
+      print("Exiting...")
+      break
+    else:
+      print("Invalid choice. Please try again.")
+    #
+  #
+#
+
+
+
+
+if __name__ == "__main__":
+    main()
+  #
+#
+
