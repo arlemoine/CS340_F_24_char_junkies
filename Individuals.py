@@ -23,7 +23,7 @@ if __name__ == "__main__":
 from matplotlib import pyplot as plt
 import numpy  as np 
 import pandas as pd
-import logging as lg
+import logging
 
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -43,11 +43,30 @@ class FitnessData:
     df_hrv = None 
     age = None
     
+    # Initialize the FitnessData object with personal and fitness data
     def __init__(self, name):
-        """
-        Initialize the FitnessData object with personal and fitness data.
-        """
         self.name = name  # Store person's name
+
+        self.logger = logging.getLogger(__name__)
+        self.configureLogger()
+        self.logger.info('Person created.')
+    #
+
+    # Configure logging functionality of object
+    def configureLogger(self):
+        # Ensure directory exists
+        log_dir = 'Log'
+        os.makedirs(log_dir, exist_ok=True)
+
+        # Set logger configurations
+        self.logger.setLevel(logging.INFO)
+        file_handler = logging.FileHandler(os.path.join(log_dir, f"{self.name}.log"))
+        file_handler.setLevel(logging.INFO)
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        file_handler.setFormatter(formatter)  
+
+        # Attach handler to logger
+        self.logger.addHandler(file_handler)
     #
 
     def print(self):
@@ -102,24 +121,8 @@ class FitnessDataProcessing(FitnessData):
     # Initialize the FitnessDataProcessing object with additional attributes
     def __init__(self, name):
         super().__init__(name)
-        self.logFolder = 'Output/Logs'
-        self.logFileLocation = self.logFolder + '/' + self.name + '.log'
-
-        self.log('Person is created')
-    #
-
-    def log(self,message):
         
-
-        # If directory doesn't exist, it is created and file is written. If location exists, file is appended.
-        try:
-            os.makedirs(self.logFileLocation,exist_ok=True)
-            with open(self.logFileLocation,'x') as f:
-                f.write(message)
-        except FileExistsError:
-            with open(self.logFileLocation, 'a') as f:
-                f.write(message + '\n')
-        #
+        
     #
 
     # Import CSV files into dataframes
