@@ -1,0 +1,173 @@
+#%% MODULE BEGINS
+module_name = 'Departments'
+
+'''
+Version: 1.0.0
+
+Description:
+    Module to consolidate fitness data for individuals into their department. Generates fitness statistics for the department based off of the individuals and produces relevant graphs.
+
+Authors:
+    Adriean Lemoine
+
+Date Created     :  11/12/2024
+Date Last Updated:  11/13/2024
+
+#%% IMPORTS                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if __name__ == "__main__":
+   import os
+   #os.chdir("./../..")
+#
+
+#custom imports
+from Constant.py import OUTPUT_FOLDER as OUTPUT_FOLDER
+
+#other imports
+from   copy       import deepcopy as dpcpy
+
+'''
+from   matplotlib import pyplot as plt
+import mne
+import numpy  as np 
+import os
+import pandas as pd
+import pickle as pkl
+import seaborn as sns
+'''
+
+#%% DECLARATIONS                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#Global declarations Start Here
+
+
+#Class definitions Start Here
+
+class DepartmentData:
+    individuals = <series from individual stats>
+    daysInMonth = <int>
+    dfDeptSteps = <dataframe> # Steps per day average per individual
+    dfDeptHRV = <dataframe> # HRV average per individual
+    dfDeptFitnessScore = <dataframe> # Fitness score average per individual
+
+    def __init__(self, departmentName):
+        self.departmentName = departmentName
+    #
+
+    def addIndividual(self, individual): # Add person to group
+        individuals.add(individual)
+    #
+
+    def dropIndividual(self, individual): # Remove person from group
+        individuals.drop(individual)
+    #
+
+    def getSteps(self): # Generate dataframe for average steps per person
+        names = []
+        avgSteps = []
+
+        for individual in individuals:
+            names.append(individual.name)
+            avgSteps.append(individual.avgSteps)
+
+        self.dfDeptSteps = pd.DataFrame({
+            'Name': names,
+            'avgSteps': avgSteps
+        })
+    #
+
+    def getHRV(self): # Generate dataframe for average HRV per person
+        names = []
+        avgHRV = []
+
+        for individual in individuals:
+            names.append(individual.name)
+            avgHRV.append(individual.avgHRV)
+
+        self.dfDeptHRV = pd.DataFrame({
+            'Name': names,
+            'avgHRV': avgHRV
+        })
+    #
+
+    def getFitnessScores(self): # Generate dataframe for average HRV per person
+        names = []
+        avgFitnessScore = []
+
+        for individual in individuals:
+            names.append(individual.name)
+            avgFitnessScore.append(individual.avgFitnessScore)
+
+        self.dfDeptFitnessScore = pd.DataFrame({
+            'Name': names,
+            'avgFitnessScore': avgFitnessScore
+        })
+    #
+#
+
+# Child class to process and save data for department variables
+class DepartmentDataProcessing(DepartmentData):
+    OUTPUT_FOLDER = OUTPUT_FOLDER
+
+    # Calculated statistics for each variable of interest
+    dfDeptStepsStats = <dataframe> # Statistics from steps dataframe
+    dfDeptHRVStats = <dataframe> # Statistics from HRV dataframe
+    dfDeptFitnessScoreStats = <dataframe> # Statistics from fitness score dataframe
+    dfDeptAgeStats = <dataframe> # Statistics from age dataframe
+
+    # Generated graphs for each variable of interest
+    histSteps = None
+    histHRV = None
+    histFitnessScore = None
+    scatAgeToFitnessScore = None
+
+    def __init__(self, departmentName, fileName):
+        self.departmentName = departmentName
+        self.fileName = fileName
+    #
+
+    def loadData(self): # Load from a pickle file
+        with open(fileName, 'rb') as data:
+            temp = pkl.load(data)
+        #
+        return temp
+    #
+
+    def saveData(self): # Save to a pickle file
+        with open(fileName, 'wb') as data:
+            pkl.dump(self, data)
+        #
+    #
+
+    def calcStatsSteps(self): # Calculate statistical values such as mean, min, max
+        self.dfDeptStepsStats = self.deptSteps.describe()
+    #
+
+    def calcStatsHRV(self): # Calculate statistical values such as mean, min, max
+        self.dfDeptHRVStats = self.deptHRV.describe()
+    #
+
+    def calcStatsFitnessScore(self): # Calculate statistical values such as mean, min, max
+        self.dfDeptFitnessScoreStats = self.deptFitnessScore.describe()
+    #
+
+    def calcStatsAge(self): # Calculate statistical values such as mean, min, max
+        self.dfDeptAgeStats = self.deptAge.describe()
+    #
+
+    def plotHistSteps(self): # Generate plot
+        this.histSteps = self.deptSteps.plot.hist()
+    #
+
+    def plotHistHRV(self): # Generate plot
+        this.histHRV = self.deptHRV.plot.hist()
+    #
+
+    def plotHistFitnessScore(self): # Generate plot
+        this.histFitnessScore = self.deptFitnessScore.plot.hist()
+    #
+
+    def plotHistAge(self): # Generate plot
+        self.dfAgeToFitnessScore = pd.merge(dfDeptAge, dfDeptFitnessScore, on='name')
+        this.scatAgeToFitnessScore = self.dfAgeToFitnessScore.plot.scatter(age,fitnessScore)
+    #
+#
