@@ -1,0 +1,7 @@
+2024-11-14 14:44:07,248 - __main__ - INFO - Person created.
+2024-11-14 14:44:07,256 - __main__ - INFO - Successfully imported Input/adam/age.csv
+2024-11-14 15:10:35,963 - __main__ - INFO - Person created.
+2024-11-14 15:10:35,963 - __main__ - INFO - Age (28) extracted from Input/adam/age.csv
+2024-11-14 15:15:45,616 - __main__ - INFO - Person created.
+2024-11-14 15:15:45,616 - __main__ - INFO - Age (28) extracted from Input/adam/age.csv
+2024-11-14 15:15:45,619 - __main__ - INFO - Step data is loaded.

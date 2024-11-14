@@ -24,6 +24,7 @@ from matplotlib import pyplot as plt
 import numpy  as np 
 import pandas as pd
 import logging
+import csv
 
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -37,11 +38,6 @@ class FitnessData:
     """
     Parent class for managing fitness data of an individual.
     """
-
-    # The following will be filled when pulling csv into dataframe
-    df_steps = None
-    df_hrv = None 
-    age = None
     
     # Initialize the FitnessData object with personal and fitness data
     def __init__(self, name):
@@ -50,6 +46,10 @@ class FitnessData:
         self.logger = logging.getLogger(__name__)
         self.configureLogger()
         self.logger.info('Person created.')
+
+        age = None
+        df_steps = None
+        df_hrv = None 
     #
 
     # Configure logging functionality of object
@@ -122,18 +122,41 @@ class FitnessDataProcessing(FitnessData):
     def __init__(self, name):
         super().__init__(name)
         
-        
     #
 
-    # Import CSV files into dataframes
-    def import_csv(self, filename):
+    # Import age from age.csv
+    def importAge(self):
+        filepath = 'Input/' + self.name + '/age.csv'
+
         try:
-            df = pd.read_csv(filename)  # Read the CSV file into a dataframe #
-            print(f"Successfully imported {filename}")  # Print success message #
-            return df  # Return the dataframe #
+            with open(filepath, 'r') as csvfile:
+                reader = csv.reader(csvfile)
+                next(reader) # To skip the header row
+
+                for row in reader:
+                    self.age = int(row[1])
+                
+                self.logger.info(f'Age ({self.age}) extracted from {filepath}')
+
+            # temp = pd.read_csv(filepath)  # Read the CSV file into a temporary dataframe
+            # self.logger.info(f"Successfully imported {filepath}")  # Print success message #
+            # return df  # Return the dataframe #
         except FileNotFoundError:
-            print(f"File {filename} not found.")  # Print error message if file is not found #
+            print(f"File {filepath} not found.")  # Print error message if file is not found #
             return None  # Return None if file is not found #
+    #
+
+    # Import steps.csv into dataframe
+    def importSteps(self):
+        filepath = 'Input/' + self.name + '/steps.csv'
+
+        try:
+            with open(filepath, 'r') as csvfile:
+                self.pd_steps = pd.read_csv(filepath)  # Read the CSV file into dataframe
+                self.logger.info(f'Step data is loaded.')
+
+        except FileNotFoundError:
+            print(f"{filepath} not found.")  # Print error message if file is not found
     #
 
     # # Remove bad HRV data when heart rate > max
@@ -197,7 +220,9 @@ class FitnessDataProcessing(FitnessData):
 #Main Self-run block
 if __name__ == "__main__":
     
-    pers1 = FitnessDataProcessing('bob')
+    pers1 = FitnessDataProcessing('adam')
+    pers1.importAge()
+    pers1.importSteps()
 
     
     #TEST Code
