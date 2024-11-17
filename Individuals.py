@@ -47,9 +47,9 @@ class FitnessData:
         self.configureLogger()
         self.logger.info('Person created.')
 
-        age = None
-        df_steps = None
-        df_hrv = None 
+        self.age = None
+        self.df_steps = None
+        self.df_hrv = None 
     #
 
     # Configure logging functionality of object
@@ -75,7 +75,14 @@ class FitnessData:
         print(f'Steps Data:\t{self.df_steps}')
         print(f'HRV Data:\t{self.df_hrv}')
     #
-    
+
+    def view_table(self, dataframe):
+        if dataframe is not None:
+            print(dataframe.head()) 
+        else:
+            print("Dataframe is empty.")
+    #
+
     # # Display the dataframe as a table
     # def view_table(self, dataframe):
     #     if dataframe is not None:
@@ -93,14 +100,13 @@ class FitnessData:
     # #
 
     # # Display the steps dataframe as a table
-    # def view_steps_table(self):
-    #     self.view_table(self.df_steps)  # Use the view_table method to display steps dataframe #
-    # #
+    def view_steps_table(self):
+        self.view_table(self.df_steps) # Use the view_table method to display steps dataframe #
 
     # # Display the HRV dataframe as a table
-    # def view_hrv_table(self):
-    #     self.view_table(self.df_hrv)  # Use the view_table method to display HRV dataframe #
-    # #
+    def view_hrv_table(self):
+        self.view_table(self.df_hrv)  # Use the view_table method to display HRV dataframe #
+    # 
 
     # # Plot a line graph of steps data
     # def view_steps_line_graph(self):
@@ -152,11 +158,33 @@ class FitnessDataProcessing(FitnessData):
 
         try:
             with open(filepath, 'r') as csvfile:
-                self.pd_steps = pd.read_csv(filepath)  # Read the CSV file into dataframe
+                self.df_steps = pd.read_csv(filepath)  # Read the CSV file into dataframe ##changed pd to df
                 self.logger.info(f'Step data is loaded.')
 
         except FileNotFoundError:
             print(f"{filepath} not found.")  # Print error message if file is not found
+    #
+
+    def importHrv(self): ## Attempt at hrv import
+        filePath = 'Input/' + self.name + '/hrv/'
+        try: 
+            hrv_files = [f'{filePath}{file}' for file in os.listdir(filePath) if file.endswith('.csv')]
+            
+            dataframes = []
+            for file in hrv_files:
+                with open(file, 'r') as csvfile:
+                    df_hrv = pd.read_csv(csvfile)
+                    dataframes.append(df_hrv)
+                    self.logger.info(f"HRV data loaded from {file}")
+
+            if dataframes:  # Ensure there are DataFrames to combine
+                self.df_hrv = pd.concat(dataframes, ignore_index=True)  # Combine all DataFrames
+                self.logger.info("All HRV files combined into a single DataFrame.")
+            else:
+                self.df_hrv = pd.DataFrame()
+                
+        except FileNotFoundError:
+            print(f"{filePath} not found.")
     #
 
     # # Remove bad HRV data when heart rate > max
@@ -223,7 +251,12 @@ if __name__ == "__main__":
     pers1 = FitnessDataProcessing('adam')
     pers1.importAge()
     pers1.importSteps()
+    pers1.importHrv()
 
+
+
+    pers1.view_steps_table()
+    pers1.view_hrv_table()
     
     #TEST Code
     # main()
