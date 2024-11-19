@@ -5,3 +5,75 @@
 2024-11-14 15:15:45,616 - __main__ - INFO - Person created.
 2024-11-14 15:15:45,616 - __main__ - INFO - Age (28) extracted from Input/adam/age.csv
 2024-11-14 15:15:45,619 - __main__ - INFO - Step data is loaded.
+2024-11-19 11:05:01,576 - __main__ - INFO - Person created.
+2024-11-19 11:05:01,576 - __main__ - INFO - Age (28) extracted from Input/adam/age.csv
+2024-11-19 11:05:01,585 - __main__ - INFO - Step data is loaded.
+2024-11-19 11:05:01,587 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv01.csv
+2024-11-19 11:05:01,589 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv02.csv
+2024-11-19 11:05:01,591 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv03.csv
+2024-11-19 11:05:01,593 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv04.csv
+2024-11-19 11:05:01,594 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv05.csv
+2024-11-19 11:05:01,596 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv06.csv
+2024-11-19 11:05:01,598 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv07.csv
+2024-11-19 11:05:01,600 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv08.csv
+2024-11-19 11:05:01,601 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv09.csv
+2024-11-19 11:05:01,603 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv10.csv
+2024-11-19 11:05:01,605 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv11.csv
+2024-11-19 11:05:01,606 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv12.csv
+2024-11-19 11:05:01,608 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv13.csv
+2024-11-19 11:05:01,610 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv14.csv
+2024-11-19 11:05:01,611 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv15.csv
+2024-11-19 11:05:01,613 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv16.csv
+2024-11-19 11:05:01,615 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv17.csv
+2024-11-19 11:05:01,616 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv18.csv
+2024-11-19 11:05:01,618 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv19.csv
+2024-11-19 11:05:01,619 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv20.csv
+2024-11-19 11:05:01,621 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv21.csv
+2024-11-19 11:05:01,623 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv22.csv
+2024-11-19 11:05:01,624 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv23.csv
+2024-11-19 11:05:01,626 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv24.csv
+2024-11-19 11:05:01,627 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv25.csv
+2024-11-19 11:05:01,629 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv26.csv
+2024-11-19 11:05:01,631 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv27.csv
+2024-11-19 11:05:01,632 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv28.csv
+2024-11-19 11:05:01,634 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv29.csv
+2024-11-19 11:05:01,635 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv30.csv
+2024-11-19 11:05:01,637 - __main__ - INFO - All HRV files combined into a single DataFrame.
+2024-11-19 11:06:38,855 - __main__ - INFO - Displayed line graph for steps in Steps Over Time.
+2024-11-19 11:44:21,101 - __main__ - INFO - Person created.
+2024-11-19 11:44:21,101 - __main__ - WARNING - Column 'steps' not found in DataFrame or DataFrame is empty.
+2024-11-19 11:47:00,449 - __main__ - INFO - Person created.
+2024-11-19 11:47:00,450 - __main__ - INFO - Age (28) extracted from Input/adam/age.csv
+2024-11-19 11:47:00,453 - __main__ - INFO - Step data is loaded.
+2024-11-19 11:47:00,454 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv01.csv
+2024-11-19 11:47:00,455 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv02.csv
+2024-11-19 11:47:00,456 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv03.csv
+2024-11-19 11:47:00,457 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv04.csv
+2024-11-19 11:47:00,457 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv05.csv
+2024-11-19 11:47:00,458 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv06.csv
+2024-11-19 11:47:00,459 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv07.csv
+2024-11-19 11:47:00,460 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv08.csv
+2024-11-19 11:47:00,461 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv09.csv
+2024-11-19 11:47:00,462 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv10.csv
+2024-11-19 11:47:00,463 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv11.csv
+2024-11-19 11:47:00,464 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv12.csv
+2024-11-19 11:47:00,465 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv13.csv
+2024-11-19 11:47:00,466 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv14.csv
+2024-11-19 11:47:00,467 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv15.csv
+2024-11-19 11:47:00,468 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv16.csv
+2024-11-19 11:47:00,469 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv17.csv
+2024-11-19 11:47:00,470 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv18.csv
+2024-11-19 11:47:00,470 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv19.csv
+2024-11-19 11:47:00,471 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv20.csv
+2024-11-19 11:47:00,472 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv21.csv
+2024-11-19 11:47:00,473 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv22.csv
+2024-11-19 11:47:00,474 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv23.csv
+2024-11-19 11:47:00,475 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv24.csv
+2024-11-19 11:47:00,476 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv25.csv
+2024-11-19 11:47:00,476 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv26.csv
+2024-11-19 11:47:00,477 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv27.csv
+2024-11-19 11:47:00,478 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv28.csv
+2024-11-19 11:47:00,479 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv29.csv
+2024-11-19 11:47:00,480 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv30.csv
+2024-11-19 11:47:00,482 - __main__ - INFO - All HRV files combined into a single DataFrame.
+2024-11-19 11:47:10,903 - __main__ - INFO - Displayed line graph for steps in Steps Over Time.

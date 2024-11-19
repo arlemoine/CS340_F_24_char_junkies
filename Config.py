@@ -18,8 +18,8 @@ Date Last Updated:  11/14/24
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Data access paths
-DIR_INPUT = '/Input/'  # This is the path where we'll access our input data files
-DIR_OUTPUT = '/Output/'  # This is the path where we'll save our output files
+DIR_INPUT = 'Input/'  # This is the path where we'll access our input data files
+DIR_OUTPUT = 'Output/'  # This is the path where we'll save our output files
 
 # Filenames 
 FILENAME_STEPS = 'steps.csv' # Filename for steps data 

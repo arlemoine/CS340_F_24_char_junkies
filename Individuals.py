@@ -43,6 +43,15 @@ class FitnessData:
     def __init__(self, name):
         self.name = name  # Store person's name
 
+        self.config = {
+            "DIR_INPUT": Config.DIR_INPUT,
+            "FILENAME_STEPS": Config.FILENAME_STEPS,
+            "FILENAME_AGE": Config.FILENAME_AGE,
+            "MAX_HEART_RATE": Config.MAX_HEART_RATE,
+            "HRV_WEIGHT": Config.HRV_WEIGHT,
+            "STEP_WEIGHT": Config.STEP_WEIGHT
+        }
+
         self.logger = logging.getLogger(__name__)
         self.configureLogger()
         self.logger.info('Person created.')
@@ -147,7 +156,7 @@ class FitnessDataProcessing(FitnessData):
 
     # Import age from age.csv
     def importAge(self):
-        filepath = 'Input/' + self.name + '/age.csv'
+        filepath = self.config["DIR_INPUT"] + self.name + '/age.csv'
 
         try:
             with open(filepath, 'r') as csvfile:
@@ -169,7 +178,7 @@ class FitnessDataProcessing(FitnessData):
 
     # Import steps.csv into dataframe
     def importSteps(self):
-        filepath = 'Input/' + self.name + '/steps.csv'
+        filepath = self.config["DIR_INPUT"] + self.name + '/steps.csv'
 
         try:
             with open(filepath, 'r') as csvfile:
@@ -181,7 +190,7 @@ class FitnessDataProcessing(FitnessData):
     #
 
     def importHrv(self): ## Attempt at hrv import
-        filePath = 'Input/' + self.name + '/hrv/'
+        filePath = self.config["DIR_INPUT"] + self.name + '/hrv/'
         try: 
             hrv_files = [f'{filePath}{file}' for file in os.listdir(filePath) if file.endswith('.csv')]
             

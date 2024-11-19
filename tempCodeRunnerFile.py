@@ -1,0 +1,1 @@
+self.config.DIR_INPUT
