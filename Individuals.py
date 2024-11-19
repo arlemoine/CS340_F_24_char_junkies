@@ -193,20 +193,18 @@ class FitnessDataProcessing(FitnessData):
         filePath = self.config["DIR_INPUT"] + self.name + '/hrv/'
         try: 
             hrv_files = [f'{filePath}{file}' for file in os.listdir(filePath) if file.endswith('.csv')]
-            
-            dataframes = []
+            self.df_hrv = pd.DataFrame(columns=['name','dayOfMonth','hrv']) # Create empty df for avg hrv per day
+
             for file in hrv_files:
                 with open(file, 'r') as csvfile:
-                    df_hrv = pd.read_csv(csvfile)
-                    dataframes.append(df_hrv)
-                    self.logger.info(f"HRV data loaded from {file}")
+                    rawData = pd.read_csv(csvfile) # Pull hrvDD.csv into df
+                    cleanData = rawData[rawData['heartRate'] < self.config['MAX_HEART_RATE']] # Remove high-stress records
+                    avg_hrv = round(cleanData['hrv'].mean()) # Calculate avg hrv for current day
+                    dom = int(file[-6:-4]) # Grab day of month from file name
+                    new_row = pd.DataFrame({'name':[self.name], 'dayOfMonth':[dom], 'hrv':[avg_hrv]}) # Create new row
+                    self.df_hrv = pd.concat([self.df_hrv,new_row], ignore_index=True)
 
-            if dataframes:  # Ensure there are DataFrames to combine
-                self.df_hrv = pd.concat(dataframes, ignore_index=True)  # Combine all DataFrames
-                self.logger.info("All HRV files combined into a single DataFrame.")
-            else:
-                self.df_hrv = pd.DataFrame()
-                
+                    self.logger.info(f"HRV data loaded from {file}")                
         except FileNotFoundError:
             print(f"{filePath} not found.")
     #
@@ -281,7 +279,7 @@ if __name__ == "__main__":
     pers1.view_hrv_table()
 
     pers1.view_steps_line_graph()
-    #pers1.view_hrv_line_graph()
+    # pers1.view_hrv_line_graph()
     
     #TEST Code
     # main()
