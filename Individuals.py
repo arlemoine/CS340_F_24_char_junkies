@@ -84,12 +84,12 @@ class FitnessData:
     #
 
     # # Display the dataframe as a table
-    # def view_table(self, dataframe):
-    #     if dataframe is not None:
-    #         print(dataframe.head())  # Display the first few rows of the dataframe #
-    #     else:
-    #         print("Dataframe is empty.")  # Print a message if the dataframe is empty #
-    # #
+    def view_table(self, dataframe):
+        if dataframe is not None:
+            print(dataframe.head())  # Display the first few rows of the dataframe #
+        else:
+            print("Dataframe is empty.")  # Print a message if the dataframe is empty #
+    
 
     # # Plot a line graph for a specific column in the dataframe
     # def view_line_graph(self, dataframe, column, title):
@@ -98,6 +98,21 @@ class FitnessData:
     #     else:
     #         print("Column not found in the dataframe or dataframe is empty.")  # Print a message if the column is not found #
     # #
+
+    def view_line_graph(self, dataframe, column, title):
+        if dataframe is not None and column in dataframe.columns:
+            plt.figure(figsize=(10, 6))
+            plt.plot(dataframe['dayOfMonth'], dataframe[column], marker='o', linestyle='-')
+            plt.title(title)
+            plt.xlabel('Date')
+            plt.ylabel(column)
+            plt.grid(True)
+            plt.show()
+            self.logger.info(f"Displayed line graph for {column} in {title}.")
+        else:
+            self.logger.warning(f"Column '{column}' not found in DataFrame or DataFrame is empty.")
+            print(f"Column '{column}' not found in DataFrame or DataFrame is empty.")
+    #
 
     # # Display the steps dataframe as a table
     def view_steps_table(self):
@@ -109,14 +124,14 @@ class FitnessData:
     # 
 
     # # Plot a line graph of steps data
-    # def view_steps_line_graph(self):
-    #     self.view_line_graph(self.df_steps, 'Steps', 'Steps Over Time')  # Plot line graph for steps #
+    def view_steps_line_graph(self):
+        self.view_line_graph(self.df_steps, 'steps', 'Steps Over Time')  # Plot line graph for steps #
     # #
 
-    # # Plot a line graph of HRV data
-    # def view_hrv_line_graph(self):
-    #     self.view_line_graph(self.df_hrv, 'HRV', 'HRV Over Time')  # Plot line graph for HRV #
-    # #
+        # Plot a line graph of HRV data
+    #def view_hrv_line_graph(self):
+    #    self.view_line_graph(self.df_hrv, 'hrv', 'HRV Over Time')  # Plot line graph for HRV #
+    # 
 #
 
 class FitnessDataProcessing(FitnessData):
@@ -253,10 +268,11 @@ if __name__ == "__main__":
     pers1.importSteps()
     pers1.importHrv()
 
-
-
     pers1.view_steps_table()
     pers1.view_hrv_table()
+
+    pers1.view_steps_line_graph()
+    #pers1.view_hrv_line_graph()
     
     #TEST Code
     # main()
