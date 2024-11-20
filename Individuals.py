@@ -106,13 +106,14 @@ class FitnessData:
     #         dataframe.plot(y=column, kind='line', title=title)  # Plot the line graph #
     #     else:
     #         print("Column not found in the dataframe or dataframe is empty.")  # Print a message if the column is not found #
-    # #
+    # 
 
     def view_line_graph(self, dataframe, column, title):
         if dataframe is not None and column in dataframe.columns:
             plt.figure(figsize=(10, 6))
             plt.plot(dataframe['dayOfMonth'], dataframe[column], marker='o', linestyle='-')
-            plt.title(title)
+            person_title = f"{title} for {self.name}"
+            plt.title(person_title)
             plt.xlabel('Date')
             plt.ylabel(column)
             plt.grid(True)
@@ -135,13 +136,31 @@ class FitnessData:
     # # Plot a line graph of steps data
     def view_steps_line_graph(self):
         self.view_line_graph(self.df_steps, 'steps', 'Steps Over Time')  # Plot line graph for steps #
-    #
+    # #
 
         # Plot a line graph of HRV data
     def view_hrv_line_graph(self):
         self.view_line_graph(self.df_hrv, 'hrv', 'HRV Over Time')  # Plot line graph for HRV #
     # 
 #
+    def data_search(self, dataframe, column, search_value):
+        #dataframe used to declare which dataframe to seach in
+        #column for which column to seach in
+        #search_value: The value we are searching for. Takes in str,int,or float
+        
+        if dataframe is not None and column in dataframe.columns:
+            # Search for the value in the given column and return the matching rows
+            result = dataframe[dataframe[column] == search_value]
+            if not result.empty:
+                print(f"Here are the results in column '{column}' for value '{search_value}':")
+                print(result)
+                return result#returns the row from the dataframe that match the search value
+            else:
+                print(f"No matching results found for '{search_value}' in column '{column}'.")
+                return None
+        else:
+            print(f"The dataframe is empty or column '{column}' was not found.")
+            return None
 
 class FitnessDataProcessing(FitnessData):
     '''
@@ -189,7 +208,7 @@ class FitnessDataProcessing(FitnessData):
             print(f"{filepath} not found.")  # Print error message if file is not found
     #
 
-    def importHrv(self):
+    def importHrv(self): ## Attempt at hrv import
         filePath = self.config["DIR_INPUT"] + self.name + '/hrv/'
         try: 
             hrv_files = [f'{filePath}{file}' for file in os.listdir(filePath) if file.endswith('.csv')]
@@ -280,6 +299,24 @@ if __name__ == "__main__":
 
     pers1.view_steps_line_graph()
     pers1.view_hrv_line_graph()
+
+    pers1.data_search(pers1.df_steps, 'dayOfMonth', 3)
+    pers1.data_search(pers1.df_hrv, 'hrv', '18')  
+    '''
+    pers2 = FitnessDataProcessing('brian')
+    pers2.importAge()
+    pers2.importSteps()
+    pers2.importHrv()
+
+    pers2.view_steps_table()
+    pers2.view_hrv_table()
+
+    pers2.view_steps_line_graph()
+    pers2.view_hrv_line_graph()
+
+    pers2.data_search(pers1.df_steps, 'dayOfMonth', 3) 
+    pers2.data_search(pers1.df_hrv, 'hrv', '18') 
+    '''
     
     #TEST Code
     # main()
