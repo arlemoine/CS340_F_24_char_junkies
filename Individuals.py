@@ -25,6 +25,7 @@ import numpy  as np
 import pandas as pd
 import logging
 import csv
+import seaborn as sns
 
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -112,8 +113,8 @@ class FitnessData:
         if dataframe is not None and column in dataframe.columns:
             plt.figure(figsize=(10, 6))
             plt.plot(dataframe['dayOfMonth'], dataframe[column], marker='o', linestyle='-')
-            person_title = f"{title} for {self.name}"
-            plt.title(person_title)
+            personal_title = f"{title} - {self.name.capitalize()}"
+            plt.title(personal_title)
             plt.xlabel('Date')
             plt.ylabel(column)
             plt.grid(True)
@@ -144,8 +145,8 @@ class FitnessData:
     # 
 #
     def data_search(self, dataframe, column, search_value):
-        #dataframe used to declare which dataframe to seach in
-        #column for which column to seach in
+        #dataframe used to declare which dataframe to search in
+        #column for which column to search in
         #search_value: The value we are searching for. Takes in str,int,or float
         
         if dataframe is not None and column in dataframe.columns:
@@ -226,6 +227,21 @@ class FitnessDataProcessing(FitnessData):
                     self.logger.info(f"HRV data loaded from {file}")                
         except FileNotFoundError:
             print(f"{filePath} not found.")
+    
+    
+    def visualize_violin_plot(self, dataframe, column, title="Violin Plot"):
+        if dataframe is not None and column in dataframe.columns:
+            plt.figure(figsize=(10, 6))
+            sns.violinplot(data=dataframe, x=column)
+            plt.title(f"{title} - {self.name.capitalize()}")
+            plt.xlabel(f"{column} per month")
+            plt.ylabel('Density')
+            plt.grid(True)
+            plt.show()
+            self.logger.info(f"Displayed violin plot for {column} in {title}.")
+        else:
+            self.logger.warning(f"Column '{column}' not found in DataFrame or DataFrame is empty.")
+            print(f"Column '{column}' not found in DataFrame or DataFrame is empty.")
     #
 
     # # Remove bad HRV data when heart rate > max
@@ -302,6 +318,9 @@ if __name__ == "__main__":
 
     pers1.data_search(pers1.df_steps, 'dayOfMonth', 3)
     pers1.data_search(pers1.df_hrv, 'hrv', '18')  
+
+    pers1.visualize_violin_plot(pers1.df_steps, 'steps', 'Violin Plot of Steps')
+    pers1.visualize_violin_plot(pers1.df_hrv, 'hrv', 'Violin Plot of HRV')
     '''
     pers2 = FitnessDataProcessing('brian')
     pers2.importAge()
