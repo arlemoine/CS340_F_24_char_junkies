@@ -135,11 +135,11 @@ class FitnessData:
     # # Plot a line graph of steps data
     def view_steps_line_graph(self):
         self.view_line_graph(self.df_steps, 'steps', 'Steps Over Time')  # Plot line graph for steps #
-    # #
+    #
 
         # Plot a line graph of HRV data
-    #def view_hrv_line_graph(self):
-    #    self.view_line_graph(self.df_hrv, 'hrv', 'HRV Over Time')  # Plot line graph for HRV #
+    def view_hrv_line_graph(self):
+        self.view_line_graph(self.df_hrv, 'hrv', 'HRV Over Time')  # Plot line graph for HRV #
     # 
 #
 
@@ -189,7 +189,7 @@ class FitnessDataProcessing(FitnessData):
             print(f"{filepath} not found.")  # Print error message if file is not found
     #
 
-    def importHrv(self): ## Attempt at hrv import
+    def importHrv(self):
         filePath = self.config["DIR_INPUT"] + self.name + '/hrv/'
         try: 
             hrv_files = [f'{filePath}{file}' for file in os.listdir(filePath) if file.endswith('.csv')]
@@ -279,7 +279,7 @@ if __name__ == "__main__":
     pers1.view_hrv_table()
 
     pers1.view_steps_line_graph()
-    # pers1.view_hrv_line_graph()
+    pers1.view_hrv_line_graph()
     
     #TEST Code
     # main()
