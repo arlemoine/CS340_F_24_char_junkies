@@ -355,26 +355,26 @@ class FitnessDataProcessing(FitnessData):
 #%% SELF-RUN                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #Main Self-run block
-# if __name__ == "__main__":
+if __name__ == "__main__":
     
-    # pers1 = FitnessDataProcessing('charlie')
-    # pers1.show_stats_for_month()
+    pers1 = FitnessDataProcessing('charlie')
+    pers1.show_stats_for_month()
 
     # pers2 = FitnessDataProcessing('eddie')
     # pers2.show_stats_for_month()
     
 
-    # pers1.view_steps_table()
-    # pers1.view_hrv_table()
+    pers1.view_steps_table()
+    pers1.view_hrv_table()
 
-    # pers1.view_steps_line_graph()
-    # pers1.view_hrv_line_graph()
+    pers1.view_steps_line_graph()
+    pers1.view_hrv_line_graph()
 
-    # pers1.data_search(pers1.df_steps, 'dayOfMonth', 3)
-    # pers1.data_search(pers1.df_hrv, 'hrv', 16)  
+    pers1.data_search(pers1.df_steps, 'dayOfMonth', 3)
+    pers1.data_search(pers1.df_hrv, 'hrv', 16)  
 
-    # pers1.visualize_violin_plot(pers1.df_steps, 'steps', 'Violin Plot of Steps')
-    # pers1.visualize_violin_plot(pers1.df_hrv, 'hrv', 'Violin Plot of HRV')
+    pers1.visualize_violin_plot(pers1.df_steps, 'steps', 'Violin Plot of Steps')
+    pers1.visualize_violin_plot(pers1.df_hrv, 'hrv', 'Violin Plot of HRV')
 
     
     # result = pers1.query_data(pers1.df_steps, 'steps', '>', 5000)
