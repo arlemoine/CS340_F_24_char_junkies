@@ -145,9 +145,9 @@ class FitnessData:
     # 
 #
     def data_search(self, dataframe, column, search_value):
-        #dataframe used to declare which dataframe to search in
-        #column for which column to search in
-        #search_value: The value we are searching for. Takes in str,int,or float
+        ##(dataframe) used to declare which dataframe to search in
+        ##(column) used to declare which column to search in
+        ##(search_value) used to declare the value we are searching for. Takes in str,int,or float
         
         if dataframe is not None and column in dataframe.columns:
             # Search for the value in the given column and return the matching rows
@@ -230,6 +230,13 @@ class FitnessDataProcessing(FitnessData):
     
     
     def visualize_violin_plot(self, dataframe, column, title="Violin Plot"):
+        ## Visualizes a violin plot for a specified column in the specified dataFrame
+        
+        ## (dataframe) for the dataframe we wish to plot
+        ## (column) takes in a str for the column for which we wish to plot
+        ## (title) the title of the violin plot
+
+        ## Check if dataframe has data and the specified column exists
         if dataframe is not None and column in dataframe.columns:
             plt.figure(figsize=(10, 6))
             sns.violinplot(data=dataframe, x=column)
@@ -240,8 +247,52 @@ class FitnessDataProcessing(FitnessData):
             plt.show()
             self.logger.info(f"Displayed violin plot for {column} in {title}.")
         else:
+            ## If dateframe is empty or the column is not found it is logged and an error message is printed
             self.logger.warning(f"Column '{column}' not found in DataFrame or DataFrame is empty.")
             print(f"Column '{column}' not found in DataFrame or DataFrame is empty.")
+
+
+    def query_data(self, dataframe, query_column, condition, value):
+        ## Queries the specified dataframe based on the given condition and value for the specified column
+
+        ## (dataframe) for the dataframe we are searching in
+        ## (query_column) takes in a str for the column to apply the condition to
+        ## (condition) takes in a str for the condition to apply. Str can be one of ['==', '>', '<', '>=', '<=', '!=']
+        ## (value) takes in an int, float, or str for the value to compare against
+        
+        ## Check if dataframe has data and the specified column exists
+        if dataframe is not None and query_column in dataframe.columns:
+            if condition == '==':
+                result = dataframe[dataframe[query_column] == value]
+            elif condition == '>':
+                result = dataframe[dataframe[query_column] > value]
+            elif condition == '<':
+                result = dataframe[dataframe[query_column] < value]
+            elif condition == '>=':
+                result = dataframe[dataframe[query_column] >= value]
+            elif condition == '<=':
+                result = dataframe[dataframe[query_column] <= value]
+            elif condition == '!=':
+                result = dataframe[dataframe[query_column] != value]
+            else:
+                ## Check for invalid condition
+                print(f"Invalid condition: {condition}")
+                return None
+            
+            ## Check if any rows match the query condition
+            if not result.empty:
+                print(f"Query results for {query_column} {condition} {value}:")
+                print(result)
+                return result  # Return the matching rows
+            else:
+                ## Notify user if no rows match the condition
+                print(f"No matching results found for {query_column} {condition} {value}.")
+                return None
+        else:
+            ## Notify user if the dataframe is empty
+            print(f"The dataframe is empty or column '{query_column}' was not found.")
+            return None
+
     #
 
     # # Remove bad HRV data when heart rate > max
@@ -317,10 +368,16 @@ if __name__ == "__main__":
     pers1.view_hrv_line_graph()
 
     pers1.data_search(pers1.df_steps, 'dayOfMonth', 3)
-    pers1.data_search(pers1.df_hrv, 'hrv', '18')  
+    pers1.data_search(pers1.df_hrv, 'hrv', 16)  
 
     pers1.visualize_violin_plot(pers1.df_steps, 'steps', 'Violin Plot of Steps')
     pers1.visualize_violin_plot(pers1.df_hrv, 'hrv', 'Violin Plot of HRV')
+
+    
+    result = pers1.query_data(pers1.df_steps, 'steps', '>', 5000)
+    result = pers1.query_data(pers1.df_steps, 'dayOfMonth', '==', 3)
+
+
     '''
     pers2 = FitnessDataProcessing('brian')
     pers2.importAge()
