@@ -146,3 +146,78 @@
 2024-11-19 13:23:33,195 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv29.csv
 2024-11-19 13:23:33,196 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv30.csv
 2024-11-19 13:23:36,205 - __main__ - INFO - Displayed line graph for steps in Steps Over Time.
+2024-11-20 20:50:12,125 - __main__ - INFO - Person created.
+2024-11-20 20:50:12,125 - __main__ - INFO - Age (28) extracted from Input/adam/age.csv
+2024-11-20 20:50:12,127 - __main__ - INFO - Step data is loaded.
+2024-11-20 20:50:12,128 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv01.csv
+2024-11-20 20:50:12,130 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv02.csv
+2024-11-20 20:50:12,132 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv03.csv
+2024-11-20 20:50:12,134 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv04.csv
+2024-11-20 20:50:12,136 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv05.csv
+2024-11-20 20:50:12,138 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv06.csv
+2024-11-20 20:50:12,140 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv07.csv
+2024-11-20 20:50:12,142 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv08.csv
+2024-11-20 20:50:12,143 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv09.csv
+2024-11-20 20:50:12,145 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv10.csv
+2024-11-20 20:50:12,147 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv11.csv
+2024-11-20 20:50:12,149 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv12.csv
+2024-11-20 20:50:12,150 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv13.csv
+2024-11-20 20:50:12,151 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv14.csv
+2024-11-20 20:50:12,153 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv15.csv
+2024-11-20 20:50:12,154 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv16.csv
+2024-11-20 20:50:12,155 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv17.csv
+2024-11-20 20:50:12,156 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv18.csv
+2024-11-20 20:50:12,157 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv19.csv
+2024-11-20 20:50:12,158 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv20.csv
+2024-11-20 20:50:12,159 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv21.csv
+2024-11-20 20:50:12,160 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv22.csv
+2024-11-20 20:50:12,161 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv23.csv
+2024-11-20 20:50:12,162 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv24.csv
+2024-11-20 20:50:12,162 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv25.csv
+2024-11-20 20:50:12,163 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv26.csv
+2024-11-20 20:50:12,164 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv27.csv
+2024-11-20 20:50:12,165 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv28.csv
+2024-11-20 20:50:12,166 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv29.csv
+2024-11-20 20:50:12,167 - __main__ - INFO - HRV data loaded from Input/adam/hrv/hrv30.csv
+2024-11-20 20:50:15,192 - __main__ - INFO - Displayed line graph for steps in Steps Over Time.
+2024-11-20 20:50:17,842 - __main__ - INFO - Displayed line graph for hrv in HRV Over Time.
+2024-11-20 20:50:17,856 - __main__ - INFO - Search results for '3' in column 'dayOfMonth':
+2024-11-20 20:50:17,857 - __main__ - INFO -    name  dayOfMonth  steps
+2  adam           3   2141
+2024-11-20 20:50:17,877 - __main__ - INFO - Search results for '16' in column 'hrv':
+2024-11-20 20:50:17,878 - __main__ - INFO -     name dayOfMonth hrv
+0   adam          1  16
+1   adam          2  16
+2   adam          3  16
+4   adam          5  16
+7   adam          8  16
+11  adam         12  16
+12  adam         13  16
+14  adam         15  16
+16  adam         17  16
+19  adam         20  16
+22  adam         23  16
+23  adam         24  16
+28  adam         29  16
+29  adam         30  16
+2024-11-20 20:50:21,538 - __main__ - INFO - Displayed violin plot for steps in Violin Plot of Steps.
+2024-11-20 20:50:23,044 - __main__ - INFO - Displayed violin plot for hrv in Violin Plot of HRV.
+2024-11-20 20:50:23,054 - __main__ - INFO - Query results for steps > 5000:
+2024-11-20 20:50:23,055 - __main__ - INFO -     name  dayOfMonth  steps
+1   adam           2   7239
+3   adam           4   9920
+8   adam           9   5337
+10  adam          11   5517
+12  adam          13   8935
+17  adam          18   5013
+18  adam          19   7569
+19  adam          20   9881
+21  adam          22   5312
+22  adam          23   8599
+23  adam          24   7014
+24  adam          25   6538
+26  adam          27   7450
+27  adam          28   8798
+28  adam          29   9316
+29  adam          30   6118
+2024-11-20 20:50:23,069 - __main__ - WARNING - No matching results found for dayOfMonth == 31.
