@@ -357,42 +357,20 @@ class FitnessDataProcessing(FitnessData):
 #Main Self-run block
 if __name__ == "__main__":
     
-    pers1 = FitnessDataProcessing('charlie')
+    pers1 = FitnessDataProcessing('adam')
     pers1.show_stats_for_month()
 
-    # pers2 = FitnessDataProcessing('eddie')
-    # pers2.show_stats_for_month()
+    pers2 = FitnessDataProcessing('brian')
+    pers2.show_stats_for_month()
     
+    pers3 = FitnessDataProcessing('charlie')
+    pers3.show_stats_for_month()
 
-    pers1.view_steps_table()
-    pers1.view_hrv_table()
+    pers4 = FitnessDataProcessing('david')
+    pers4.show_stats_for_month()
 
-    pers1.view_steps_line_graph()
-    pers1.view_hrv_line_graph()
-
-    pers1.data_search(pers1.df_steps, 'dayOfMonth', 3)
-    pers1.data_search(pers1.df_hrv, 'hrv', 16)  
-
-    pers1.visualize_violin_plot(pers1.df_steps, 'steps', 'Violin Plot of Steps')
-    pers1.visualize_violin_plot(pers1.df_hrv, 'hrv', 'Violin Plot of HRV')
-
-    
-    # result = pers1.query_data(pers1.df_steps, 'steps', '>', 5000)
-    # result = pers1.query_dat_per_da(pers1.df_steps, 'dayOfMonth', '==', 31)
-
-    # pers2 = FitnessDataProcessing('brian')
-    # pers2.importAge()
-    # pers2.importSteps()
-    # pers2.importHrv()
-
-    # pers2.view_steps_table()
-    # pers2.view_hrv_table()
-
-    # pers2.view_steps_line_graph()
-    # pers2.view_hrv_line_graph()
-
-    # pers2.data_search(pers1.df_steps, 'dayOfMonth', 3) 
-    # pers2.data_search(pers1.df_hrv, 'hrv', '18') 
+    pers5 = FitnessDataProcessing('eddie')
+    pers5.show_stats_for_month()
     
     #TEST Code
     # main()

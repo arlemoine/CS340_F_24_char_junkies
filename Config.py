@@ -25,12 +25,13 @@ DIR_OUTPUT = 'Output/'  # This is the path where we'll save our output files
 FILENAME_STEPS = 'steps.csv' # Filename for steps data 
 FILENAME_AGE = 'age.csv' # Filename for age data 
 
-# Constants for HRV calculations
+# Data Cleaning Constants   
 MAX_HEART_RATE = 120  # We will use this threshold to identify high-stress periods in HRV data based on heart rate
-HRV_WEIGHT = 0.7  # This weight is applied to the HRV score
-
-# Constants for step score calculations
-STEP_WEIGHT = 0.3  # This weight is applied to the step score
 
 # Define max department size for police officers
 MAX_DEPARTMENT_SIZE = 100  # Example maximum size for the police department
+
+# Fitness Score Constants
+STEP_WEIGHT = 0.3  # This weight is applied to the step score
+HRV_WEIGHT = 0.7  # This weight is applied to the HRV score
+MIN_FITNESS_SCORE = 1600 # Minimum fitness score of an individual to avoid probation
