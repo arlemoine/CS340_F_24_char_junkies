@@ -155,12 +155,16 @@ class FitnessData:
             if not result.empty:
                 print(f"Here are the results in column '{column}' for value '{search_value}':")
                 print(result)
+                self.logger.info(f"Search results for '{search_value}' in column '{column}':")
+                self.logger.info(result)
                 return result#returns the row from the dataframe that match the search value
             else:
                 print(f"No matching results found for '{search_value}' in column '{column}'.")
+                self.logger.warning(f"No matching results found for '{search_value}' in column '{column}'.")
                 return None
         else:
             print(f"The dataframe is empty or column '{column}' was not found.")
+            self.logger.warning(f"The dataframe is empty or column '{column}' was not found.")
             return None
 
 class FitnessDataProcessing(FitnessData):
@@ -276,21 +280,25 @@ class FitnessDataProcessing(FitnessData):
                 result = dataframe[dataframe[query_column] != value]
             else:
                 ## Check for invalid condition
-                print(f"Invalid condition: {condition}")
+                self.logger.error(f"Invalid condition: {condition}")
                 return None
-            
+        
             ## Check if any rows match the query condition
             if not result.empty:
                 print(f"Query results for {query_column} {condition} {value}:")
                 print(result)
+                self.logger.info(f"Query results for {query_column} {condition} {value}:")
+                self.logger.info(result)  # Log the query result
                 return result  # Return the matching rows
             else:
                 ## Notify user if no rows match the condition
                 print(f"No matching results found for {query_column} {condition} {value}.")
+                self.logger.warning(f"No matching results found for {query_column} {condition} {value}.")
                 return None
         else:
             ## Notify user if the dataframe is empty
             print(f"The dataframe is empty or column '{query_column}' was not found.")
+            self.logger.warning(f"The dataframe is empty or column '{query_column}' was not found.")
             return None
 
     #
@@ -375,7 +383,7 @@ if __name__ == "__main__":
 
     
     result = pers1.query_data(pers1.df_steps, 'steps', '>', 5000)
-    result = pers1.query_data(pers1.df_steps, 'dayOfMonth', '==', 3)
+    result = pers1.query_data(pers1.df_steps, 'dayOfMonth', '==', 31)
 
 
     '''
