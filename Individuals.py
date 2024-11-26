@@ -60,6 +60,7 @@ class FitnessData:
         self.age = None
         self.df_steps = None
         self.df_hrv = None
+        self.departureAngle = None # Used in comparing age/FitnessScore to department average
     #
 
     # Configure logging functionality of object
