@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Temporary Python files
+*.pyo
+*.pyd
+*.pdb
+
+# Virtual environments
+venv/
+.env/
+env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*.DS_Store
+
+# Test results
+*.coverage
+*.pytest_cache/
+
+# Cache and other temp folders
+.cache/
