@@ -2,7 +2,7 @@
 module_name = 'Departments'
 
 '''
-Version: 1.0.0
+Version: 1.0
 
 Description:
     Module to consolidate fitness data for individuals into their department. Generates fitness statistics for the department based off of the individuals and produces relevant graphs.
@@ -26,7 +26,6 @@ if __name__ == "__main__":
 from   copy       import deepcopy as dpcpy
 from   matplotlib import pyplot as plt
 import math
-import mne
 import numpy  as np 
 import os
 import pandas as pd

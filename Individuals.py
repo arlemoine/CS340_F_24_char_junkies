@@ -1,7 +1,7 @@
 module_name = 'Individuals'
 
 '''
-Version: <V1>
+Version: 1.1
 
 Description:
     <This module is to gather data for each individual officer, process the data, and create data frames using the collected data>
@@ -9,9 +9,10 @@ Description:
 Authors:
     Chris Smith
     Adriean Lemoine
+    Nicholas Burgo
 
-Date Created:       11/12/24
-Date Last Updated:  11/14/24
+Date Created:       11/12/2024
+Date Last Updated:  11/26/2024
 '''
 #%% IMPORTS                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -26,6 +27,7 @@ import Logging
 #other imports
 from matplotlib import pyplot as plt
 import numpy  as np 
+import os
 import pandas as pd
 import logging
 import csv
@@ -92,15 +94,7 @@ class FitnessData:
         print(f'HRV Data:\t{self.df_hrv}')
     #
 
-    def view_table(self, dataframe):
-        if dataframe is not None:
-            print(dataframe.head()) 
-        else:
-            print("Dataframe is empty.")
-        #
-    #
-
-    # # Display the dataframe as a table
+    # Display the dataframe as a table
     def view_table(self, dataframe):
         if dataframe is not None:
             print(dataframe.head())  # Display the first few rows of the dataframe #
@@ -361,7 +355,7 @@ class FitnessDataProcessing(FitnessData):
 #%% SELF-RUN                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #Main Self-run block
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
     # pers1 = FitnessDataProcessing('brian')
     # pers1.show_stats_for_month()
