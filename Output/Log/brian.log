@@ -1,0 +1,33 @@
+2024-11-26 19:10:05,097 - brian - INFO - Person created.
+2024-11-26 19:10:05,097 - brian - INFO - Age (34) extracted from Input/brian/age.csv
+2024-11-26 19:10:05,100 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv01.csv
+2024-11-26 19:10:05,102 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv02.csv
+2024-11-26 19:10:05,103 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv03.csv
+2024-11-26 19:10:05,104 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv04.csv
+2024-11-26 19:10:05,105 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv05.csv
+2024-11-26 19:10:05,105 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv06.csv
+2024-11-26 19:10:05,106 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv07.csv
+2024-11-26 19:10:05,107 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv08.csv
+2024-11-26 19:10:05,108 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv09.csv
+2024-11-26 19:10:05,109 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv10.csv
+2024-11-26 19:10:05,110 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv11.csv
+2024-11-26 19:10:05,111 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv12.csv
+2024-11-26 19:10:05,112 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv13.csv
+2024-11-26 19:10:05,113 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv14.csv
+2024-11-26 19:10:05,114 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv15.csv
+2024-11-26 19:10:05,115 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv16.csv
+2024-11-26 19:10:05,116 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv17.csv
+2024-11-26 19:10:05,117 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv18.csv
+2024-11-26 19:10:05,118 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv19.csv
+2024-11-26 19:10:05,119 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv20.csv
+2024-11-26 19:10:05,120 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv21.csv
+2024-11-26 19:10:05,121 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv22.csv
+2024-11-26 19:10:05,122 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv23.csv
+2024-11-26 19:10:05,123 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv24.csv
+2024-11-26 19:10:05,124 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv25.csv
+2024-11-26 19:10:05,125 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv26.csv
+2024-11-26 19:10:05,126 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv27.csv
+2024-11-26 19:10:05,127 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv28.csv
+2024-11-26 19:10:05,128 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv29.csv
+2024-11-26 19:10:05,129 - brian - INFO - HRV data loaded from Input/brian/hrv/hrv30.csv
+2024-11-26 19:10:05,130 - brian - INFO - Step data is loaded.

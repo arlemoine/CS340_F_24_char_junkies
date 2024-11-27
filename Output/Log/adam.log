@@ -1,0 +1,33 @@
+2024-11-26 19:08:54,804 - adam - INFO - Person created.
+2024-11-26 19:08:54,804 - adam - INFO - Age (28) extracted from Input/adam/age.csv
+2024-11-26 19:08:54,808 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv01.csv
+2024-11-26 19:08:54,809 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv02.csv
+2024-11-26 19:08:54,810 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv03.csv
+2024-11-26 19:08:54,811 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv04.csv
+2024-11-26 19:08:54,812 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv05.csv
+2024-11-26 19:08:54,814 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv06.csv
+2024-11-26 19:08:54,815 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv07.csv
+2024-11-26 19:08:54,815 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv08.csv
+2024-11-26 19:08:54,816 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv09.csv
+2024-11-26 19:08:54,817 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv10.csv
+2024-11-26 19:08:54,818 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv11.csv
+2024-11-26 19:08:54,819 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv12.csv
+2024-11-26 19:08:54,820 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv13.csv
+2024-11-26 19:08:54,821 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv14.csv
+2024-11-26 19:08:54,822 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv15.csv
+2024-11-26 19:08:54,823 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv16.csv
+2024-11-26 19:08:54,824 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv17.csv
+2024-11-26 19:08:54,825 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv18.csv
+2024-11-26 19:08:54,826 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv19.csv
+2024-11-26 19:08:54,827 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv20.csv
+2024-11-26 19:08:54,828 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv21.csv
+2024-11-26 19:08:54,829 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv22.csv
+2024-11-26 19:08:54,830 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv23.csv
+2024-11-26 19:08:54,831 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv24.csv
+2024-11-26 19:08:54,832 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv25.csv
+2024-11-26 19:08:54,833 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv26.csv
+2024-11-26 19:08:54,834 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv27.csv
+2024-11-26 19:08:54,835 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv28.csv
+2024-11-26 19:08:54,836 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv29.csv
+2024-11-26 19:08:54,837 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv30.csv
+2024-11-26 19:08:54,838 - adam - INFO - Step data is loaded.

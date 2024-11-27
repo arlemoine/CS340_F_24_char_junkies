@@ -20,6 +20,10 @@ if __name__ == "__main__":
     #os.chdir("./../..")
 #
 
+#custom imports
+import Logging
+
+#other imports
 from matplotlib import pyplot as plt
 import numpy  as np 
 import pandas as pd
@@ -53,8 +57,9 @@ class FitnessData:
             "STEP_WEIGHT": Config.STEP_WEIGHT
         }
 
-        self.logger = logging.getLogger(__name__)
-        self.configureLogger()
+        self.logger = Logging.configure_logger(self.name)
+        # self.logger = logging.getLogger(__name__)
+        # self.configureLogger()
         self.logger.info('Person created.')
 
         self.age = None
@@ -63,22 +68,22 @@ class FitnessData:
         self.departureAngle = None # Used in comparing age/FitnessScore to department average
     #
 
-    # Configure logging functionality of object
-    def configureLogger(self):
-        # Ensure directory exists
-        log_dir = 'Log'
-        os.makedirs(log_dir, exist_ok=True)
+    # # Configure logging functionality of object
+    # def configureLogger(self):
+    #     # Ensure directory exists
+    #     log_dir = 'Log'
+    #     os.makedirs(log_dir, exist_ok=True)
 
-        # Set logger configurations
-        self.logger.setLevel(logging.INFO)
-        file_handler = logging.FileHandler(os.path.join(log_dir, f"{self.name}.log"))
-        file_handler.setLevel(logging.INFO)
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        file_handler.setFormatter(formatter)  
+    #     # Set logger configurations
+    #     self.logger.setLevel(logging.INFO)
+    #     file_handler = logging.FileHandler(os.path.join(log_dir, f"{self.name}.log"))
+    #     file_handler.setLevel(logging.INFO)
+    #     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    #     file_handler.setFormatter(formatter)  
 
-        # Attach handler to logger
-        self.logger.addHandler(file_handler)
-    #
+    #     # Attach handler to logger
+    #     self.logger.addHandler(file_handler)
+    # #
 
     def print(self):
         print(f'Name:\t\t{self.name}')
@@ -358,20 +363,20 @@ class FitnessDataProcessing(FitnessData):
 #Main Self-run block
 if __name__ == "__main__":
     
-    pers1 = FitnessDataProcessing('adam')
-    pers1.show_stats_for_month()
+    # pers1 = FitnessDataProcessing('brian')
+    # pers1.show_stats_for_month()
 
-    pers2 = FitnessDataProcessing('brian')
-    pers2.show_stats_for_month()
+    # pers2 = FitnessDataProcessing('brian')
+    # pers2.show_stats_for_month()
     
-    pers3 = FitnessDataProcessing('charlie')
-    pers3.show_stats_for_month()
+    # pers3 = FitnessDataProcessing('charlie')
+    # pers3.show_stats_for_month()
 
-    pers4 = FitnessDataProcessing('david')
-    pers4.show_stats_for_month()
+    # pers4 = FitnessDataProcessing('david')
+    # pers4.show_stats_for_month()
 
-    pers5 = FitnessDataProcessing('eddie')
-    pers5.show_stats_for_month()
+    # pers5 = FitnessDataProcessing('eddie')
+    # pers5.show_stats_for_month()
     
     #TEST Code
     # main()
