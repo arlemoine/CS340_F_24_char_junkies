@@ -22,6 +22,7 @@ if __name__ == "__main__":
 #
 
 #custom imports
+import Logging
 
 #other imports  
 from   copy       import deepcopy as dpcpy
@@ -34,6 +35,7 @@ import pickle as pkl
 import seaborn as sns
 from Individuals import FitnessDataProcessing
 from tabulate import tabulate
+import logging
 
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -86,10 +88,13 @@ class DepartmentData:
         # Loop through each individual in the department
         for individual in self.individuals:
             # self.logger.info(f"Calculating step score for individual: {individual.name}")
-            individual.calc_step_score()  # Calculate the step score (average steps per day)
+            
+            # Call the method that calculates the step scores
+            individual.calc_step_score()
 
             # Capture the result of avg_steps calculation
             avg_steps_value = round(individual.avg_steps, 2)
+
             # self.logger.debug(f"{individual.name}'s average steps: {avg_steps_value}")
 
             # Append the results to the lists
@@ -130,11 +135,12 @@ class DepartmentData:
         for individual in self.individuals:
             # self.logger.info(f"Calculating average HRV for individual: {individual.name}")
 
-            # Calculate the average HRV directly
-            avg_hrv_value = individual.df_hrv['hrv'].mean()  # Calculate the average HRV
-            avg_hrv_value = round(avg_hrv_value, 2)
+            # Call the method that calculates the hrv scores
+            individual.calc_hrv_score()
+            
+            # Capture the result of avg_hrv calculation
+            avg_hrv_value = round(individual.avg_hrv, 2)
 
-            # Log the calculated average HRV for this individual
             # self.logger.debug(f"{individual.name}'s average HRV: {avg_hrv_value}")
 
             # Append the results to the lists
@@ -175,11 +181,12 @@ class DepartmentData:
         for individual in self.individuals:
             # self.logger.info(f"Calculating fitness score for individual: {individual.name}")
         
-            # Call the method to calculate the fitness score
-            individual.calc_fitness_score()  # Calculates the fitness score for the individual
+            # Call the method that calculates the fitness score
+            individual.calc_fitness_score()
 
             # Capture the result of avg_FitnessScore calculation
-            fitness_score_value = round(individual.fitness_score, 2)  # Round to 2 decimal places
+            fitness_score_value = round(individual.fitness_score, 2)
+            
             # self.logger.debug(f"{individual.name}'s fitness score: {fitness_score_value}")
             
             names.append(individual.name)
