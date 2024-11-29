@@ -12,7 +12,7 @@ Authors:
     Adriean Lemoine
 
 Date Created     :  11/12/24
-Date Last Updated:  11/14/24
+Date Last Updated:  11/29/24
 '''
 
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,4 +34,5 @@ MAX_DEPARTMENT_SIZE = 100  # Example maximum size for the police department
 # Fitness Score Constants
 STEP_WEIGHT = 0.3  # This weight is applied to the step score
 HRV_WEIGHT = 0.7  # This weight is applied to the HRV score
-MIN_FITNESS_SCORE = 1600 # Minimum fitness score of an individual to avoid probation
+MIN_FITNESS_SCORE = 1590 # Fitness score to pass without probation
+PROB_FITNESS_SCORE = 1620 # Fitness score to pass with probation
