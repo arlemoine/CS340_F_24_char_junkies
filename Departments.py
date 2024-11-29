@@ -1,3 +1,4 @@
+
 #%% MODULE BEGINS
 module_name = 'Departments'
 
@@ -21,6 +22,7 @@ if __name__ == "__main__":
 #
 
 #custom imports
+import Logging
 
 #other imports  
 from   copy       import deepcopy as dpcpy
@@ -31,6 +33,9 @@ import os
 import pandas as pd
 import pickle as pkl
 import seaborn as sns
+from Individuals import FitnessDataProcessing
+from tabulate import tabulate
+import logging
 
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -44,7 +49,7 @@ import Config
 #Class definitions Start Here
 
 class DepartmentData:
-    def __init__(self, departmentName, daysInMonth):
+    def __init__(self, departmentName, daysInMonth=31):
         self.departmentName = departmentName
         self.individuals = []
         self.daysInMonth = daysInMonth
@@ -64,47 +69,167 @@ class DepartmentData:
         self.individuals.remove(individual)
     #
 
-    # def getSteps(self): # Generate dataframe for average steps per person
-    #     names = []
-    #     avgSteps = []
+    #
+    def getSteps(self):
+        """
+        Generate a DataFrame for the average steps per person in the department.
+        It calculates the average steps for each person using `calc_step_score()`.
+        """
+        # Start logging method entry
+        # self.logger.info("Starting to generate the department's average steps data.")
 
-    #     for individual in individuals:
-    #         names.append(individual.name)
-    #         avgSteps.append(individual.avgSteps)
+        names = []
+        avg_steps = []
+        department_name = self.departmentName
 
-    #     self.dfDeptSteps = pd.DataFrame({
-    #         'Name': names,
-    #         'avgSteps': avgSteps
-    #     })
-    # #
+        # Log the department being processed
+        # self.logger.info(f"Processing department: {department_name}")
 
-    # def getHRV(self): # Generate dataframe for average HRV per person
-    #     names = []
-    #     avgHRV = []
+        # Loop through each individual in the department
+        for individual in self.individuals:
+            # self.logger.info(f"Calculating step score for individual: {individual.name}")
+            
+            # Call the method that calculates the step scores
+            individual.calc_step_score()
 
-    #     for individual in individuals:
-    #         names.append(individual.name)
-    #         avgHRV.append(individual.avgHRV)
+            # Capture the result of avg_steps calculation
+            avg_steps_value = round(individual.avg_steps, 2)
 
-    #     self.dfDeptHRV = pd.DataFrame({
-    #         'Name': names,
-    #         'avgHRV': avgHRV
-    #     })
-    # #
+            # self.logger.debug(f"{individual.name}'s average steps: {avg_steps_value}")
 
-    # def getFitnessScores(self): # Generate dataframe for average HRV per person
-    #     names = []
-    #     avgFitnessScore = []
+            # Append the results to the lists
+            names.append(individual.name)
+            avg_steps.append(avg_steps_value)
 
-    #     for individual in individuals:
-    #         names.append(individual.name)
-    #         avgFitnessScore.append(individual.avgFitnessScore)
+        # Create DataFrame
+        self.df_dept_steps = pd.DataFrame({
+            'Department Name': [department_name] * len(names),
+            'Officers Name': [name.capitalize() for name in names],
+            'Avg_Steps': avg_steps
+        })
 
-    #     self.dfDeptFitnessScore = pd.DataFrame({
-    #         'Name': names,
-    #         'avgFitnessScore': avgFitnessScore
-    #     })
-    # #
+        # Log DataFrame creation
+        # self.logger.info(f"Generated DataFrame with {len(self.df_dept_steps)} rows for department: {department_name}")
+
+        # Return the DataFrame
+        return self.df_dept_steps
+    #
+
+    #
+    def getHRV(self):
+        """
+        Generate a DataFrame for the average HRV per person in the department.
+        It calculates the average HRV for each person using their `df_hrv` DataFrame.
+        """
+        # Start logging method entry
+        # self.logger.info("Starting to generate the department's average HRV data.")
+
+        names = []
+        avg_hrv = []
+        department_name = self.departmentName
+
+        # Log the department being processed
+        # self.logger.info(f"Processing department: {department_name}")
+
+        # Loop through each individual in the department
+        for individual in self.individuals:
+            # self.logger.info(f"Calculating average HRV for individual: {individual.name}")
+
+            # Call the method that calculates the hrv scores
+            individual.calc_hrv_score()
+            
+            # Capture the result of avg_hrv calculation
+            avg_hrv_value = round(individual.avg_hrv, 2)
+
+            # self.logger.debug(f"{individual.name}'s average HRV: {avg_hrv_value}")
+
+            # Append the results to the lists
+            names.append(individual.name)
+            avg_hrv.append(avg_hrv_value)
+
+        # Create DataFrame
+        self.df_dept_hrv = pd.DataFrame({
+            'Department Name': [department_name] * len(names),
+            'Officers Name': [name.capitalize() for name in names],
+            'Avg_HRV': avg_hrv
+        })
+
+        # Log DataFrame creation
+        # self.logger.info(f"Generated DataFrame with {len(self.df_dept_hrv)} rows for department: {department_name}")
+
+        # Return the DataFrame
+        return self.df_dept_hrv
+    #
+
+    #
+    def getFitnessScores(self):
+        """
+        Generate a DataFrame for the average fitness score per person in the department.
+        It calculates the fitness score for each person using `calc_fitness_score()`.
+        """
+        # Start logging method entry
+        # self.logger.info("Starting to generate the department's fitness scores data.")
+
+        names = []
+        fitness_scores = []  
+        department_name = self.departmentName 
+
+        # Log the department being processed
+        # self.logger.info(f"Processing department: {department_name}")
+
+        # Loop through each individual in the department
+        for individual in self.individuals:
+            # self.logger.info(f"Calculating fitness score for individual: {individual.name}")
+        
+            # Call the method that calculates the fitness score
+            individual.calc_fitness_score()
+
+            # Capture the result of avg_FitnessScore calculation
+            fitness_score_value = round(individual.fitness_score, 2)
+            
+            # self.logger.debug(f"{individual.name}'s fitness score: {fitness_score_value}")
+            
+            names.append(individual.name)
+            fitness_scores.append(fitness_score_value)
+            
+        # Create DataFrame for the department's fitness scores
+        self.df_dept_fitness_scores = pd.DataFrame({
+            'Department Name': [department_name] * len(names),
+            'Officers Name': [name.capitalize() for name in names],
+            'Avg_FitnessScore': fitness_scores
+        })
+
+        # Log DataFrame creation
+        # self.logger.info(f"Generated DataFrame with {len(self.df_dept_fitness_scores)} rows for department: {department_name}")
+
+        # Return the DataFrame
+        return self.df_dept_fitness_scores
+    #
+
+    #
+    def calcDays(self):
+        """
+        Examine each individual's HRV table to determine the max 'dayOfMonth' for each person.
+        Then, use the minimum from all individuals' max values to determine the number of days accounted for.
+        """
+        max_days = []  # List to store the max 'dayOfMonth' for each individual
+    
+        # Loop through each individual in the department
+        for individual in self.individuals:
+            if individual.df_hrv is not None and not individual.df_hrv.empty:
+                # Extract the max 'dayOfMonth' value from the HRV DataFrame
+                max_day_of_month = individual.df_hrv['dayOfMonth'].max()
+                max_days.append(max_day_of_month)  # Append to the list of max days
+
+        # Determine the minimum max 'dayOfMonth' value from all individuals
+        if max_days:
+            days_accounted_for = min(max_days)
+        else:
+            days_accounted_for = 0  # If there are no days, return 0
+
+        # Return the minimum of the max days from all individuals
+        return days_accounted_for
+    #
 #
 
 # Child class to process and save data for department variables
@@ -148,14 +273,14 @@ class DepartmentDataProcessing(DepartmentData):
 
     # Update directory structure to Output/<department>/<individual> for each individual in group
     def updateDirectory(self):
-        path = f'{self.config['DIR_OUTPUT']}/{self.departmentName}'
+        path = f"{self.config['DIR_OUTPUT']}/{self.departmentName}"
 
         if not os.path.exists(path):
             os.makedirs(path)
         #
 
         for person in self.individuals:
-            path = f'{self.config['DIR_OUTPUT']}/{self.departmentName}/{person}'
+            path = f"{self.config['DIR_OUTPUT']}/{self.departmentName}/{person}"
             if not os.path.exists(path):
                 os.makedirs(path)
             #
@@ -262,6 +387,38 @@ class DepartmentDataProcessing(DepartmentData):
         self.individuals[name].departureAngle = np.arccos(np.dot(angle_v1, angle_v2)) * 180 / math.pi
 
         # Save figure as png
-        fig.savefig(f'{self.config['DIR_OUTPUT']}/{self.departmentName}/{name}/vectors.png')    
+        fig.savefig(f"{self.config['DIR_OUTPUT']}/{self.departmentName}/{name}/vectors.png")    
     #
 #
+if __name__ == "__main__":
+    # Create department and add individuals
+    dept1 = DepartmentData('CMPSPD 340')
+
+# Create instances of FitnessDataProcessing (each individual)
+    person1 = FitnessDataProcessing('adam')
+    person2 = FitnessDataProcessing('brian')
+    person3 = FitnessDataProcessing('charlie')
+    person4 = FitnessDataProcessing('david')
+    person5 = FitnessDataProcessing('eddie')
+
+# Add individuals to the department
+    dept1.addIndividual(person1)
+    dept1.addIndividual(person2)
+    dept1.addIndividual(person3)
+    dept1.addIndividual(person4)
+    dept1.addIndividual(person5)
+
+
+# Get steps data for the department (average steps per person)
+    steps_df = dept1.getSteps()
+    hrv_df = dept1.getHRV()
+    fitnessScores_df = dept1.getFitnessScores()
+    days_accounted_for = dept1.calcDays()
+
+
+
+# Display the department's average steps per individual
+    print(tabulate(steps_df, headers='keys', tablefmt='fancy_grid', numalign='center', stralign='center'))
+    print(tabulate(hrv_df, headers='keys', tablefmt='fancy_grid', numalign='center', stralign='center'))
+    print(tabulate(fitnessScores_df, headers='keys', tablefmt='fancy_grid', numalign='center', stralign='center'))
+    print(f"Days accounted for: {days_accounted_for}")
