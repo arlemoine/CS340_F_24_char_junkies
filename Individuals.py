@@ -25,6 +25,7 @@ if __name__ == "__main__":
 import Logging
 
 #other imports
+import contextlib as clib # Used to redirect output stream from terminal to a file for saving individual info
 from matplotlib import pyplot as plt
 import numpy  as np 
 import os
@@ -52,6 +53,7 @@ class FitnessData:
 
         self.config = {
             "DIR_INPUT": Config.DIR_INPUT,
+            "DIR_OUTPUT": Config.DIR_OUTPUT,
             "FILENAME_STEPS": Config.FILENAME_STEPS,
             "FILENAME_AGE": Config.FILENAME_AGE,
             "MAX_HEART_RATE": Config.MAX_HEART_RATE,
@@ -60,32 +62,12 @@ class FitnessData:
         }
 
         self.logger = Logging.configure_logger(self.name)
-        # self.logger = logging.getLogger(__name__)
-        # self.configureLogger()
-        self.logger.info('Person created.')
 
         self.age = None
         self.df_steps = None
         self.df_hrv = None
         self.departureAngle = None # Used in comparing age/FitnessScore to department average
     #
-
-    # # Configure logging functionality of object
-    # def configureLogger(self):
-    #     # Ensure directory exists
-    #     log_dir = 'Log'
-    #     os.makedirs(log_dir, exist_ok=True)
-
-    #     # Set logger configurations
-    #     self.logger.setLevel(logging.INFO)
-    #     file_handler = logging.FileHandler(os.path.join(log_dir, f"{self.name}.log"))
-    #     file_handler.setLevel(logging.INFO)
-    #     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    #     file_handler.setFormatter(formatter)  
-
-    #     # Attach handler to logger
-    #     self.logger.addHandler(file_handler)
-    # #
 
     def print(self):
         print(f'Name:\t\t{self.name}')
@@ -96,8 +78,9 @@ class FitnessData:
 
     # Display the dataframe as a table
     def view_table(self, dataframe):
+        pd.set_option('display.max_rows', None)
         if dataframe is not None:
-            print(dataframe.head())  # Display the first few rows of the dataframe #
+            print(dataframe)  # Display the first few rows of the dataframe #
         else:
             print("Dataframe is empty.")  # Print a message if the dataframe is empty #
         #
@@ -181,12 +164,24 @@ class FitnessDataProcessing(FitnessData):
         self.hrv_score = None
         self.fitness_score = None
 
-        self.importAge()
-        self.importHrv()
-        self.importSteps()
+        self.dirOut = self.config["DIR_OUTPUT"] + self.name + '/'
+        
+        self.importAll()
         self.calc_step_score()
         self.calc_hrv_score()
         self.calc_fitness_score()
+        self.visualize_violin_plot(self.df_steps,'steps')
+        self.visualize_violin_plot(self.df_hrv,'hrv')
+
+        self.writeAllToFile()
+        self.logger.info(f'Person \'{self.name}\' created.')
+        print(f'Person \'{self.name}\' created.')
+    #
+
+    def importAll(self):
+        self.importAge()
+        self.importHrv()
+        self.importSteps()
     #
 
     # Import age from age.csv
@@ -255,14 +250,20 @@ class FitnessDataProcessing(FitnessData):
 
         # Check if dataframe has data and the specified column exists
         if dataframe is not None and column in dataframe.columns:
+            # Configure plot
             plt.figure(figsize=(10, 6))
             sns.violinplot(data=dataframe, x=column)
             plt.title(f"{title} - {self.name.capitalize()}")
             plt.xlabel(f"{column} per month")
             plt.ylabel('Density')
             plt.grid(True)
-            plt.show()
-            self.logger.info(f"Displayed violin plot for {column} in {title}.")
+            
+            # Save violin plot to the output folder
+            path = f'{self.config['DIR_OUTPUT']}{self.name}/'
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            plt.savefig(f'{path}violin_{column}.png')
+            self.logger.info(f'Violin plot for {column} saved to {path}')
+            print(f'Violin plot for {column} saved to {path}')
         else:
             # If dateframe is empty or the column is not found it is logged and an error message is printed
             self.logger.warning(f"Column '{column}' not found in DataFrame or DataFrame is empty.")
@@ -324,7 +325,7 @@ class FitnessDataProcessing(FitnessData):
     # Calculate step score
     def calc_step_score(self):
         if not self.df_steps.empty:
-            self.avg_steps = self.df_steps['steps'].mean()  # Calculate average steps per day
+            self.avg_steps = int(self.df_steps['steps'].mean())  # Calculate average steps per day
             self.step_score = self.avg_steps * self.config['STEP_WEIGHT']  # Calculate step score based on weight #
         #
     #
@@ -332,7 +333,7 @@ class FitnessDataProcessing(FitnessData):
     # Calculate HRV score
     def calc_hrv_score(self):
         if not self.df_hrv.empty:
-            self.avg_hrv = self.df_hrv['hrv'].mean()  # Calculate average HRV per day
+            self.avg_hrv = int(self.df_hrv['hrv'].mean())  # Calculate average HRV per day
             self.hrv_score = self.avg_hrv * self.config['HRV_WEIGHT']  # Calculate HRV score based on weight
         #
     #
@@ -340,24 +341,40 @@ class FitnessDataProcessing(FitnessData):
     # Calculate fitness score
     def calc_fitness_score(self):
         if self.step_score is not None and self.hrv_score is not None:
-            self.fitness_score = self.step_score + self.hrv_score  # Combine step and HRV scores for overall fitness score
+            self.fitness_score = int(self.step_score + self.hrv_score)  # Combine step and HRV scores for overall fitness score
         #
     #
 
     # Show stats for the month
     def show_stats_for_month(self):
-        print(f"Average Steps per Day: {self.avg_steps}")  # Print average steps per day #
-        print(f"Average HRV per Day: {self.avg_hrv}")  # Print average HRV per day #
-        print(f"Fitness Score: {self.fitness_score}")  # Print fitness score #
+        print(f'{self.name}\'s Stats:')
+        print(f"\tAverage Steps per Day: {self.avg_steps}")  # Print average steps per day #
+        print(f"\tAverage HRV per Day: {self.avg_hrv}")  # Print average HRV per day #
+        print(f"\tFitness Score: {self.fitness_score}")  # Print fitness score #
     #
+
+    def writeAllToFile(self):
+        dataFile = f'{self.dirOut}data.txt'
+
+        with open(dataFile, "w") as f:
+            with clib.redirect_stdout(f):
+                print(f'Name:\t{self.name}')
+                print(f'Age:\t{self.age}')
+                print()
+                self.show_stats_for_month()
+                print('\nSTEPS PER DAY')
+                self.view_steps_table()
+                print('\nHRV PER DAY')
+                self.view_hrv_table()
 #
 
 #%% SELF-RUN                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#Main Self-run block
-# if __name__ == "__main__":
+# Main Self-run block
+if __name__ == "__main__":
     
-    # pers1 = FitnessDataProcessing('brian')
+    pers1 = FitnessDataProcessing('brian')
+    # pers1.visualize_violin_plot(pers1.df_hrv,'hrv','hrv plot')
     # pers1.show_stats_for_month()
 
     # pers2 = FitnessDataProcessing('brian')

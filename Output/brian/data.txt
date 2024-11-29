@@ -1,0 +1,73 @@
+Name:	brian
+Age:	34
+
+brian's Stats:
+	Average Steps per Day: 5120
+	Average HRV per Day: 54
+	Fitness Score: 1573
+
+STEPS PER DAY
+     name  dayOfMonth  steps
+0   brian           1   3486
+1   brian           2   2460
+2   brian           3   8235
+3   brian           4   9210
+4   brian           5   8057
+5   brian           6   5912
+6   brian           7   5876
+7   brian           8   1956
+8   brian           9   2304
+9   brian          10   8321
+10  brian          11   1041
+11  brian          12   5929
+12  brian          13   9956
+13  brian          14   9468
+14  brian          15   1184
+15  brian          16   6764
+16  brian          17   2640
+17  brian          18   5198
+18  brian          19   4514
+19  brian          20   3582
+20  brian          21   2945
+21  brian          22   1659
+22  brian          23   3493
+23  brian          24   9387
+24  brian          25   3337
+25  brian          26   9306
+26  brian          27   7192
+27  brian          28    532
+28  brian          29   7753
+29  brian          30   1914
+
+HRV PER DAY
+     name dayOfMonth hrv
+0   brian          1  55
+1   brian          2  55
+2   brian          3  55
+3   brian          4  54
+4   brian          5  55
+5   brian          6  54
+6   brian          7  55
+7   brian          8  55
+8   brian          9  55
+9   brian         10  55
+10  brian         11  54
+11  brian         12  55
+12  brian         13  56
+13  brian         14  55
+14  brian         15  54
+15  brian         16  54
+16  brian         17  53
+17  brian         18  56
+18  brian         19  54
+19  brian         20  55
+20  brian         21  54
+21  brian         22  54
+22  brian         23  55
+23  brian         24  56
+24  brian         25  54
+25  brian         26  55
+26  brian         27  55
+27  brian         28  55
+28  brian         29  55
+29  brian         30  55

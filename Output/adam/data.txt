@@ -1,0 +1,73 @@
+Name:	adam
+Age:	28
+
+adam's Stats:
+	Average Steps per Day: 5411
+	Average HRV per Day: 16
+	Fitness Score: 1634
+
+STEPS PER DAY
+    name  dayOfMonth  steps
+0   adam           1   3557
+1   adam           2   7239
+2   adam           3   2141
+3   adam           4   9920
+4   adam           5   1676
+5   adam           6   3333
+6   adam           7   4911
+7   adam           8   4559
+8   adam           9   5337
+9   adam          10   3534
+10  adam          11   5517
+11  adam          12   4949
+12  adam          13   8935
+13  adam          14   1459
+14  adam          15   1976
+15  adam          16   1279
+16  adam          17   4270
+17  adam          18   5013
+18  adam          19   7569
+19  adam          20   9881
+20  adam          21   4912
+21  adam          22   5312
+22  adam          23   8599
+23  adam          24   7014
+24  adam          25   6538
+25  adam          26   1235
+26  adam          27   7450
+27  adam          28   8798
+28  adam          29   9316
+29  adam          30   6118
+
+HRV PER DAY
+    name dayOfMonth hrv
+0   adam          1  16
+1   adam          2  16
+2   adam          3  16
+3   adam          4  18
+4   adam          5  16
+5   adam          6  17
+6   adam          7  17
+7   adam          8  16
+8   adam          9  15
+9   adam         10  15
+10  adam         11  17
+11  adam         12  16
+12  adam         13  16
+13  adam         14  17
+14  adam         15  16
+15  adam         16  17
+16  adam         17  16
+17  adam         18  15
+18  adam         19  17
+19  adam         20  16
+20  adam         21  15
+21  adam         22  15
+22  adam         23  16
+23  adam         24  16
+24  adam         25  17
+25  adam         26  15
+26  adam         27  17
+27  adam         28  15
+28  adam         29  16
+29  adam         30  16

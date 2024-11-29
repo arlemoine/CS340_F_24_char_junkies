@@ -21,7 +21,7 @@ if __name__ == "__main__":
 #
 
 #custom imports
-import Interface
+import Interface as intf
 
 #Function definitions Start Here
 def main():
@@ -30,7 +30,7 @@ def main():
 
 #%% MAIN CODE                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #Main code start here
-Interface.interface()
+intf.intfMain()
 
 
 #%% SELF-RUN                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

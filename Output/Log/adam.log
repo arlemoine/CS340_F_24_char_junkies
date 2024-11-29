@@ -31,3 +31,73 @@
 2024-11-26 19:08:54,836 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv29.csv
 2024-11-26 19:08:54,837 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv30.csv
 2024-11-26 19:08:54,838 - adam - INFO - Step data is loaded.
+2024-11-29 12:33:36,517 - adam - INFO - Age (28) extracted from Input/adam/age.csv
+2024-11-29 12:33:36,527 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv01.csv
+2024-11-29 12:33:36,531 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv02.csv
+2024-11-29 12:33:36,533 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv03.csv
+2024-11-29 12:33:36,535 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv04.csv
+2024-11-29 12:33:36,538 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv05.csv
+2024-11-29 12:33:36,541 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv06.csv
+2024-11-29 12:33:36,546 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv07.csv
+2024-11-29 12:33:36,552 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv08.csv
+2024-11-29 12:33:36,560 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv09.csv
+2024-11-29 12:33:36,568 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv10.csv
+2024-11-29 12:33:36,574 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv11.csv
+2024-11-29 12:33:36,580 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv12.csv
+2024-11-29 12:33:36,585 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv13.csv
+2024-11-29 12:33:36,590 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv14.csv
+2024-11-29 12:33:36,594 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv15.csv
+2024-11-29 12:33:36,596 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv16.csv
+2024-11-29 12:33:36,598 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv17.csv
+2024-11-29 12:33:36,600 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv18.csv
+2024-11-29 12:33:36,603 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv19.csv
+2024-11-29 12:33:36,606 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv20.csv
+2024-11-29 12:33:36,609 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv21.csv
+2024-11-29 12:33:36,611 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv22.csv
+2024-11-29 12:33:36,613 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv23.csv
+2024-11-29 12:33:36,615 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv24.csv
+2024-11-29 12:33:36,617 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv25.csv
+2024-11-29 12:33:36,619 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv26.csv
+2024-11-29 12:33:36,620 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv27.csv
+2024-11-29 12:33:36,621 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv28.csv
+2024-11-29 12:33:36,622 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv29.csv
+2024-11-29 12:33:36,623 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv30.csv
+2024-11-29 12:33:36,624 - adam - INFO - Step data is loaded.
+2024-11-29 12:33:36,817 - adam - INFO - Violin plot for steps saved to Output/adam/
+2024-11-29 12:33:36,871 - adam - INFO - Violin plot for hrv saved to Output/adam/
+2024-11-29 12:33:36,871 - adam - INFO - Person 'adam' created.
+2024-11-29 12:58:35,862 - adam - INFO - Age (28) extracted from Input/adam/age.csv
+2024-11-29 12:58:35,871 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv01.csv
+2024-11-29 12:58:35,874 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv02.csv
+2024-11-29 12:58:35,877 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv03.csv
+2024-11-29 12:58:35,884 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv04.csv
+2024-11-29 12:58:35,892 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv05.csv
+2024-11-29 12:58:35,903 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv06.csv
+2024-11-29 12:58:35,912 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv07.csv
+2024-11-29 12:58:35,921 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv08.csv
+2024-11-29 12:58:35,929 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv09.csv
+2024-11-29 12:58:35,936 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv10.csv
+2024-11-29 12:58:35,943 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv11.csv
+2024-11-29 12:58:35,949 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv12.csv
+2024-11-29 12:58:35,953 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv13.csv
+2024-11-29 12:58:35,957 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv14.csv
+2024-11-29 12:58:35,959 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv15.csv
+2024-11-29 12:58:35,960 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv16.csv
+2024-11-29 12:58:35,962 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv17.csv
+2024-11-29 12:58:35,963 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv18.csv
+2024-11-29 12:58:35,964 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv19.csv
+2024-11-29 12:58:35,966 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv20.csv
+2024-11-29 12:58:35,969 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv21.csv
+2024-11-29 12:58:35,974 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv22.csv
+2024-11-29 12:58:35,978 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv23.csv
+2024-11-29 12:58:35,984 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv24.csv
+2024-11-29 12:58:35,987 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv25.csv
+2024-11-29 12:58:35,989 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv26.csv
+2024-11-29 12:58:35,990 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv27.csv
+2024-11-29 12:58:35,992 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv28.csv
+2024-11-29 12:58:35,993 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv29.csv
+2024-11-29 12:58:35,994 - adam - INFO - HRV data loaded from Input/adam/hrv/hrv30.csv
+2024-11-29 12:58:35,995 - adam - INFO - Step data is loaded.
+2024-11-29 12:58:36,192 - adam - INFO - Violin plot for steps saved to Output/adam/
+2024-11-29 12:58:36,249 - adam - INFO - Violin plot for hrv saved to Output/adam/
+2024-11-29 12:58:36,254 - adam - INFO - Person 'adam' created.
