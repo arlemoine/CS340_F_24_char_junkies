@@ -49,10 +49,11 @@ import Config
 #Class definitions Start Here
 
 class DepartmentData:
-    def __init__(self, departmentName, daysInMonth=31):
+    def __init__(self, departmentName, maxDays=31):
         self.departmentName = departmentName
         self.individuals = []
-        self.daysInMonth = daysInMonth
+        self.maxDays = maxDays
+        self.minDays = None
 
         self.df_dept_steps = None # Steps per day average per individual for department
         self.df_dept_hrv = None # HRV average per individual for department
@@ -228,28 +229,31 @@ class DepartmentData:
             days_accounted_for = 0  # If there are no days, return 0
 
         # Return the minimum of the max days from all individuals
+        self.minDays = days_accounted_for
         return days_accounted_for
     #
 #
 
 # Child class to process and save data for department variables
 class DepartmentDataProcessing(DepartmentData):
-
-    
-
-    # Generated graphs for each variable of interest
-    histSteps = None
-    histHRV = None
-    histFitnessScore = None
-    scatAgeToFitnessScore = None
-
     def __init__(self, departmentName, daysInMonth):
         super().__init__(departmentName, daysInMonth)
-        self.dataFile = f'{departmentName}.pkl' # Create filename for pickle file
-        
         self.config = {
             "DIR_OUTPUT": Config.DIR_OUTPUT
         }
+
+        # Filepath
+        self.deptDir = f'{self.config["DIR_OUTPUT"]}{self.departmentName}'
+        if not os.path.isdir(self.deptDir):
+            os.mkdir(self.deptDir)
+        
+        # Generated graphs for each variable of interest
+        self.histSteps = None
+        self.histHRV = None
+        self.histFitnessScore = None
+        self.scatAgeToFitnessScore = None
+
+        
 
         # Dataframes
         self.df_avg_steps = None
@@ -273,8 +277,6 @@ class DepartmentDataProcessing(DepartmentData):
 
     # Update directory structure to Output/<department>/<individual> for each individual in group
     def updateDirectory(self):
-        path = f"{self.config['DIR_OUTPUT']}/{self.departmentName}"
-
         if not os.path.exists(path):
             os.makedirs(path)
         #
@@ -287,18 +289,19 @@ class DepartmentDataProcessing(DepartmentData):
         #
     #
 
-    # def loadData(self): # Load from a pickle file
-    #     with open(fileName, 'rb') as data:
-    #         temp = pkl.load(data)
-    #     #
-    #     return temp
-    # #
+    def loadData(self, filepath): # Load from a pickle file
+        with open(filepath, 'rb') as data:
+            loadedData = pkl.load(data)
+        #
+        return loadedData
+    #
 
-    # def saveData(self): # Save to a pickle file
-    #     with open(fileName, 'wb') as data:
-    #         pkl.dump(self, data)
-    #     #
-    # #
+    def saveData(self): # Save to a pickle file
+        filepath = f'Output/{self.departmentName}'        
+        with open(f'{self.deptDir}/backup.pkl', 'wb') as data:
+            pkl.dump(self, data)
+        #
+    #
 
     # def calcStatsSteps(self): # Calculate statistical values such as mean, min, max
     #     self.dfDeptStepsStats = self.deptSteps.describe()
@@ -392,33 +395,34 @@ class DepartmentDataProcessing(DepartmentData):
 #
 if __name__ == "__main__":
     # Create department and add individuals
-    dept1 = DepartmentData('CMPSPD 340')
+    dept1 = DepartmentDataProcessing('CMPSPD 340',30)
+    
 
-# Create instances of FitnessDataProcessing (each individual)
-    person1 = FitnessDataProcessing('adam')
-    person2 = FitnessDataProcessing('brian')
-    person3 = FitnessDataProcessing('charlie')
-    person4 = FitnessDataProcessing('david')
-    person5 = FitnessDataProcessing('eddie')
+# # Create instances of FitnessDataProcessing (each individual)
+#     person1 = FitnessDataProcessing('adam')
+#     person2 = FitnessDataProcessing('brian')
+#     person3 = FitnessDataProcessing('charlie')
+#     person4 = FitnessDataProcessing('david')
+#     person5 = FitnessDataProcessing('eddie')
 
-# Add individuals to the department
-    dept1.addIndividual(person1)
-    dept1.addIndividual(person2)
-    dept1.addIndividual(person3)
-    dept1.addIndividual(person4)
-    dept1.addIndividual(person5)
-
-
-# Get steps data for the department (average steps per person)
-    steps_df = dept1.getSteps()
-    hrv_df = dept1.getHRV()
-    fitnessScores_df = dept1.getFitnessScores()
-    days_accounted_for = dept1.calcDays()
+# # Add individuals to the department
+#     dept1.addIndividual(person1)
+#     dept1.addIndividual(person2)
+#     dept1.addIndividual(person3)
+#     dept1.addIndividual(person4)
+#     dept1.addIndividual(person5)
 
 
+# # Get steps data for the department (average steps per person)
+#     steps_df = dept1.getSteps()
+#     hrv_df = dept1.getHRV()
+#     fitnessScores_df = dept1.getFitnessScores()
+#     days_accounted_for = dept1.calcDays()
 
-# Display the department's average steps per individual
-    print(tabulate(steps_df, headers='keys', tablefmt='fancy_grid', numalign='center', stralign='center'))
-    print(tabulate(hrv_df, headers='keys', tablefmt='fancy_grid', numalign='center', stralign='center'))
-    print(tabulate(fitnessScores_df, headers='keys', tablefmt='fancy_grid', numalign='center', stralign='center'))
-    print(f"Days accounted for: {days_accounted_for}")
+
+
+# # Display the department's average steps per individual
+#     print(tabulate(steps_df, headers='keys', tablefmt='fancy_grid', numalign='center', stralign='center'))
+#     print(tabulate(hrv_df, headers='keys', tablefmt='fancy_grid', numalign='center', stralign='center'))
+#     print(tabulate(fitnessScores_df, headers='keys', tablefmt='fancy_grid', numalign='center', stralign='center'))
+#     print(f"Days accounted for: {days_accounted_for}")
