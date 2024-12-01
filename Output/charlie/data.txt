@@ -1,0 +1,73 @@
+Name:	charlie
+Age:	24
+
+charlie's Stats:
+	Average Steps per Day: 5912
+	Average HRV per Day: 67
+	Fitness Score: 1820
+
+STEPS PER DAY
+       name  dayOfMonth  steps
+0   charlie           1   8523
+1   charlie           2   2587
+2   charlie           3   8911
+3   charlie           4   6337
+4   charlie           5   7025
+5   charlie           6   7587
+6   charlie           7   4604
+7   charlie           8   4865
+8   charlie           9   9195
+9   charlie          10   1827
+10  charlie          11   2252
+11  charlie          12   1847
+12  charlie          13   3467
+13  charlie          14   9462
+14  charlie          15   5402
+15  charlie          16   5803
+16  charlie          17   3040
+17  charlie          18   3730
+18  charlie          19   2928
+19  charlie          20   7872
+20  charlie          21   6740
+21  charlie          22   9218
+22  charlie          23   7972
+23  charlie          24   6677
+24  charlie          25   8757
+25  charlie          26   4667
+26  charlie          27   9025
+27  charlie          28   5919
+28  charlie          29   7985
+29  charlie          30   3145
+
+HRV PER DAY
+       name dayOfMonth hrv
+0   charlie          1  68
+1   charlie          2  67
+2   charlie          3  68
+3   charlie          4  67
+4   charlie          5  68
+5   charlie          6  67
+6   charlie          7  68
+7   charlie          8  68
+8   charlie          9  67
+9   charlie         10  67
+10  charlie         11  69
+11  charlie         12  68
+12  charlie         13  66
+13  charlie         14  68
+14  charlie         15  69
+15  charlie         16  68
+16  charlie         17  68
+17  charlie         18  69
+18  charlie         19  67
+19  charlie         20  67
+20  charlie         21  69
+21  charlie         22  67
+22  charlie         23  67
+23  charlie         24  67
+24  charlie         25  67
+25  charlie         26  67
+26  charlie         27  68
+27  charlie         28  67
+28  charlie         29  68
+29  charlie         30  67

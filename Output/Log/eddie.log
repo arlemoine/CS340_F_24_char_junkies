@@ -1,276 +1,35 @@
-2024-11-26 20:38:38,096 - eddie - INFO - Person created.
-2024-11-26 20:38:38,097 - eddie - INFO - Age (36) extracted from Input/eddie/age.csv
-2024-11-26 20:39:34,460 - eddie - INFO - Person created.
-2024-11-26 20:39:34,461 - eddie - INFO - Age (36) extracted from Input/eddie/age.csv
-2024-11-26 20:39:34,474 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv01.csv
-2024-11-26 20:39:34,477 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv02.csv
-2024-11-26 20:39:34,480 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv03.csv
-2024-11-26 20:39:34,482 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv04.csv
-2024-11-26 20:39:34,484 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv05.csv
-2024-11-26 20:39:34,486 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv06.csv
-2024-11-26 20:39:34,487 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv07.csv
-2024-11-26 20:39:34,488 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv08.csv
-2024-11-26 20:39:34,489 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv09.csv
-2024-11-26 20:39:34,490 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv10.csv
-2024-11-26 20:39:34,491 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv11.csv
-2024-11-26 20:39:34,492 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv12.csv
-2024-11-26 20:39:34,493 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv13.csv
-2024-11-26 20:39:34,494 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv14.csv
-2024-11-26 20:39:34,495 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv15.csv
-2024-11-26 20:39:34,496 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv16.csv
-2024-11-26 20:39:34,497 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv17.csv
-2024-11-26 20:39:34,498 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv18.csv
-2024-11-26 20:39:34,499 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv19.csv
-2024-11-26 20:39:34,500 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv20.csv
-2024-11-26 20:39:34,501 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv21.csv
-2024-11-26 20:39:34,502 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv22.csv
-2024-11-26 20:39:34,503 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv23.csv
-2024-11-26 20:39:34,504 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv24.csv
-2024-11-26 20:39:34,505 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv25.csv
-2024-11-26 20:39:34,506 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv26.csv
-2024-11-26 20:39:34,507 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv27.csv
-2024-11-26 20:39:34,508 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv28.csv
-2024-11-26 20:39:34,509 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv29.csv
-2024-11-26 20:39:34,510 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv30.csv
-2024-11-26 20:39:34,511 - eddie - INFO - Step data is loaded.
-2024-11-26 20:52:34,621 - eddie - INFO - Person created.
-2024-11-26 20:52:34,622 - eddie - INFO - Age (36) extracted from Input/eddie/age.csv
-2024-11-26 20:52:34,630 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv01.csv
-2024-11-26 20:52:34,632 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv02.csv
-2024-11-26 20:52:34,635 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv03.csv
-2024-11-26 20:52:34,637 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv04.csv
-2024-11-26 20:52:34,639 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv05.csv
-2024-11-26 20:52:34,641 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv06.csv
-2024-11-26 20:52:34,643 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv07.csv
-2024-11-26 20:52:34,644 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv08.csv
-2024-11-26 20:52:34,645 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv09.csv
-2024-11-26 20:52:34,646 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv10.csv
-2024-11-26 20:52:34,647 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv11.csv
-2024-11-26 20:52:34,649 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv12.csv
-2024-11-26 20:52:34,650 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv13.csv
-2024-11-26 20:52:34,651 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv14.csv
-2024-11-26 20:52:34,653 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv15.csv
-2024-11-26 20:52:34,654 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv16.csv
-2024-11-26 20:52:34,655 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv17.csv
-2024-11-26 20:52:34,656 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv18.csv
-2024-11-26 20:52:34,657 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv19.csv
-2024-11-26 20:52:34,658 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv20.csv
-2024-11-26 20:52:34,659 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv21.csv
-2024-11-26 20:52:34,659 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv22.csv
-2024-11-26 20:52:34,660 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv23.csv
-2024-11-26 20:52:34,661 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv24.csv
-2024-11-26 20:52:34,662 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv25.csv
-2024-11-26 20:52:34,663 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv26.csv
-2024-11-26 20:52:34,664 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv27.csv
-2024-11-26 20:52:34,665 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv28.csv
-2024-11-26 20:52:34,666 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv29.csv
-2024-11-26 20:52:34,667 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv30.csv
-2024-11-26 20:52:34,668 - eddie - INFO - Step data is loaded.
-2024-11-26 20:53:10,715 - eddie - INFO - Person created.
-2024-11-26 20:53:10,716 - eddie - INFO - Age (36) extracted from Input/eddie/age.csv
-2024-11-26 20:53:10,724 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv01.csv
-2024-11-26 20:53:10,727 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv02.csv
-2024-11-26 20:53:10,729 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv03.csv
-2024-11-26 20:53:10,732 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv04.csv
-2024-11-26 20:53:10,733 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv05.csv
-2024-11-26 20:53:10,735 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv06.csv
-2024-11-26 20:53:10,736 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv07.csv
-2024-11-26 20:53:10,737 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv08.csv
-2024-11-26 20:53:10,738 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv09.csv
-2024-11-26 20:53:10,739 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv10.csv
-2024-11-26 20:53:10,740 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv11.csv
-2024-11-26 20:53:10,741 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv12.csv
-2024-11-26 20:53:10,742 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv13.csv
-2024-11-26 20:53:10,743 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv14.csv
-2024-11-26 20:53:10,744 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv15.csv
-2024-11-26 20:53:10,745 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv16.csv
-2024-11-26 20:53:10,746 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv17.csv
-2024-11-26 20:53:10,747 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv18.csv
-2024-11-26 20:53:10,748 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv19.csv
-2024-11-26 20:53:10,749 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv20.csv
-2024-11-26 20:53:10,750 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv21.csv
-2024-11-26 20:53:10,751 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv22.csv
-2024-11-26 20:53:10,752 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv23.csv
-2024-11-26 20:53:10,753 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv24.csv
-2024-11-26 20:53:10,754 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv25.csv
-2024-11-26 20:53:10,755 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv26.csv
-2024-11-26 20:53:10,756 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv27.csv
-2024-11-26 20:53:10,756 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv28.csv
-2024-11-26 20:53:10,757 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv29.csv
-2024-11-26 20:53:10,758 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv30.csv
-2024-11-26 20:53:10,759 - eddie - INFO - Step data is loaded.
-2024-11-29 12:10:03,089 - eddie - INFO - Age (36) extracted from Input/eddie/age.csv
-2024-11-29 12:10:03,096 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv01.csv
-2024-11-29 12:10:03,098 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv02.csv
-2024-11-29 12:10:03,101 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv03.csv
-2024-11-29 12:10:03,105 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv04.csv
-2024-11-29 12:10:03,108 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv05.csv
-2024-11-29 12:10:03,111 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv06.csv
-2024-11-29 12:10:03,113 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv07.csv
-2024-11-29 12:10:03,114 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv08.csv
-2024-11-29 12:10:03,115 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv09.csv
-2024-11-29 12:10:03,117 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv10.csv
-2024-11-29 12:10:03,118 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv11.csv
-2024-11-29 12:10:03,119 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv12.csv
-2024-11-29 12:10:03,119 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv13.csv
-2024-11-29 12:10:03,120 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv14.csv
-2024-11-29 12:10:03,121 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv15.csv
-2024-11-29 12:10:03,123 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv16.csv
-2024-11-29 12:10:03,124 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv17.csv
-2024-11-29 12:10:03,125 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv18.csv
-2024-11-29 12:10:03,126 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv19.csv
-2024-11-29 12:10:03,127 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv20.csv
-2024-11-29 12:10:03,131 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv21.csv
-2024-11-29 12:10:03,132 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv22.csv
-2024-11-29 12:10:03,133 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv23.csv
-2024-11-29 12:10:03,134 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv24.csv
-2024-11-29 12:10:03,135 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv25.csv
-2024-11-29 12:10:03,136 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv26.csv
-2024-11-29 12:10:03,137 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv27.csv
-2024-11-29 12:10:03,138 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv28.csv
-2024-11-29 12:10:03,139 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv29.csv
-2024-11-29 12:10:03,140 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv30.csv
-2024-11-29 12:10:03,140 - eddie - INFO - Step data is loaded.
-2024-11-29 12:10:03,195 - eddie - INFO - Violin plot for steps saved to Output/eddie/
-2024-11-29 12:10:03,249 - eddie - INFO - Violin plot for hrv saved to Output/eddie/
-2024-11-29 12:10:03,250 - eddie - INFO - Person 'eddie' created.
-2024-11-29 12:12:27,280 - eddie - INFO - Age (36) extracted from Input/eddie/age.csv
-2024-11-29 12:12:27,285 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv01.csv
-2024-11-29 12:12:27,292 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv02.csv
-2024-11-29 12:12:27,299 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv03.csv
-2024-11-29 12:12:27,304 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv04.csv
-2024-11-29 12:12:27,308 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv05.csv
-2024-11-29 12:12:27,311 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv06.csv
-2024-11-29 12:12:27,312 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv07.csv
-2024-11-29 12:12:27,314 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv08.csv
-2024-11-29 12:12:27,315 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv09.csv
-2024-11-29 12:12:27,316 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv10.csv
-2024-11-29 12:12:27,318 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv11.csv
-2024-11-29 12:12:27,320 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv12.csv
-2024-11-29 12:12:27,322 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv13.csv
-2024-11-29 12:12:27,325 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv14.csv
-2024-11-29 12:12:27,326 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv15.csv
-2024-11-29 12:12:27,328 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv16.csv
-2024-11-29 12:12:27,329 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv17.csv
-2024-11-29 12:12:27,330 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv18.csv
-2024-11-29 12:12:27,331 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv19.csv
-2024-11-29 12:12:27,332 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv20.csv
-2024-11-29 12:12:27,333 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv21.csv
-2024-11-29 12:12:27,334 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv22.csv
-2024-11-29 12:12:27,335 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv23.csv
-2024-11-29 12:12:27,336 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv24.csv
-2024-11-29 12:12:27,337 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv25.csv
-2024-11-29 12:12:27,338 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv26.csv
-2024-11-29 12:12:27,339 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv27.csv
-2024-11-29 12:12:27,340 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv28.csv
-2024-11-29 12:12:27,340 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv29.csv
-2024-11-29 12:12:27,341 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv30.csv
-2024-11-29 12:12:27,342 - eddie - INFO - Step data is loaded.
-2024-11-29 12:12:27,406 - eddie - INFO - Violin plot for steps saved to Output/eddie/
-2024-11-29 12:12:27,468 - eddie - INFO - Violin plot for hrv saved to Output/eddie/
-2024-11-29 12:12:27,468 - eddie - INFO - Person 'eddie' created.
-2024-11-29 12:33:41,762 - eddie - INFO - Age (36) extracted from Input/eddie/age.csv
-2024-11-29 12:33:41,770 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv01.csv
-2024-11-29 12:33:41,775 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv02.csv
-2024-11-29 12:33:41,782 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv03.csv
-2024-11-29 12:33:41,788 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv04.csv
-2024-11-29 12:33:41,794 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv05.csv
-2024-11-29 12:33:41,799 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv06.csv
-2024-11-29 12:33:41,804 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv07.csv
-2024-11-29 12:33:41,812 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv08.csv
-2024-11-29 12:33:41,819 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv09.csv
-2024-11-29 12:33:41,827 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv10.csv
-2024-11-29 12:33:41,833 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv11.csv
-2024-11-29 12:33:41,840 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv12.csv
-2024-11-29 12:33:41,847 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv13.csv
-2024-11-29 12:33:41,853 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv14.csv
-2024-11-29 12:33:41,859 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv15.csv
-2024-11-29 12:33:41,861 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv16.csv
-2024-11-29 12:33:41,863 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv17.csv
-2024-11-29 12:33:41,865 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv18.csv
-2024-11-29 12:33:41,868 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv19.csv
-2024-11-29 12:33:41,871 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv20.csv
-2024-11-29 12:33:41,873 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv21.csv
-2024-11-29 12:33:41,875 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv22.csv
-2024-11-29 12:33:41,876 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv23.csv
-2024-11-29 12:33:41,877 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv24.csv
-2024-11-29 12:33:41,878 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv25.csv
-2024-11-29 12:33:41,879 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv26.csv
-2024-11-29 12:33:41,880 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv27.csv
-2024-11-29 12:33:41,881 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv28.csv
-2024-11-29 12:33:41,883 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv29.csv
-2024-11-29 12:33:41,886 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv30.csv
-2024-11-29 12:33:41,887 - eddie - INFO - Step data is loaded.
-2024-11-29 12:33:41,956 - eddie - INFO - Violin plot for steps saved to Output/eddie/
-2024-11-29 12:33:42,010 - eddie - INFO - Violin plot for hrv saved to Output/eddie/
-2024-11-29 12:33:42,010 - eddie - INFO - Person 'eddie' created.
-2024-11-29 12:36:27,824 - eddie - INFO - Age (36) extracted from Input/eddie/age.csv
-2024-11-29 12:36:27,832 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv01.csv
-2024-11-29 12:36:27,835 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv02.csv
-2024-11-29 12:36:27,837 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv03.csv
-2024-11-29 12:36:27,838 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv04.csv
-2024-11-29 12:36:27,839 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv05.csv
-2024-11-29 12:36:27,840 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv06.csv
-2024-11-29 12:36:27,841 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv07.csv
-2024-11-29 12:36:27,843 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv08.csv
-2024-11-29 12:36:27,844 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv09.csv
-2024-11-29 12:36:27,845 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv10.csv
-2024-11-29 12:36:27,846 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv11.csv
-2024-11-29 12:36:27,847 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv12.csv
-2024-11-29 12:36:27,848 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv13.csv
-2024-11-29 12:36:27,849 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv14.csv
-2024-11-29 12:36:27,850 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv15.csv
-2024-11-29 12:36:27,851 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv16.csv
-2024-11-29 12:36:27,852 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv17.csv
-2024-11-29 12:36:27,853 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv18.csv
-2024-11-29 12:36:27,854 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv19.csv
-2024-11-29 12:36:27,855 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv20.csv
-2024-11-29 12:36:27,856 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv21.csv
-2024-11-29 12:36:27,857 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv22.csv
-2024-11-29 12:36:27,858 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv23.csv
-2024-11-29 12:36:27,860 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv24.csv
-2024-11-29 12:36:27,861 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv25.csv
-2024-11-29 12:36:27,862 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv26.csv
-2024-11-29 12:36:27,864 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv27.csv
-2024-11-29 12:36:27,865 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv28.csv
-2024-11-29 12:36:27,866 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv29.csv
-2024-11-29 12:36:27,867 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv30.csv
-2024-11-29 12:36:27,867 - eddie - INFO - Step data is loaded.
-2024-11-29 12:36:28,058 - eddie - INFO - Violin plot for steps saved to Output/eddie/
-2024-11-29 12:36:28,114 - eddie - INFO - Violin plot for hrv saved to Output/eddie/
-2024-11-29 12:36:28,114 - eddie - INFO - Person 'eddie' created.
-2024-11-29 12:58:42,617 - eddie - INFO - Age (36) extracted from Input/eddie/age.csv
-2024-11-29 12:58:42,622 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv01.csv
-2024-11-29 12:58:42,628 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv02.csv
-2024-11-29 12:58:42,633 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv03.csv
-2024-11-29 12:58:42,638 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv04.csv
-2024-11-29 12:58:42,644 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv05.csv
-2024-11-29 12:58:42,650 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv06.csv
-2024-11-29 12:58:42,654 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv07.csv
-2024-11-29 12:58:42,657 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv08.csv
-2024-11-29 12:58:42,660 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv09.csv
-2024-11-29 12:58:42,662 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv10.csv
-2024-11-29 12:58:42,664 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv11.csv
-2024-11-29 12:58:42,667 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv12.csv
-2024-11-29 12:58:42,669 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv13.csv
-2024-11-29 12:58:42,671 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv14.csv
-2024-11-29 12:58:42,672 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv15.csv
-2024-11-29 12:58:42,673 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv16.csv
-2024-11-29 12:58:42,675 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv17.csv
-2024-11-29 12:58:42,677 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv18.csv
-2024-11-29 12:58:42,680 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv19.csv
-2024-11-29 12:58:42,681 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv20.csv
-2024-11-29 12:58:42,683 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv21.csv
-2024-11-29 12:58:42,686 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv22.csv
-2024-11-29 12:58:42,688 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv23.csv
-2024-11-29 12:58:42,692 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv24.csv
-2024-11-29 12:58:42,694 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv25.csv
-2024-11-29 12:58:42,696 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv26.csv
-2024-11-29 12:58:42,698 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv27.csv
-2024-11-29 12:58:42,699 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv28.csv
-2024-11-29 12:58:42,702 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv29.csv
-2024-11-29 12:58:42,703 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv30.csv
-2024-11-29 12:58:42,705 - eddie - INFO - Step data is loaded.
-2024-11-29 12:58:42,811 - eddie - INFO - Violin plot for steps saved to Output/eddie/
-2024-11-29 12:58:42,873 - eddie - INFO - Violin plot for hrv saved to Output/eddie/
-2024-11-29 12:58:42,877 - eddie - INFO - Person 'eddie' created.
+2024-11-29 13:58:39,942 - eddie - INFO - Age (36) extracted from Input/eddie/age.csv
+2024-11-29 13:58:39,944 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv01.csv
+2024-11-29 13:58:39,945 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv02.csv
+2024-11-29 13:58:39,946 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv03.csv
+2024-11-29 13:58:39,948 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv04.csv
+2024-11-29 13:58:39,949 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv05.csv
+2024-11-29 13:58:39,950 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv06.csv
+2024-11-29 13:58:39,951 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv07.csv
+2024-11-29 13:58:39,953 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv08.csv
+2024-11-29 13:58:39,954 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv09.csv
+2024-11-29 13:58:39,955 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv10.csv
+2024-11-29 13:58:39,956 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv11.csv
+2024-11-29 13:58:39,957 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv12.csv
+2024-11-29 13:58:39,958 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv13.csv
+2024-11-29 13:58:39,959 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv14.csv
+2024-11-29 13:58:39,960 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv15.csv
+2024-11-29 13:58:39,961 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv16.csv
+2024-11-29 13:58:39,962 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv17.csv
+2024-11-29 13:58:39,963 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv18.csv
+2024-11-29 13:58:39,964 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv19.csv
+2024-11-29 13:58:39,965 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv20.csv
+2024-11-29 13:58:39,966 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv21.csv
+2024-11-29 13:58:39,967 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv22.csv
+2024-11-29 13:58:39,968 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv23.csv
+2024-11-29 13:58:39,970 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv24.csv
+2024-11-29 13:58:39,971 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv25.csv
+2024-11-29 13:58:39,972 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv26.csv
+2024-11-29 13:58:39,973 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv27.csv
+2024-11-29 13:58:39,975 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv28.csv
+2024-11-29 13:58:39,977 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv29.csv
+2024-11-29 13:58:39,978 - eddie - INFO - HRV data loaded from Input/eddie/hrv/hrv30.csv
+2024-11-29 13:58:39,979 - eddie - INFO - Step data is loaded.
+2024-11-29 13:58:40,044 - eddie - INFO - Violin plot for steps saved to Output/eddie/
+2024-11-29 13:58:40,105 - eddie - INFO - Violin plot for hrv saved to Output/eddie/
+2024-11-29 13:58:40,109 - eddie - INFO - Person 'eddie' created.

@@ -1,70 +1,35 @@
-2024-11-29 12:12:25,339 - charlie - INFO - Age (24) extracted from Input/charlie/age.csv
-2024-11-29 12:12:25,351 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv01.csv
-2024-11-29 12:12:25,354 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv02.csv
-2024-11-29 12:12:25,357 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv03.csv
-2024-11-29 12:12:25,360 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv04.csv
-2024-11-29 12:12:25,363 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv05.csv
-2024-11-29 12:12:25,367 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv06.csv
-2024-11-29 12:12:25,370 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv07.csv
-2024-11-29 12:12:25,372 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv08.csv
-2024-11-29 12:12:25,374 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv09.csv
-2024-11-29 12:12:25,375 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv10.csv
-2024-11-29 12:12:25,376 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv11.csv
-2024-11-29 12:12:25,377 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv12.csv
-2024-11-29 12:12:25,378 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv13.csv
-2024-11-29 12:12:25,380 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv14.csv
-2024-11-29 12:12:25,381 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv15.csv
-2024-11-29 12:12:25,382 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv16.csv
-2024-11-29 12:12:25,383 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv17.csv
-2024-11-29 12:12:25,384 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv18.csv
-2024-11-29 12:12:25,385 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv19.csv
-2024-11-29 12:12:25,386 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv20.csv
-2024-11-29 12:12:25,387 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv21.csv
-2024-11-29 12:12:25,388 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv22.csv
-2024-11-29 12:12:25,388 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv23.csv
-2024-11-29 12:12:25,389 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv24.csv
-2024-11-29 12:12:25,390 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv25.csv
-2024-11-29 12:12:25,391 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv26.csv
-2024-11-29 12:12:25,392 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv27.csv
-2024-11-29 12:12:25,393 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv28.csv
-2024-11-29 12:12:25,394 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv29.csv
-2024-11-29 12:12:25,395 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv30.csv
-2024-11-29 12:12:25,396 - charlie - INFO - Step data is loaded.
-2024-11-29 12:12:25,587 - charlie - INFO - Violin plot for steps saved to Output/charlie/
-2024-11-29 12:12:25,655 - charlie - INFO - Violin plot for hrv saved to Output/charlie/
-2024-11-29 12:12:25,655 - charlie - INFO - Person 'charlie' created.
-2024-11-29 12:20:25,989 - charlie - INFO - Age (24) extracted from Input/charlie/age.csv
-2024-11-29 12:20:26,004 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv01.csv
-2024-11-29 12:20:26,008 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv02.csv
-2024-11-29 12:20:26,012 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv03.csv
-2024-11-29 12:20:26,015 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv04.csv
-2024-11-29 12:20:26,016 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv05.csv
-2024-11-29 12:20:26,018 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv06.csv
-2024-11-29 12:20:26,019 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv07.csv
-2024-11-29 12:20:26,020 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv08.csv
-2024-11-29 12:20:26,021 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv09.csv
-2024-11-29 12:20:26,022 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv10.csv
-2024-11-29 12:20:26,023 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv11.csv
-2024-11-29 12:20:26,024 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv12.csv
-2024-11-29 12:20:26,025 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv13.csv
-2024-11-29 12:20:26,026 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv14.csv
-2024-11-29 12:20:26,027 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv15.csv
-2024-11-29 12:20:26,028 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv16.csv
-2024-11-29 12:20:26,029 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv17.csv
-2024-11-29 12:20:26,030 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv18.csv
-2024-11-29 12:20:26,031 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv19.csv
-2024-11-29 12:20:26,032 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv20.csv
-2024-11-29 12:20:26,033 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv21.csv
-2024-11-29 12:20:26,034 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv22.csv
-2024-11-29 12:20:26,035 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv23.csv
-2024-11-29 12:20:26,036 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv24.csv
-2024-11-29 12:20:26,037 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv25.csv
-2024-11-29 12:20:26,038 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv26.csv
-2024-11-29 12:20:26,039 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv27.csv
-2024-11-29 12:20:26,040 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv28.csv
-2024-11-29 12:20:26,041 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv29.csv
-2024-11-29 12:20:26,042 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv30.csv
-2024-11-29 12:20:26,043 - charlie - INFO - Step data is loaded.
-2024-11-29 12:20:26,279 - charlie - INFO - Violin plot for steps saved to Output/charlie/
-2024-11-29 12:20:26,338 - charlie - INFO - Violin plot for hrv saved to Output/charlie/
-2024-11-29 12:20:26,338 - charlie - INFO - Person 'charlie' created.
+2024-11-29 13:58:39,613 - charlie - INFO - Age (24) extracted from Input/charlie/age.csv
+2024-11-29 13:58:39,615 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv01.csv
+2024-11-29 13:58:39,617 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv02.csv
+2024-11-29 13:58:39,618 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv03.csv
+2024-11-29 13:58:39,619 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv04.csv
+2024-11-29 13:58:39,620 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv05.csv
+2024-11-29 13:58:39,621 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv06.csv
+2024-11-29 13:58:39,622 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv07.csv
+2024-11-29 13:58:39,623 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv08.csv
+2024-11-29 13:58:39,624 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv09.csv
+2024-11-29 13:58:39,625 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv10.csv
+2024-11-29 13:58:39,626 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv11.csv
+2024-11-29 13:58:39,627 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv12.csv
+2024-11-29 13:58:39,627 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv13.csv
+2024-11-29 13:58:39,628 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv14.csv
+2024-11-29 13:58:39,629 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv15.csv
+2024-11-29 13:58:39,630 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv16.csv
+2024-11-29 13:58:39,631 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv17.csv
+2024-11-29 13:58:39,632 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv18.csv
+2024-11-29 13:58:39,633 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv19.csv
+2024-11-29 13:58:39,635 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv20.csv
+2024-11-29 13:58:39,636 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv21.csv
+2024-11-29 13:58:39,637 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv22.csv
+2024-11-29 13:58:39,638 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv23.csv
+2024-11-29 13:58:39,639 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv24.csv
+2024-11-29 13:58:39,640 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv25.csv
+2024-11-29 13:58:39,641 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv26.csv
+2024-11-29 13:58:39,642 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv27.csv
+2024-11-29 13:58:39,643 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv28.csv
+2024-11-29 13:58:39,644 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv29.csv
+2024-11-29 13:58:39,645 - charlie - INFO - HRV data loaded from Input/charlie/hrv/hrv30.csv
+2024-11-29 13:58:39,645 - charlie - INFO - Step data is loaded.
+2024-11-29 13:58:39,698 - charlie - INFO - Violin plot for steps saved to Output/charlie/
+2024-11-29 13:58:39,750 - charlie - INFO - Violin plot for hrv saved to Output/charlie/
+2024-11-29 13:58:39,754 - charlie - INFO - Person 'charlie' created.

@@ -374,8 +374,7 @@ class FitnessDataProcessing(FitnessData):
 if __name__ == "__main__":
     
     pers1 = FitnessDataProcessing('brian')
-    # pers1.visualize_violin_plot(pers1.df_hrv,'hrv','hrv plot')
-    # pers1.show_stats_for_month()
+    # pers1.query_data(pers1.df_hrv,'dayOfMonth',)
 
     # pers2 = FitnessDataProcessing('brian')
     # pers2.show_stats_for_month()

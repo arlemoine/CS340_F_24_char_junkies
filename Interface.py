@@ -99,8 +99,10 @@ def intfInd2():
     if not os.path.isdir(filepath):
         print("Person doesn't exist")
         return
+    #
     
     people[nameStr] = ind.FitnessDataProcessing(nameStr)
+#
 
 # Interface when loading an individual
 def indfInd3():
@@ -138,6 +140,90 @@ def indfInd3():
             print("Invalid choice. Please try again.")
         #
     #
+#
+
+# 'Interface Department 1'
+def indfDept1():
+    while True:
+        print("============\DEPARTMENTS\n============")
+        print("1. Create department")
+        print("2. View departments")
+        print("3. Load department file")
+        print("4. Back")
+        print("5. Quit")
+
+        choice = input("...\nEnter your choice: ")
+
+        if choice == '1':
+            print('Creating department...')
+            intfDept2()
+        elif choice == '2':
+            print('List of departments:')
+            for key in departments:
+                print(f'\t{key}')
+            intfDept3()
+        elif choice == '3':
+            print("Loading from pickle file...")
+        elif choice == '4':
+            print("Going back...")
+            break
+        elif choice == '5':
+            raise QuitProgram
+        else:
+            print("Invalid choice. Please try again.")
+        #
+    #
+#
+
+# Interface to create individual
+def intfDept2(): 
+    deptNameStr = input("...\nEnter department name: ")
+    days = input("Enter number of days in month: ")
+    departments[deptNameStr] = dept.DepartmentDataProcessing(deptNameStr, days)
+    print("Department created.")
+#
+
+# Interface when loading a department
+def intfDept3():
+    nameStr = input("...\nEnter department name: ")
+    
+    # Ensure the department exists before accessing the menu below
+    try:
+        current = departments[nameStr]
+    except KeyError:
+        print(f'{nameStr} can\'t be found.')
+
+    while True:
+        print("================\nDEPARTMENT INFO\n================")
+        print("1. Show stats")
+        print("2. Open directory")
+        print("3. Personnel")
+        print("4. Export/Import data")
+        print("5. Back")
+        print("6. Quit")
+
+        choice = input("...\nEnter your choice: ")
+
+        if choice == '1':
+            print("Showing stats...")
+        elif choice == '2':
+            print("Opening directory...")
+            # currentPath = f'Output/{nameStr}'
+            # openDirectory(currentPath)
+        elif choice == '3':
+            print("Accessing personnel for department...")
+        elif choice == '4':
+            print("Exporting/Importing data...")
+        elif choice == '5':
+            print('Going back...')
+            break
+        elif choice == '6':
+            raise QuitProgram
+        else:
+            print("Invalid choice. Please try again.")
+        #
+    #
+#
 
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -149,6 +235,7 @@ def indfInd3():
 #%% INITIALIZATIONS             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 people = {}
+departments = {}
 
 #%% DECLARATIONS                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
