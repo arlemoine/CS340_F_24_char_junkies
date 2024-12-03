@@ -1,11 +1,8 @@
-#Version: v0.1
-#Date Last Updated: 12-20-2023
-
 #%% MODULE BEGINS
 module_name = 'Logging'
 
 '''
-Version: 1.0
+Version: 1.1
 
 Description:
     This module is used to provide logging functionality to the other modules.
@@ -14,7 +11,7 @@ Authors:
     Adriean Lemoine
 
 Date Created     :  11/26/2024
-Date Last Updated:  11/26/2024
+Date Last Updated:  12/03/2024
 '''
 
 #%% IMPORTS                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31,7 +28,7 @@ import os
 
 #Function definitions Start Here
 
-def configure_logger(name, log_dir='Output/Log', level=logging.INFO):
+def configure_logger(name, log_dir='Output/', level=logging.INFO):
     '''
     Configures and returns a logger for the given name.
 

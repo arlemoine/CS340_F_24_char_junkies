@@ -61,7 +61,7 @@ class FitnessData:
             "STEP_WEIGHT": Config.STEP_WEIGHT
         }
 
-        self.logger = Logging.configure_logger(self.name)
+        self.logger = Logging.configure_logger(self.name, f'Output/{self.name}/')
 
         self.age = None
         self.df_steps = None
@@ -175,7 +175,6 @@ class FitnessDataProcessing(FitnessData):
 
         self.writeAllToFile()
         self.logger.info(f'Person \'{self.name}\' created.')
-        print(f'Person \'{self.name}\' created.')
     #
 
     def importAll(self):
@@ -263,7 +262,6 @@ class FitnessDataProcessing(FitnessData):
             os.makedirs(os.path.dirname(path), exist_ok=True)
             plt.savefig(f'{path}violin_{column}.png')
             self.logger.info(f'Violin plot for {column} saved to {path}')
-            print(f'Violin plot for {column} saved to {path}')
         else:
             # If dateframe is empty or the column is not found it is logged and an error message is printed
             self.logger.warning(f"Column '{column}' not found in DataFrame or DataFrame is empty.")
