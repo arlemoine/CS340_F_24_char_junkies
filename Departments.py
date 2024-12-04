@@ -213,7 +213,7 @@ class DepartmentDataProcessing(DepartmentData):
         self.config = {
             "DIR_OUTPUT": Config.DIR_OUTPUT
         }
-        self.dataFile = f'{departmentName}.pkl' # Create filename for pickle file
+        self.__dataFile = f'{departmentName}.pkl' # Create filename for pickle file
         self.updateDirectory()
 
         # Stats from dataframes
@@ -414,15 +414,19 @@ class DepartmentDataProcessing(DepartmentData):
         #
 
     def gen_vectors(self, person, avgAge, avgFitnessScore):
-        def project_vector(v, u):
+        def project_vector():
             '''
             Projects v onto u.
             v: The vector to be projected.
             u: The vector onto which v is projected.
             '''
-            
+            nonlocal proj_v2
+            v = proj_v2
+            nonlocal proj_v1
+            u = proj_v1
+
             # Calculate the dot product of v and u
-            dot_product = np.dot(v, u)
+            dot_product = lambda    v, u: np.dot(v, u)
         
             # Calculate the magnitude of u squared
             magnitude_squared = np.dot(u, u)
@@ -432,7 +436,7 @@ class DepartmentDataProcessing(DepartmentData):
                 raise ValueError("Cannot project onto a zero vector.")
             
             # Calculate the projection
-            projection = (dot_product / magnitude_squared) * u
+            projection = (dot_product(v,u) / magnitude_squared) * u
             return projection
         #
         
@@ -440,7 +444,7 @@ class DepartmentDataProcessing(DepartmentData):
         origin = np.array([0,0])
         proj_v1 = np.array([avgAge,avgFitnessScore]) # Vector representing departmental average
         proj_v2 = np.array([person.age,person.fitness_score]) # Vector representing individual
-        proj_v3 = project_vector(proj_v2, proj_v1) # Projection vector
+        proj_v3 = project_vector() # Projection vector
         angle_v1 = proj_v1 / np.linalg.norm(proj_v1)
         angle_v2 = proj_v2 / np.linalg.norm(proj_v2)
         
@@ -475,9 +479,11 @@ class DepartmentDataProcessing(DepartmentData):
     #
 
     # Writes out the departments stats to a file
-    def writeStats(self):
-        dataFile = f'Output/{self.departmentName}/data.txt'
-        with open(dataFile, "w") as f:
+    def writeStats(self, **kwargs): 
+        defaultDir = f'Output/{self.departmentName}/data.txt'
+        dir = kwargs.get('filename', defaultDir)
+
+        with open(dir, "w") as f:
             with clib.redirect_stdout(f):
                 print(f'Department Name:\t{self.departmentName}')
                 print(f'People:')

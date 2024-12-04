@@ -78,7 +78,7 @@ def intfInd1():
             print('List of people:')
             for key in people:
                 print(f'\t{key}')
-            indfInd3()
+            intfInd3()
         elif choice == '3':
             print("Going back...")
             break
@@ -105,7 +105,7 @@ def intfInd2():
 #
 
 # Interface when loading an individual
-def indfInd3():
+def intfInd3():
     nameStr = input("...\nEnter individual name: ")
     
     # Ensure the person exists before accessing the menu below
@@ -143,7 +143,7 @@ def indfInd3():
 #
 
 # 'Interface Department 1'
-def indfDept1():
+def intfDept1():
     while True:
         print("============\DEPARTMENTS\n============")
         print("1. Create department")
@@ -234,7 +234,7 @@ def intfDept3():
 
 #%% INITIALIZATIONS             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-people = {}
+people = {} 
 departments = {}
 
 #%% DECLARATIONS                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

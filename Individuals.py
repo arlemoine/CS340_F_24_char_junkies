@@ -69,11 +69,19 @@ class FitnessData:
         self.departureAngle = None # Used in comparing age/FitnessScore to department average
     #
 
-    def print(self):
-        print(f'Name:\t\t{self.name}')
-        print(f'Age:\t\t{self.age}')
-        print(f'Steps Data:\t{self.df_steps}')
-        print(f'HRV Data:\t{self.df_hrv}')
+    def print(self, *args):
+        if not args:
+            for attr in self.__dict__:
+                print(f"{attr}: {getattr(self,attr)}")
+        else:
+            for arg in args:
+                if hasattr(self, arg):
+                    print(f"{arg}: {getattr(self, arg)}")
+                else:
+                    print(f"Attribute '{arg}' not found.")
+                #
+            #
+        #   
     #
 
     # Display the dataframe as a table
@@ -87,7 +95,7 @@ class FitnessData:
     #
 
     # Plot a line graph for a specific column in the dataframe
-    def view_line_graph(self, dataframe, column, title):
+    def get_line_graph(self, dataframe, column, title):
         if dataframe is not None and column in dataframe.columns:
             plt.figure(figsize=(10, 6))
             plt.plot(dataframe['dayOfMonth'], dataframe[column], marker='o', linestyle='-')
@@ -96,7 +104,7 @@ class FitnessData:
             plt.xlabel('Date')
             plt.ylabel(column)
             plt.grid(True)
-            plt.show()
+            plt.savefig(f"Output/{self.name}/line_{column}.png")
             self.logger.info(f"Displayed line graph for {column} in {title}.")
         else:
             self.logger.warning(f"Column '{column}' not found in DataFrame or DataFrame is empty.")
@@ -114,13 +122,13 @@ class FitnessData:
     # 
 
     # Plot a line graph of steps data
-    def view_steps_line_graph(self):
-        self.view_line_graph(self.df_steps, 'steps', 'Steps Over Time')  # Plot line graph for steps #
+    def get_steps_line_graph(self):
+        self.get_line_graph(self.df_steps, 'steps', 'Steps Over Time')  # Plot line graph for steps #
     #
 
     # Plot a line graph of HRV data
-    def view_hrv_line_graph(self):
-        self.view_line_graph(self.df_hrv, 'hrv', 'HRV Over Time')  # Plot line graph for HRV #
+    def get_hrv_line_graph(self):
+        self.get_line_graph(self.df_hrv, 'hrv', 'HRV Over Time')  # Plot line graph for HRV #
     # 
 
     def data_search(self, dataframe, column, search_value):
@@ -172,6 +180,8 @@ class FitnessDataProcessing(FitnessData):
         self.calc_fitness_score()
         self.visualize_violin_plot(self.df_steps,'steps')
         self.visualize_violin_plot(self.df_hrv,'hrv')
+        self.get_steps_line_graph()
+        self.get_hrv_line_graph()
 
         self.writeAllToFile()
         self.logger.info(f'Person \'{self.name}\' created.')
@@ -255,7 +265,7 @@ class FitnessDataProcessing(FitnessData):
             plt.title(f"{title} - {self.name.capitalize()}")
             plt.xlabel(f"{column} per month")
             plt.ylabel('Density')
-            plt.grid(True)
+            plt.grid(True)  
             
             # Save violin plot to the output folder
             path = f'{self.config['DIR_OUTPUT']}{self.name}/'
@@ -323,7 +333,8 @@ class FitnessDataProcessing(FitnessData):
     # Calculate step score
     def calc_step_score(self):
         if not self.df_steps.empty:
-            self.avg_steps = int(self.df_steps['steps'].mean())  # Calculate average steps per day
+            meanSteps = "int(self.df_steps['steps'].mean())"
+            self.avg_steps = eval(meanSteps)  # Calculate average steps per day
             self.step_score = self.avg_steps * self.config['STEP_WEIGHT']  # Calculate step score based on weight #
         #
     #
@@ -372,6 +383,7 @@ class FitnessDataProcessing(FitnessData):
 if __name__ == "__main__":
     
     pers1 = FitnessDataProcessing('brian')
+    pers1.print('name','age','gender')
     # pers1.query_data(pers1.df_hrv,'dayOfMonth',)
 
     # pers2 = FitnessDataProcessing('brian')
