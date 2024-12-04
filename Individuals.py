@@ -105,6 +105,7 @@ class FitnessData:
             plt.ylabel(column)
             plt.grid(True)
             plt.savefig(f"Output/{self.name}/line_{column}.png")
+            plt.close()
             self.logger.info(f"Displayed line graph for {column} in {title}.")
         else:
             self.logger.warning(f"Column '{column}' not found in DataFrame or DataFrame is empty.")
@@ -248,7 +249,7 @@ class FitnessDataProcessing(FitnessData):
         #
     #
     
-    def visualize_violin_plot(self, dataframe, column, title="Violin Plot"):
+    def     visualize_violin_plot(self, dataframe, column, title="Violin Plot"):
         '''
         Visualizes a violin plot for a specified column in the specified dataFrame
         
@@ -271,6 +272,7 @@ class FitnessDataProcessing(FitnessData):
             path = f'{self.config['DIR_OUTPUT']}{self.name}/'
             os.makedirs(os.path.dirname(path), exist_ok=True)
             plt.savefig(f'{path}violin_{column}.png')
+            plt.close()
             self.logger.info(f'Violin plot for {column} saved to {path}')
         else:
             # If dateframe is empty or the column is not found it is logged and an error message is printed

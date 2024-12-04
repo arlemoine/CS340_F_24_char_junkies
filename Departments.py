@@ -67,12 +67,14 @@ class DepartmentData:
     # Add person to group       
     def addIndividual(self, individual):
         self.individuals[individual.name] = individual
+        self.logger.info(f"{individual.name} added to department.")
     #
 
     # Remove person from group                                          
     def dropIndividual(self, individual):
         if individual.name in self.individuals:
             del self.individuals[individual.name]
+            self.logger.info(f"{individual.name} removed from department.")
         else:
             print(f'Individual named {individual.name} not found in department.')
     #
@@ -124,6 +126,7 @@ class DepartmentData:
             'avgSteps': avgSteps
         })
 
+        self.logger.info(f"Steps dataframe retrieved.")
         return self.df_dept_steps
     #
 
@@ -146,6 +149,7 @@ class DepartmentData:
             'avgHRV': avgHRV
         })
 
+        self.logger.info(f"HRV dataframe retrieved.")
         return self.df_dept_hrv
     #
 
@@ -175,6 +179,7 @@ class DepartmentData:
             lambda x: 'Pass' if x >= probation_score else ('Probation' if x >= min_fitness_score else 'Fail')
         )
 
+        self.logger.info(f"Fitness score data retrieved.")
         return self.df_dept_fitness_scores
     #
 
@@ -202,6 +207,7 @@ class DepartmentData:
             'ageGroup': age_status
         })
 
+        self.logger.info(f"Personnel age information retrieved.")
         return df_dept_age
     #
 #
@@ -264,24 +270,8 @@ class DepartmentDataProcessing(DepartmentData):
             return None
         #
 
-        self.df_stats_steps = self.df_dept_steps.describe() # NEWLY ADDED
-
-        # BELOW SHOULD NOT BE NEEDED. ONLY NEED TO USE DESCRIBE()
-
-        # min_steps = round(self.df_dept_steps['avgSteps'].min(), 2)
-        # mean_steps = round(self.df_dept_steps['avgSteps'].mean(), 2)
-        # median_steps = round(self.df_dept_steps['avgSteps'].median(), 2)
-        # mode_steps = self.df_dept_steps['avgSteps'].mode()
-        # mode_steps = round(mode_steps[0], 2) if not mode_steps.empty else np.nan
-        # max_steps = round(self.df_dept_steps['avgSteps'].max(), 2)
-
-        # stats_df = pd.DataFrame({
-        #      'deptName': [self.departmentName] * 5,
-        #     'Statistic': ['Min', 'Mean', 'Median', 'Mode', 'Max'],
-        #     'Steps': [min_steps, mean_steps, median_steps, mode_steps, max_steps]
-        # })
-
-        # return stats_df
+        self.df_stats_steps = self.df_dept_steps.describe()
+        self.logger.info(f"Steps statistics calculated.")
     #
 
     # Generates dataframe for HRV statistics
@@ -293,24 +283,8 @@ class DepartmentDataProcessing(DepartmentData):
             return None
         #
 
-        self.df_stats_hrv = self.df_dept_hrv.describe() # NEWLY ADDED
-    
-        # BELOW SHOULD NOT BE NEEDED. ONLY NEED TO USE DESCRIBE()
-
-        # min_hrv = round(self.df_dept_hrv['avgHRV'].min(),2)
-        # mean_hrv = round(self.df_dept_hrv['avgHRV'].mean(), 2)
-        # median_hrv = round(self.df_dept_hrv['avgHRV'].median(), 2)
-        # mode_hrv = round(self.df_dept_hrv['avgHRV'].mode(), 2)
-        # mode_hrv = mode_hrv[0] if not mode_hrv.empty else np.nan
-        # max_hrv = round(self.df_dept_hrv['avgHRV'].max(),2)
-
-        # stats_df_hrv = pd.DataFrame({
-        #     'deptName': [self.departmentName] * 5,
-        #     'Statistic': ['Min', 'Mean', 'Median', 'Mode', 'Max'],
-        #     'HRV': [min_hrv, mean_hrv, median_hrv, mode_hrv, max_hrv]
-        # })
-
-        # return stats_df_hrv
+        self.df_stats_hrv = self.df_dept_hrv.describe()
+        self.logger.info(f"HRV statistics calculated.")
     #
 
     # Generates dataframe for fitness score statistics
@@ -322,24 +296,8 @@ class DepartmentDataProcessing(DepartmentData):
             return None
         #
 
-        self.df_stats_fitness_score = self.df_dept_fitness_scores.describe() # NEWLY ADDED
-
-        # BELOW SHOULD NOT BE NEEDED. ONLY NEED TO USE DESCRIBE()
-
-        # min_fitness_score = round(self.df_dept_fitness_scores['fitnessScore'].min(), 2)
-        # mean_fitness_score = round(self.df_dept_fitness_scores['fitnessScore'].mean(), 2)
-        # median_fitness_score = round(self.df_dept_fitness_scores['fitnessScore'].median(), 2)
-        # mode_fitness_score = round(self.df_dept_fitness_scores['fitnessScore'].mode(),2)
-        # mode_fitness_score = mode_fitness_score[0] if not mode_fitness_score.empty else np.nan
-        # max_fitness_score = round(self.df_dept_fitness_scores['fitnessScore'].max(),2)
-
-        # stats_df = pd.DataFrame({
-        #     'deptName': [self.departmentName] * 5,
-        #     'Statistic': ['Min', 'Mean', 'Median', 'Mode', 'Max'],
-        #     'Fitness_Score': [min_fitness_score, mean_fitness_score, median_fitness_score, mode_fitness_score, max_fitness_score]
-        # })
-
-        # return stats_df
+        self.df_stats_fitness_score = self.df_dept_fitness_scores.describe()
+        self.logger.info(f"Fitness score statistics calculated.")
     #
 
     # Generates dataframe for age statistics
@@ -347,11 +305,9 @@ class DepartmentDataProcessing(DepartmentData):
         if self.df_dept_age is None or self.df_dept_age.empty:
             self.getAges() 
         #
-        # if self.df_dept_age.empty:
-        #     return None
-        # #
-
-        self.df_stats_age = self.df_dept_age.describe() # NEWLY ADDED
+        self.df_stats_age = self.df_dept_age.describe()
+        self.logger.info(f"Age statistics calculated.")
+    #
 
     # Generate subplots for histograms of data
     def gen_dept_hist(self):
@@ -405,6 +361,7 @@ class DepartmentDataProcessing(DepartmentData):
         self.logger.info(f"Combined histograms saved at: {output_path}")
     #
 
+    # Create vector plots for all personnel in department
     def gen_dept_vectors(self):
         avgAge = self.df_stats_age.loc['mean','age']
         avgFitnessScore = self.df_stats_fitness_score.loc['mean','fitnessScore']
@@ -413,6 +370,10 @@ class DepartmentDataProcessing(DepartmentData):
             self.gen_vectors(person, avgAge, avgFitnessScore)
         #
 
+        self.logger.info(f"Vector diagrams generated for all personnel.")
+    #
+
+    # Create vector plots for individual
     def gen_vectors(self, person, avgAge, avgFitnessScore):
         def project_vector():
             '''
@@ -475,6 +436,7 @@ class DepartmentDataProcessing(DepartmentData):
 
         # Save figure as png
         fig.savefig(f"{self.config['DIR_OUTPUT']}/{person.name}/vectors.png")
+        plt.close()
         person.logger.info('Vector graph saved to output folder.')
     #
 
@@ -502,6 +464,8 @@ class DepartmentDataProcessing(DepartmentData):
                 print(f'\n{self.df_dept_age}')
             #
         #
+
+        self.logger.info(f"Department data written to {dir}.")
     #
 
     # Saves the departments data to a pickle file
