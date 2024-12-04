@@ -61,6 +61,10 @@ class DepartmentData:
         self.df_dept_fitness_scores = None # Fitness score average per individual
         self.df_dept_age = None # Age per individual
 
+        self.initLog()
+    #
+
+    def initLog(self):
         self.logger = Logging.configure_logger(self.departmentName, f'Output/{self.departmentName}/')
     #
 
@@ -214,25 +218,31 @@ class DepartmentData:
 
 # Child class to process and save data for department variables
 class DepartmentDataProcessing(DepartmentData):
+    config = {
+        "DIR_OUTPUT": Config.DIR_OUTPUT
+    }
+    
+    # Stats from dataframes
+    df_stats_steps = None
+    df_stats_hrv = None
+    df_stats_fitness_score = None
+    df_stats_age = None
+    df_jointCounts = None
+    df_jointProbs = None
+
+    # Statistics variables
+    totalCounts = None
+    condProbs = {}
+    uniqueAgeGroup = None
+    uniqueFitnessGroup = None
+    combAgeGroup = None
+    combFitnessGroup = None
+    permAgeGroup = None
+    permFitnessGroup = None
+
     def __init__(self, departmentName, daysInMonth):
         super().__init__(departmentName, daysInMonth)
-        self.config = {
-            "DIR_OUTPUT": Config.DIR_OUTPUT
-        }
         self.__dirPickle = f"Output/{departmentName}/{departmentName}.pkl" # Create filename for pickle file
-        self.updateDirectory()
-
-        # Stats from dataframes
-        self.df_stats_steps = None
-        self.df_stats_hrv = None
-        self.df_stats_fitness_score = None
-        self.df_stats_age = None
-        self.df_jointCounts = None
-        self.df_jointProbs = None
-
-        # Statistics variables
-        self.totalCounts = None
-        self.condProbs = {}
     #
 
     # Create folder for dept in Output folder
@@ -244,8 +254,19 @@ class DepartmentDataProcessing(DepartmentData):
         #
     #
    
+    def writeOutputs(self):
+        self.updateDirectory()
+        self.initLog()
+        self.gen_dept_hist()
+        self.gen_dept_vectors()
+        self.writeStats()
+        self.pickleSave()
+    #
+
+
    # Write all data to proper files
     def getAll(self):
+        self.updateDirectory()
         self.getDataframes()
         self.logger.info('Data retrieved for individuals.')
         self.calcDays()
@@ -431,61 +452,59 @@ class DepartmentDataProcessing(DepartmentData):
         def project_vector():
             '''
             Projects v onto u.
-            v: The vector to be projected.
-            u: The vector onto which v is projected.
             '''
-            nonlocal proj_v2
-            v = proj_v2
-            nonlocal proj_v1
-            u = proj_v1
+            nonlocal v
+            nonlocal u
 
-            # Calculate the dot product of v and u
-            dot_product = lambda    v, u: np.dot(v, u)
-        
-            # Calculate the magnitude of u squared
-            magnitude_squared = np.dot(u, u)
-            
-            # Check if the magnitude squared of u is not zero
-            if magnitude_squared == 0:
-                raise ValueError("Cannot project onto a zero vector.")
-            
-            # Calculate the projection
-            projection = (dot_product(v,u) / magnitude_squared) * u
-            return projection
+            return (np.dot(v,u)/np.dot(u,u)) * u
         #
         
-        # Define vectors
+        # Normalization required to see orthogonal relationship between projection and v 
+        normalize = lambda x, min, max: (x - min) / (max - min)
+        proj_persAge = normalize(person.age,18,65)
+        proj_persFit = normalize(person.fitness_score,10,100)
+        proj_deptAge = normalize(avgAge,18,65)
+        proj_deptFit = normalize(avgFitnessScore,10,100)
+
+        # Define vectors for subplot 1
         origin = np.array([0,0])
-        proj_v1 = np.array([avgAge,avgFitnessScore]) # Vector representing departmental average
-        proj_v2 = np.array([person.age,person.fitness_score]) # Vector representing individual
-        proj_v3 = project_vector() # Projection vector
-        angle_v1 = proj_v1 / np.linalg.norm(proj_v1)
-        angle_v2 = proj_v2 / np.linalg.norm(proj_v2)
+        v = np.array([proj_persAge,proj_persFit]) # Individual
+        u = np.array([proj_deptAge,proj_deptFit]) # Average
+        p = project_vector() # Projection vector
+
+        # Define vectors for subplot 2
+        indRaw = np.array([person.age,person.fitness_score])
+        deptRaw = np.array([avgAge,avgFitnessScore])
+        indNorm = indRaw / np.linalg.norm(indRaw)
+        deptNorm = deptRaw / np.linalg.norm(deptRaw)
         
         # Generate and configure subplots
         fig, axs = plt.subplots(1,2,figsize=(10,4))
-        axs[0].set_xlim(0,65)
-        axs[0].set_ylim(0,2000)
-        axs[1].set_xlim(0,.1)
+        axs[0].set_xlim(0,1)
+        axs[0].set_ylim(0,1)
+        axs[1].set_xlim(0,1)
         axs[1].set_ylim(0,1)
         axs[0].set_title('Projection Vector')
         axs[1].set_title('Departure Angle')
         
         # Generate vectors for subplot 1
-        axs[0].quiver(origin[0], origin[1], proj_v1[0], proj_v1[1], angles='xy', scale_units='xy', scale=1, color='b', label='Average')
-        axs[0].quiver(origin[0], origin[1], proj_v2[0], proj_v2[1], angles='xy', scale_units='xy', scale=1, color='g', label='Individual')
-        axs[0].quiver(origin[0], origin[1], proj_v3[0], proj_v3[1], angles='xy', scale_units='xy', scale=1, color='r', label='Projection')
+        axs[0].quiver(origin[0], origin[1], v[0], v[1], angles='xy', scale_units='xy', scale=1, color='b', label='Individual')
+        axs[0].quiver(origin[0], origin[1], u[0], u[1], angles='xy', scale_units='xy', scale=1, color='g', label='Average')
+        axs[0].quiver(origin[0], origin[1], p[0], p[1], angles='xy', scale_units='xy', scale=1, color='r', label='Projection')
+        axs[0].quiver(p[0], p[1], v[0] - p[0], v[1] - p[1], angles='xy', scale_units='xy', scale=1, color='y', label='Orthogonality')
+
         
         # Generate vectors for subplot 2
-        axs[1].quiver(origin[0], origin[1], angle_v1[0], angle_v1[1], angles='xy', scale_units='xy', scale=1, color='b', label='Average')
-        axs[1].quiver(origin[0], origin[1], angle_v2[0], angle_v2[1], angles='xy', scale_units='xy', scale=1, color='g', label='Individual')
+        axs[1].quiver(origin[0], origin[1], indNorm[0], indNorm[1], angles='xy', scale_units='xy', scale=1, color='b', label='Average')
+        axs[1].quiver(origin[0], origin[1], deptNorm[0], deptNorm[1], angles='xy', scale_units='xy', scale=1, color='g', label='Individual')
         
         # Apply legend
         axs[0].legend()
         axs[1].legend()
 
         # Update individual departure angle
-        person.departureAngle = np.arccos(np.dot(angle_v1, angle_v2)) * 180 / math.pi
+        person.departureAngle = np.arccos(np.dot(indNorm, deptNorm)) * 180 / math.pi
+        person.writeAllToFile()
 
         # Save figure as png
         fig.savefig(f"{self.config['DIR_OUTPUT']}/{person.name}/vectors.png")
@@ -568,14 +587,19 @@ class DepartmentDataProcessing(DepartmentData):
             # Open the pickle file in read-binary mode
             with open(filePath, 'rb') as f:
                 obj = pkl.load(f)
+
+            for person in obj.individuals.values():
+                person.writeOutputs()
+
+            obj.writeOutputs()
             # Return the loaded department data
             return obj
         except FileNotFoundError:
             print(f"Error: The file '{filePath}' was not found.")
         except pkl.UnpicklingError:
             print(f"Error: There was an issue unpickling the file '{filePath}'.")
-        except Exception as e:
-            print(f"An error occurred: {e}")
+        # except Exception as e:
+        #     print(f"An error occurred: {e}")
     #
 
     def printIndividuals(self):
@@ -599,4 +623,5 @@ if __name__ == "__main__":
     dept1.addIndividual(person4)
     dept1.addIndividual(person5)
     dept1.getAll()
-    dept1.getUniqueValues()
+
+    

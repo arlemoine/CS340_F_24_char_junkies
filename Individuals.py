@@ -61,12 +61,15 @@ class FitnessData:
             "STEP_WEIGHT": Config.STEP_WEIGHT
         }
 
-        self.logger = Logging.configure_logger(self.name, f'Output/{self.name}/')
-
+        self.initLog()
         self.age = None
         self.df_steps = None
         self.df_hrv = None
         self.departureAngle = None # Used in comparing age/FitnessScore to department average
+    #
+
+    def initLog(self):
+        self.logger = Logging.configure_logger(self.name, f'Output/{self.name}/')
     #
 
     def print(self, *args):
@@ -164,30 +167,47 @@ class FitnessDataProcessing(FitnessData):
     '''
     Child class for processing and analyzing fitness data.
     '''
-    
+    dirOut = "Output/"
+    step_score = None
+    hrv_score = None
+    fitness_score = None
+
+
     # Initialize the FitnessDataProcessing object with additional attributes
     def __init__(self, name):
         super().__init__(name)
-
-        self.step_score = None
-        self.hrv_score = None
-        self.fitness_score = None
-
-        self.dirOut = self.config["DIR_OUTPUT"] + self.name + '/'
-        
+        self.dirOut = self.config["DIR_OUTPUT"] + self.name + '/' # Define output directory
         self.importAll()
-        self.calc_step_score()
-        self.calc_hrv_score()
-        self.calc_fitness_score()
+        self.calc_all()
+        self.genPlots()
+        self.writeAllToFile()
+        self.logger.info(f'Person \'{self.name}\' updated.')
+    #
+
+    # Used to write output file structure when it doesn't exist
+    def writeOutputs(self):
+        self.updateDirectory()
+        self.initLog()
+        self.genPlots()
+        self.writeAllToFile()
+        self.logger.info("Output files configured.")
+    #
+
+    def genPlots(self):
         self.visualize_violin_plot(self.df_steps,'steps')
         self.visualize_violin_plot(self.df_hrv,'hrv')
         self.get_steps_line_graph()
         self.get_hrv_line_graph()
-
-        self.writeAllToFile()
-        self.logger.info(f'Person \'{self.name}\' created.')
     #
 
+    # Create folder for person in Output folder
+    def updateDirectory(self):
+        if not os.path.exists(self.dirOut):
+            os.makedirs(self.dirOut)
+        #
+    #
+
+    # Import all data into dataframes from Input folder
     def importAll(self):
         self.importAge()
         self.importHrv()
@@ -249,7 +269,38 @@ class FitnessDataProcessing(FitnessData):
         #
     #
     
-    def     visualize_violin_plot(self, dataframe, column, title="Violin Plot"):
+    # Calculate all individual stats
+    def calc_all(self):
+        self.calc_step_score()
+        self.calc_hrv_score()
+        self.calc_fitness_score()
+    #
+
+    # Calculate step score
+    def calc_step_score(self):
+        if not self.df_steps.empty:
+            meanSteps = "int(self.df_steps['steps'].mean())"
+            self.avg_steps = eval(meanSteps)  # Calculate average steps per day
+            self.step_score = self.avg_steps * self.config['STEP_WEIGHT'] / 100  # Calculate step score based on weight #
+        #
+    #
+
+    # Calculate HRV score
+    def calc_hrv_score(self):
+        if not self.df_hrv.empty:
+            self.avg_hrv = int(self.df_hrv['hrv'].mean())  # Calculate average HRV per day
+            self.hrv_score = self.avg_hrv * self.config['HRV_WEIGHT']  # Calculate HRV score based on weight
+        #
+    #
+
+    # Calculate fitness score
+    def calc_fitness_score(self):
+        if self.step_score is not None and self.hrv_score is not None:
+            self.fitness_score = int(self.step_score + self.hrv_score)  # Combine step and HRV scores for overall fitness score
+        #
+    #
+
+    def visualize_violin_plot(self, dataframe, column, title="Violin Plot"):
         '''
         Visualizes a violin plot for a specified column in the specified dataFrame
         
@@ -332,36 +383,13 @@ class FitnessDataProcessing(FitnessData):
         #
     #
 
-    # Calculate step score
-    def calc_step_score(self):
-        if not self.df_steps.empty:
-            meanSteps = "int(self.df_steps['steps'].mean())"
-            self.avg_steps = eval(meanSteps)  # Calculate average steps per day
-            self.step_score = self.avg_steps * self.config['STEP_WEIGHT']  # Calculate step score based on weight #
-        #
-    #
-
-    # Calculate HRV score
-    def calc_hrv_score(self):
-        if not self.df_hrv.empty:
-            self.avg_hrv = int(self.df_hrv['hrv'].mean())  # Calculate average HRV per day
-            self.hrv_score = self.avg_hrv * self.config['HRV_WEIGHT']  # Calculate HRV score based on weight
-        #
-    #
-
-    # Calculate fitness score
-    def calc_fitness_score(self):
-        if self.step_score is not None and self.hrv_score is not None:
-            self.fitness_score = int(self.step_score + self.hrv_score)  # Combine step and HRV scores for overall fitness score
-        #
-    #
-
     # Show stats for the month
     def show_stats_for_month(self):
         print(f'{self.name}\'s Stats:')
-        print(f"\tAverage Steps per Day: {self.avg_steps}")  # Print average steps per day #
-        print(f"\tAverage HRV per Day: {self.avg_hrv}")  # Print average HRV per day #
-        print(f"\tFitness Score: {self.fitness_score}")  # Print fitness score #
+        print(f"\tAverage Steps per Day: {self.avg_steps}")
+        print(f"\tAverage HRV per Day: {self.avg_hrv}")
+        print(f"\tFitness Score: {self.fitness_score}")
+        print(f"\tFitness Departure Angle: {self.departureAngle}")
     #
 
     def writeAllToFile(self):
@@ -384,15 +412,15 @@ class FitnessDataProcessing(FitnessData):
 # Main Self-run block
 if __name__ == "__main__":
     
-    pers1 = FitnessDataProcessing('brian')
-    pers1.print('name','age','gender')
+    pers1 = FitnessDataProcessing('adam')
+    pers1.show_stats_for_month()
     # pers1.query_data(pers1.df_hrv,'dayOfMonth',)
 
-    # pers2 = FitnessDataProcessing('brian')
-    # pers2.show_stats_for_month()
+    pers2 = FitnessDataProcessing('brian')
+    pers2.show_stats_for_month()
     
-    # pers3 = FitnessDataProcessing('charlie')
-    # pers3.show_stats_for_month()
+    pers3 = FitnessDataProcessing('charlie')
+    pers3.show_stats_for_month()
 
     # pers4 = FitnessDataProcessing('david')
     # pers4.show_stats_for_month()
