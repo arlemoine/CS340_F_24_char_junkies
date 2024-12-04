@@ -219,7 +219,7 @@ class DepartmentDataProcessing(DepartmentData):
         self.config = {
             "DIR_OUTPUT": Config.DIR_OUTPUT
         }
-        self.__dataFile = f'{departmentName}.pkl' # Create filename for pickle file
+        self.__dirPickle = f"Output/{departmentName}/{departmentName}.pkl" # Create filename for pickle file
         self.updateDirectory()
 
         # Stats from dataframes
@@ -358,7 +358,7 @@ class DepartmentDataProcessing(DepartmentData):
         plt.savefig(output_path)
         plt.close()
 
-        self.logger.info(f"Combined histograms saved at: {output_path}")
+        self.logger.info        (f"Combined histograms saved at: {output_path}")
     #
 
     # Create vector plots for all personnel in department
@@ -470,60 +470,58 @@ class DepartmentDataProcessing(DepartmentData):
 
     # Saves the departments data to a pickle file
     def pickleSave(self):
-        # DEfines the pickle file  name based on the deptName
-        pickle_filename = f"{self.departmentName}.pickle"
-        # Constructs the output path where the pickle file will be saved
-        output_path = os.path.join(self.config['DIR_OUTPUT'], self.departmentName, pickle_filename)
-        # Create the directories leading to the file path
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-
         try:
-            with open(output_path, 'wb') as f:
+            with open(self.__dirPickle, 'wb') as f:
                 pkl.dump(self, f)
-            self.logger.info(f"Department saved successfully to {output_path}")
+            self.logger.info(f"Department saved successfully to {self.__dirPickle}")
         except Exception as e:
             print(f"Error saving department to pickle: {e}")
             self.logger.info(f"Error saving department to pickle: {e}")
+        #
     #
 
     # Loads the departments data from pickle file
-    def pickleLoad(pickle_file_path):
+    @classmethod
+    def pickleLoad(cls, filePath):
         try:
             # Open the pickle file in read-binary mode
-            with open(pickle_file_path, 'rb') as f:
-                # Load the data from the pickle file
-                department = pkl.load(f)
-        
+            with open(filePath, 'rb') as f:
+                obj = pkl.load(f)
             # Return the loaded department data
-            return department
-
+            return obj
         except FileNotFoundError:
-            print(f"Error: The file '{pickle_file_path}' was not found.")
+            print(f"Error: The file '{filePath}' was not found.")
         except pkl.UnpicklingError:
-            print(f"Error: There was an issue unpickling the file '{pickle_file_path}'.")
+            print(f"Error: There was an issue unpickling the file '{filePath}'.")
         except Exception as e:
             print(f"An error occurred: {e}")
     #
+
+    def printIndividuals(self):
+        for person in self.individuals.values():
+            person.print('name','age','fitness_score')
+            print()
 #
 
 if __name__ == "__main__":
 
-# Creates the department and adds the departments name, daysInMonth, and individuals
-    dept1 = DepartmentDataProcessing('CMPSPD 340', daysInMonth=30)
-    
-# Create instances of FitnessDataProcessing (each individual)
-    person1 = FitnessDataProcessing('adam')
-    person2 = FitnessDataProcessing('brian')
-    person3 = FitnessDataProcessing('charlie')
-    person4 = FitnessDataProcessing('david')
-    person5 = FitnessDataProcessing('eddie')
+    # dept1 = DepartmentDataProcessing('CMPSPD 340', daysInMonth=30)
+    # person1 = FitnessDataProcessing('adam')
+    # person2 = FitnessDataProcessing('brian')
+    # person3 = FitnessDataProcessing('charlie')
+    # person4 = FitnessDataProcessing('david')
+    # person5 = FitnessDataProcessing('eddie')
 
-# Add individuals to the department
-    dept1.addIndividual(person1)
-    dept1.addIndividual(person2)
-    dept1.addIndividual(person3)
-    dept1.addIndividual(person4)
-    dept1.addIndividual(person5)
+    # dept1.addIndividual(person1)
+    # dept1.addIndividual(person2)
+    # dept1.addIndividual(person3)
+    # dept1.addIndividual(person4)
+    # dept1.addIndividual(person5)
 
-    dept1.getAll()
+    # dept1.getAll()
+    # dept1.printIndividuals()
+
+    dept2 = DepartmentDataProcessing.pickleLoad("Output/CMPSPD 340/CMPSPD 340.pkl")
+    print(dept2.individuals)
+    dept2.printIndividuals()
 
