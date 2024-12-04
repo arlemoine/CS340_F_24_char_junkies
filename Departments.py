@@ -227,6 +227,12 @@ class DepartmentDataProcessing(DepartmentData):
         self.df_stats_hrv = None
         self.df_stats_fitness_score = None
         self.df_stats_age = None
+        self.df_jointCounts = None
+        self.df_jointProbs = None
+
+        # Statistics variables
+        self.totalCounts = None
+        self.condProbs = {}
     #
 
     # Create folder for dept in Output folder
@@ -255,11 +261,16 @@ class DepartmentDataProcessing(DepartmentData):
         self.logger.info('Department saved to pickle file.')
     #
 
+    # Perform methods necessary to gather statistical data
     def getStats_all(self):
         self.getStats_steps()
         self.getStats_hrv()
         self.getStats_fitness_score()
         self.getStats_age()
+        self.getJointCounts()
+        self.getJointProbs()
+        self.getCondProbs()
+    #
 
     # Generates dataframe for step statistics
     def getStats_steps(self):
@@ -359,6 +370,37 @@ class DepartmentDataProcessing(DepartmentData):
         plt.close()
 
         self.logger.info        (f"Combined histograms saved at: {output_path}")
+    #
+
+    # Generate dataframe for joint counts related to age and fitness score categories
+    def getJointCounts(self):
+        self.df_jointCounts = pd.crosstab(self.df_dept_age['ageGroup'], self.df_dept_fitness_scores['fitnessGroup'], margins=True)
+        self.totalCounts = self.df_jointCounts.loc['All','All']
+        self.logger.info("Recorded joint counts.")
+    #
+
+    # Generate dataframe for joint probabilities related to age and fitness score categories
+    def getJointProbs(self):
+        self.df_jointProbs = self.df_jointCounts / self.totalCounts
+        self.getCondProbs()
+        self.logger.info("Recorded joint probabilities.")
+    #
+
+    # Fills dictionary 'condProbs' with P(B|A) values
+    def getCondProbs(self):
+        # Iterates through rows for conditional probabilities
+        for event in self.df_jointProbs.index:
+            # Iterates through columns for conditional probabilities
+            for outcome in self.df_jointProbs.columns:
+                # Ensures that margin column and row are not used improperly
+                if event != 'All' and outcome != 'All':
+                    condProb1 = self.df_jointProbs.loc[event, outcome] / self.df_jointProbs.loc['All', outcome]
+                    condProb2 = self.df_jointProbs.loc[event, outcome] / self.df_jointProbs.loc[event, 'All']
+                    self.condProbs[f"P({event}|{outcome})"] = condProb1
+                    self.condProbs[f"P({outcome}|{event})"] = condProb2
+                #
+            #
+        #
     #
 
     # Create vector plots for all personnel in department
@@ -505,23 +547,16 @@ class DepartmentDataProcessing(DepartmentData):
 
 if __name__ == "__main__":
 
-    # dept1 = DepartmentDataProcessing('CMPSPD 340', daysInMonth=30)
-    # person1 = FitnessDataProcessing('adam')
-    # person2 = FitnessDataProcessing('brian')
-    # person3 = FitnessDataProcessing('charlie')
-    # person4 = FitnessDataProcessing('david')
-    # person5 = FitnessDataProcessing('eddie')
-
-    # dept1.addIndividual(person1)
-    # dept1.addIndividual(person2)
-    # dept1.addIndividual(person3)
-    # dept1.addIndividual(person4)
-    # dept1.addIndividual(person5)
-
-    # dept1.getAll()
-    # dept1.printIndividuals()
-
-    dept2 = DepartmentDataProcessing.pickleLoad("Output/CMPSPD 340/CMPSPD 340.pkl")
-    print(dept2.individuals)
-    dept2.printIndividuals()
-
+    # Generate test department
+    dept1 = DepartmentDataProcessing('CMPSPD 340', daysInMonth=30)
+    person1 = FitnessDataProcessing('adam')
+    person2 = FitnessDataProcessing('brian')
+    person3 = FitnessDataProcessing('charlie')
+    person4 = FitnessDataProcessing('david')
+    person5 = FitnessDataProcessing('eddie')
+    dept1.addIndividual(person1)
+    dept1.addIndividual(person2)
+    dept1.addIndividual(person3)
+    dept1.addIndividual(person4)
+    dept1.addIndividual(person5)
+    dept1.getAll()
