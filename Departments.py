@@ -1,9 +1,8 @@
-
 #%% MODULE BEGINS
 module_name = 'Departments'
 
 '''
-Version: 1.1
+Version: 1.2
 
 Description:
     Module to consolidate fitness data for individuals into their department. Generates fitness statistics for the department based off of the individuals and produces relevant graphs.
@@ -11,9 +10,10 @@ Description:
 Authors:
     Adriean Lemoine
     Chris Smith
+    Nicholas Burgo
 
 Date Created     :  11/26/2024
-Date Last Updated:  12/03/2024
+Date Last Updated:  12/04/2024
 '''
 
 #%% IMPORTS                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -23,11 +23,13 @@ if __name__ == "__main__":
 #
 
 #custom imports
+from Individuals import FitnessDataProcessing
 import Logging
 
 #other imports  
 import contextlib as clib # Used to redirect output stream from terminal to a file for saving individual info
 from   copy       import deepcopy as dpcpy
+from itertools import combinations, permutations
 from   matplotlib import pyplot as plt
 import math
 import numpy  as np 
@@ -35,9 +37,7 @@ import os
 import pandas as pd
 import pickle as pkl
 import seaborn as sns
-from Individuals import FitnessDataProcessing
 from tabulate import tabulate
-import logging
 
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -270,6 +270,7 @@ class DepartmentDataProcessing(DepartmentData):
         self.getJointCounts()
         self.getJointProbs()
         self.getCondProbs()
+        self.getUniqueValues()
     #
 
     # Generates dataframe for step statistics
@@ -403,6 +404,16 @@ class DepartmentDataProcessing(DepartmentData):
         #
     #
 
+    def getUniqueValues(self):
+        self.uniqueAgeGroup = self.df_dept_age['ageGroup'].unique()
+        self.uniqueFitnessGroup = self.df_dept_fitness_scores['fitnessGroup'].unique()
+        self.combAgeGroup = combinations(self.uniqueAgeGroup, 1) # Ways to choose 1 out of 2 age groups
+        self.combFitnessGroup = combinations(self.uniqueFitnessGroup, 2) # Ways to choose 2 out of 3 fitness groups
+        self.permAgeGroup = permutations(self.uniqueAgeGroup, 2)
+        self.permFitnessGroup = permutations(self.uniqueFitnessGroup, 3)
+        self.logger.info(f"Recorded informnation for age/fitness group combinations and permutations.")
+    #
+
     # Create vector plots for all personnel in department
     def gen_dept_vectors(self):
         avgAge = self.df_stats_age.loc['mean','age']
@@ -494,11 +505,39 @@ class DepartmentDataProcessing(DepartmentData):
                 for person in self.individuals.values():
                     print(f'\t{person.name}')
                 #
+
                 print(f'\nSTATISTICS\n===========')
                 print(f'\n{self.df_stats_steps}')
                 print(f'\n{self.df_stats_hrv}')
                 print(f'\n{self.df_stats_fitness_score}')
                 print(f'\n{self.df_stats_age}')
+                print(f"\nJoint Counts:")
+                print(f'{self.df_jointCounts}')
+                print(f"\nJoint Probabilities:")
+                print(f'{self.df_jointProbs}')
+                
+                print(f"\nConditional Probabilities:")
+                for key, value in self.condProbs.items():
+                    print(f"\t{key} = {value}")
+                #
+
+                print(f"\nAge Group Combinations, 2 choose 1")
+                for i in list(self.combAgeGroup):
+                    print(f"\t{i}")
+                #
+                print(f"\nAge Group Permutations")
+                for i in list(self.permAgeGroup):
+                    print(f"\t{i}")
+                #
+                print(f"\nFitness Group Combinations, 2 choose 1")
+                for i in list(self.combFitnessGroup):
+                    print(f"\t{i}")
+                #
+                print(f"\nFitness Group Permutations")
+                for i in list(self.permFitnessGroup):
+                    print(f"\t{i}")
+                #
+
                 print(f'\nDATA\n=====')
                 print(f'\n{self.df_dept_steps}')
                 print(f'\n{self.df_dept_hrv}')
@@ -560,3 +599,4 @@ if __name__ == "__main__":
     dept1.addIndividual(person4)
     dept1.addIndividual(person5)
     dept1.getAll()
+    dept1.getUniqueValues()
