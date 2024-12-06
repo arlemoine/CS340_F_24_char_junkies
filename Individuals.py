@@ -340,7 +340,7 @@ class FitnessDataProcessing(FitnessData):
             plt.grid(True)  
             
             # Save violin plot to the output folder
-            path = f'{self.config['DIR_OUTPUT']}{self.name}/'
+            path = f"{self.config['DIR_OUTPUT']}{self.name}/"
             os.makedirs(os.path.dirname(path), exist_ok=True)
             plt.savefig(f'{path}violin_{column}.png')
             plt.close()
