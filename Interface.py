@@ -71,14 +71,20 @@ def intfInd1():
         choice = input("...\nEnter your choice: ")
 
         if choice == '1':
-            print('Creating individual...')
             intfInd2()
         elif choice == '2':
             print('List of people:')
             for key in people:
                 print(f'\t{key}')
-            intfInd3()
-        elif choice == '3':
+            
+            # Prompt for the name after the list
+            nameStr = input("Enter the name of the individual to load: ")
+            
+            # Check if the individual exists
+            if nameStr in people:
+                intfInd3(nameStr)  # Now passing nameStr
+            else:
+                print(f"Individual '{nameStr}' not found.")
             print("Going back...")
             break
         elif choice == '4':
@@ -90,22 +96,43 @@ def intfInd1():
 #
 
 # Interface to create individual
-def intfInd2(): 
-    nameStr = input("...\nEnter individual name: ")
-    filepath = f'Input/{nameStr}'
-    
-    # Ensure the person has an input folder before creating
-    if not os.path.isdir(filepath):
-        print("Person doesn't exist")
-        return
-    #
-    
-    people[nameStr] = ind.FitnessDataProcessing(nameStr)
+# Interface to create individual
+def intfInd2(department=None, return_to_dept=False):
+    while True:
+        if department:
+            print(f"Adding individual to the department '{department.departmentName}'")
+        else:
+            print("Creating individuals...")
+
+        nameStr = input("...\nEnter individual name (or type 'done' to finish): ")
+
+        if nameStr.lower() == 'done':
+            if return_to_dept:
+                print(f"Returning to department menu for '{department.departmentName}'...")
+                intfDept1()
+            else:
+                print("Returning to the main individual menu...")
+            break
+
+        if nameStr in people:
+            if department:
+                department.addIndividual(people[nameStr])
+            else:
+                print(f"Individual '{nameStr}' already exists. No further action required.")
+            continue
+
+        # Create a new individual if not found
+        individual = ind.FitnessDataProcessing(nameStr)
+        people[nameStr] = individual  # Add the individual to people dictionary
+
+        if department:
+            department.addIndividual(individual)  # Add individual object to department
+
 #
 
 
 # Interface when loading an individual
-def intfInd3():
+def intfInd3(nameStr):
     nameStr = input("...\nEnter individual name: ")
     
     # Ensure the person exists before accessing the menu below
@@ -131,7 +158,7 @@ def intfInd3():
             openDirectory(currentPath)
         elif choice == '3':
             print(f"Querying data for {nameStr}...")
-            indfInd4(nameStr)
+            intfInd4(nameStr)
         elif choice == '4':
             print('Going back...')
             break
@@ -145,7 +172,7 @@ def intfInd3():
     
 
 # Interface for querying Individuals info
-def indfInd4(nameStr):
+def intfInd4(nameStr):
 
     # Ensure the person exists before accessing the data
     try:
@@ -233,11 +260,21 @@ def intfDept1():
 #
 
 # Interface to create department
-def intfDept2(): 
+def intfDept2():
     deptNameStr = input("...\nEnter department name: ")
-    days = input("Enter number of days in month: ")
-    departments[deptNameStr] = dept.DepartmentDataProcessing(deptNameStr, days)
-    print("Department created.")
+    days = input("Enter number of days in the month: ")
+
+    # Create the department with an empty list of individuals
+    department = dept.DepartmentDataProcessing(deptNameStr, days)
+    departments[deptNameStr] = department
+
+    print(f"Department '{deptNameStr}' created.")
+    print(f"Redirecting to individual creation for department '{deptNameStr}'...")
+    
+    # Redirect to individual creation
+    intfInd2(department, return_to_dept=True)
+
+
 #
 
 # Interface when loading a department
@@ -269,6 +306,22 @@ def intfDept3():
             # openDirectory(currentPath)
         elif choice == '3':
             print("Accessing personnel for department...")
+
+            if hasattr(current, 'individuals') and current.individuals:
+                print(f"Personnel in department '{nameStr}':")
+                for individual in current.individuals:
+                    print(f"- {individual}") 
+                
+                nameStr = input("Enter the name of the individual that you'd like to view: ")
+
+                # Check if the selected name exists in the list of individuals
+                if nameStr in current.individuals:
+                    print(f"Accessing information for {nameStr}...")
+                    intfInd3(nameStr)  # Call the intfInd3() for the selected individual
+                else:
+                    print(f"{nameStr} is not found in this department. Please try again.")
+            else:
+                print(f"No personnel data found for department '{nameStr}'.")
         elif choice == '4':
             print("Exporting/Importing data...")
         elif choice == '5':
