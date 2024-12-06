@@ -96,7 +96,6 @@ def intfInd1():
 #
 
 # Interface to create individual
-# Interface to create individual
 def intfInd2(department=None, return_to_dept=False):
     while True:
         if department:
@@ -132,14 +131,16 @@ def intfInd2(department=None, return_to_dept=False):
 
 
 # Interface when loading an individual
-def intfInd3(nameStr):
-    nameStr = input("...\nEnter individual name: ")
+def intfInd3(nameStr=None):
+   
+    if not nameStr:
+        nameStr = input("...\nEnter individual name: ")
     
-    # Ensure the person exists before accessing the menu below
     try:
         current = people[nameStr]
     except KeyError:
         print(f'{nameStr} can\'t be found.')
+        return
 
     while True:
         print("================\nINDIVIDUAL INFO\n================")
@@ -166,6 +167,7 @@ def intfInd3(nameStr):
             raise QuitProgram
         else:
             print("Invalid choice. Please try again.")
+
         #
     #
 #   
@@ -290,21 +292,17 @@ def intfDept3():
     while True:
         print("================\nDEPARTMENT INFO\n================")
         print("1. Show stats")
-        print("2. Open directory")
-        print("3. Personnel")
-        print("4. Export/Import data")
-        print("5. Back")
-        print("6. Quit")
+        print("2. Personnel")
+        print("3. Export/Import data")
+        print("4. Back")
+        print("5. Quit")
 
         choice = input("...\nEnter your choice: ")
 
         if choice == '1':
             print("Showing stats...")
+            current.writeStats()
         elif choice == '2':
-            print("Opening directory...")
-            # currentPath = f'Output/{nameStr}'
-            # openDirectory(currentPath)
-        elif choice == '3':
             print("Accessing personnel for department...")
 
             if hasattr(current, 'individuals') and current.individuals:
@@ -322,12 +320,13 @@ def intfDept3():
                     print(f"{nameStr} is not found in this department. Please try again.")
             else:
                 print(f"No personnel data found for department '{nameStr}'.")
-        elif choice == '4':
+        elif choice == '3':
             print("Exporting/Importing data...")
-        elif choice == '5':
+            
+        elif choice == '4':
             print('Going back...')
             break
-        elif choice == '6':
+        elif choice == '5':
             raise QuitProgram
         else:
             print("Invalid choice. Please try again.")
