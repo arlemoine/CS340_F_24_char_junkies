@@ -1,7 +1,7 @@
 module_name = 'Individuals'
 
 '''
-Version: 1.1
+Version: 1.2
 
 Description:
     <This module is to gather data for each individual officer, process the data, and create data frames using the collected data>
@@ -12,7 +12,7 @@ Authors:
     Nicholas Burgo
 
 Date Created:       11/12/2024
-Date Last Updated:  11/26/2024
+Date Last Updated:  12/05/2024
 '''
 #%% IMPORTS                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -25,13 +25,12 @@ if __name__ == "__main__":
 import Logging
 
 #other imports
-import contextlib as clib # Used to redirect output stream from terminal to a file for saving individual info
+import contextlib as clib
+import csv
 from matplotlib import pyplot as plt
 import numpy  as np 
 import os
 import pandas as pd
-import logging
-import csv
 import seaborn as sns
 
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,45 +45,30 @@ class FitnessData:
     """
     Parent class for managing fitness data of an individual.
     """
-    
+    config = {
+        "DIR_INPUT": Config.DIR_INPUT,
+        "DIR_OUTPUT": Config.DIR_OUTPUT,
+        "FILENAME_STEPS": Config.FILENAME_STEPS,
+        "FILENAME_AGE": Config.FILENAME_AGE,
+        "MAX_HEART_RATE": Config.MAX_HEART_RATE,
+        "HRV_WEIGHT": Config.HRV_WEIGHT,
+        "STEP_WEIGHT": Config.STEP_WEIGHT
+    }
+
+    age = None
+    df_steps = None
+    df_hrv = None
+    departureAngle = None # Used in comparing individual's fitness data as a deviation from the department average fitness data
+
     # Initialize the FitnessData object with personal and fitness data
     def __init__(self, name):
         self.name = name  # Store person's name
-
-        self.config = {
-            "DIR_INPUT": Config.DIR_INPUT,
-            "DIR_OUTPUT": Config.DIR_OUTPUT,
-            "FILENAME_STEPS": Config.FILENAME_STEPS,
-            "FILENAME_AGE": Config.FILENAME_AGE,
-            "MAX_HEART_RATE": Config.MAX_HEART_RATE,
-            "HRV_WEIGHT": Config.HRV_WEIGHT,
-            "STEP_WEIGHT": Config.STEP_WEIGHT
-        }
-
         self.initLog()
-        self.age = None
-        self.df_steps = None
-        self.df_hrv = None
-        self.departureAngle = None # Used in comparing age/FitnessScore to department average
     #
 
+    # Generate a log file for the given individual
     def initLog(self):
         self.logger = Logging.configure_logger(self.name, f'Output/{self.name}/')
-    #
-
-    def print(self, *args):
-        if not args:
-            for attr in self.__dict__:
-                print(f"{attr}: {getattr(self,attr)}")
-        else:
-            for arg in args:
-                if hasattr(self, arg):
-                    print(f"{arg}: {getattr(self, arg)}")
-                else:
-                    print(f"Attribute '{arg}' not found.")
-                #
-            #
-        #   
     #
 
     # Display the dataframe as a table
@@ -96,6 +80,16 @@ class FitnessData:
             print("Dataframe is empty.")  # Print a message if the dataframe is empty #
         #
     #
+
+    # Display the steps dataframe as a table
+    def view_steps_table(self):
+        self.view_table(self.df_steps) # Use the view_table method to display steps dataframe #
+    #
+
+    # Display the HRV dataframe as a table
+    def view_hrv_table(self):
+        self.view_table(self.df_hrv)  # Use the view_table method to display HRV dataframe #
+    # 
 
     # Plot a line graph for a specific column in the dataframe
     def get_line_graph(self, dataframe, column, title):
@@ -116,15 +110,6 @@ class FitnessData:
         #
     #
 
-    # Display the steps dataframe as a table
-    def view_steps_table(self):
-        self.view_table(self.df_steps) # Use the view_table method to display steps dataframe #
-
-    # Display the HRV dataframe as a table
-    def view_hrv_table(self):
-        self.view_table(self.df_hrv)  # Use the view_table method to display HRV dataframe #
-    # 
-
     # Plot a line graph of steps data
     def get_steps_line_graph(self):
         self.get_line_graph(self.df_steps, 'steps', 'Steps Over Time')  # Plot line graph for steps #
@@ -135,6 +120,7 @@ class FitnessData:
         self.get_line_graph(self.df_hrv, 'hrv', 'HRV Over Time')  # Plot line graph for HRV #
     # 
 
+    # Perform data search
     def data_search(self, dataframe, column, search_value):
         '''
         (dataframe) used to declare which dataframe to search in
@@ -161,17 +147,32 @@ class FitnessData:
             return None
         #
     #
+
+    # Print attributes of individual
+    def print(self, *args):
+        if not args:
+            for attr in self.__dict__:
+                print(f"{attr}: {getattr(self,attr)}")
+        else:
+            for arg in args:
+                if hasattr(self, arg):
+                    print(f"{arg}: {getattr(self, arg)}")
+                else:
+                    print(f"Attribute '{arg}' not found.")
+                #
+            #
+        #   
+    #
 #
 
 class FitnessDataProcessing(FitnessData):
     '''
     Child class for processing and analyzing fitness data.
     '''
-    dirOut = "Output/"
+    dirOut = "Output/" # Default output if no output is provided
     step_score = None
     hrv_score = None
     fitness_score = None
-
 
     # Initialize the FitnessDataProcessing object with additional attributes
     def __init__(self, name):
@@ -179,25 +180,16 @@ class FitnessDataProcessing(FitnessData):
         self.dirOut = self.config["DIR_OUTPUT"] + self.name + '/' # Define output directory
         self.importAll()
         self.calc_all()
-        self.genPlots()
-        self.writeAllToFile()
+        self.writeOutputs()
         self.logger.info(f'Person \'{self.name}\' updated.')
     #
 
     # Used to write output file structure when it doesn't exist
     def writeOutputs(self):
         self.updateDirectory()
-        self.initLog()
-        self.genPlots()
         self.writeAllToFile()
+        self.genPlots()
         self.logger.info("Output files configured.")
-    #
-
-    def genPlots(self):
-        self.visualize_violin_plot(self.df_steps,'steps')
-        self.visualize_violin_plot(self.df_hrv,'hrv')
-        self.get_steps_line_graph()
-        self.get_hrv_line_graph()
     #
 
     # Create folder for person in Output folder
@@ -248,6 +240,7 @@ class FitnessDataProcessing(FitnessData):
         #
     #
 
+    # Import hrv data into dataframe
     def importHrv(self): ## Attempt at hrv import
         filePath = self.config["DIR_INPUT"] + self.name + '/hrv/'
         try: 
@@ -300,7 +293,34 @@ class FitnessDataProcessing(FitnessData):
         #
     #
 
-    def visualize_violin_plot(self, dataframe, column, title="Violin Plot"):
+    # Write all data for individual to data.txt
+    def writeAllToFile(self):
+        dataFile = f'{self.dirOut}data.txt'
+
+        with open(dataFile, "w") as f:
+            with clib.redirect_stdout(f):
+                print(f'Name:\t{self.name}')
+                print(f'Age:\t{self.age}')
+                print()
+                self.show_stats_for_month()
+                print('\nSTEPS PER DAY')
+                self.view_steps_table()
+                print('\nHRV PER DAY')
+                self.view_hrv_table()
+            #
+        #
+    #
+
+    # Generate all plots for individual
+    def genPlots(self):
+        self.get_violin_plot(self.df_steps,'steps')
+        self.get_violin_plot(self.df_hrv,'hrv')
+        self.get_steps_line_graph()
+        self.get_hrv_line_graph()
+    #
+
+    # Create violin plots
+    def get_violin_plot(self, dataframe, column, title="Violin Plot"):
         '''
         Visualizes a violin plot for a specified column in the specified dataFrame
         
@@ -391,20 +411,6 @@ class FitnessDataProcessing(FitnessData):
         print(f"\tFitness Score: {self.fitness_score}")
         print(f"\tFitness Departure Angle: {self.departureAngle}")
     #
-
-    def writeAllToFile(self):
-        dataFile = f'{self.dirOut}data.txt'
-
-        with open(dataFile, "w") as f:
-            with clib.redirect_stdout(f):
-                print(f'Name:\t{self.name}')
-                print(f'Age:\t{self.age}')
-                print()
-                self.show_stats_for_month()
-                print('\nSTEPS PER DAY')
-                self.view_steps_table()
-                print('\nHRV PER DAY')
-                self.view_hrv_table()
 #
 
 #%% SELF-RUN                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

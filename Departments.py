@@ -2,7 +2,7 @@
 module_name = 'Departments'
 
 '''
-Version: 1.2
+Version: 1.3
 
 Description:
     Module to consolidate fitness data for individuals into their department. Generates fitness statistics for the department based off of the individuals and produces relevant graphs.
@@ -13,7 +13,7 @@ Authors:
     Nicholas Burgo
 
 Date Created     :  11/26/2024
-Date Last Updated:  12/04/2024
+Date Last Updated:  12/05/2024
 '''
 
 #%% IMPORTS                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -30,13 +30,12 @@ import Logging
 import contextlib as clib # Used to redirect output stream from terminal to a file for saving individual info
 from   copy       import deepcopy as dpcpy
 from itertools import combinations, permutations
-from   matplotlib import pyplot as plt
 import math
+from   matplotlib import pyplot as plt
 import numpy  as np 
 import os
 import pandas as pd
 import pickle as pkl
-import seaborn as sns
 from tabulate import tabulate
 
 #%% CONSTANTS                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -51,15 +50,15 @@ import Config
 #Class definitions Start Here
 
 class DepartmentData:
+    individuals = {}
+    df_dept_steps = None # Steps per day average per individual for department
+    df_dept_hrv = None # HRV average per individual for department
+    df_dept_fitness_scores = None # Fitness score average per individual
+    df_dept_age = None # Age per individual
+
     def __init__(self, departmentName, daysInMonth=31):
         self.departmentName = departmentName
-        self.individuals = {}
         self.daysInMonth = daysInMonth
-
-        self.df_dept_steps = None # Steps per day average per individual for department
-        self.df_dept_hrv = None # HRV average per individual for department
-        self.df_dept_fitness_scores = None # Fitness score average per individual
-        self.df_dept_age = None # Age per individual
 
         self.initLog()
     #
@@ -245,25 +244,6 @@ class DepartmentDataProcessing(DepartmentData):
         self.__dirPickle = f"Output/{departmentName}/{departmentName}.pkl" # Create filename for pickle file
     #
 
-    # Create folder for dept in Output folder
-    def updateDirectory(self):
-        path = f"{self.config['DIR_OUTPUT']}/{self.departmentName}"
-
-        if not os.path.exists(path):
-            os.makedirs(path)
-        #
-    #
-   
-    def writeOutputs(self):
-        self.updateDirectory()
-        self.initLog()
-        self.gen_dept_hist()
-        self.gen_dept_vectors()
-        self.writeStats()
-        self.pickleSave()
-    #
-
-
    # Write all data to proper files
     def getAll(self):
         self.updateDirectory()
@@ -280,6 +260,15 @@ class DepartmentDataProcessing(DepartmentData):
         self.logger.info('Department data written to output folder.')
         self.pickleSave()
         self.logger.info('Department saved to pickle file.')
+    #
+
+    # Create folder for dept in Output folder
+    def updateDirectory(self):
+        path = f"{self.config['DIR_OUTPUT']}/{self.departmentName}"
+
+        if not os.path.exists(path):
+            os.makedirs(path)
+        #
     #
 
     # Perform methods necessary to gather statistical data
@@ -491,8 +480,7 @@ class DepartmentDataProcessing(DepartmentData):
         axs[0].quiver(origin[0], origin[1], v[0], v[1], angles='xy', scale_units='xy', scale=1, color='b', label='Individual')
         axs[0].quiver(origin[0], origin[1], u[0], u[1], angles='xy', scale_units='xy', scale=1, color='g', label='Average')
         axs[0].quiver(origin[0], origin[1], p[0], p[1], angles='xy', scale_units='xy', scale=1, color='r', label='Projection')
-        axs[0].quiver(p[0], p[1], v[0] - p[0], v[1] - p[1], angles='xy', scale_units='xy', scale=1, color='y', label='Orthogonality')
-
+        axs[0].quiver(p[0], p[1], v[0] - p[0], v[1] - p[1], angles='xy', scale_units='xy', scale=1, color='y', label='Orthogonality') # Visual representation of orthogonality
         
         # Generate vectors for subplot 2
         axs[1].quiver(origin[0], origin[1], indNorm[0], indNorm[1], angles='xy', scale_units='xy', scale=1, color='b', label='Average')
@@ -602,10 +590,23 @@ class DepartmentDataProcessing(DepartmentData):
         #     print(f"An error occurred: {e}")
     #
 
+   # Used following a pickle load to regenerate output files
+    def writeOutputs(self):
+        self.updateDirectory()
+        self.initLog()
+        self.gen_dept_hist()
+        self.gen_dept_vectors()
+        self.writeStats()
+        self.pickleSave()
+    #
+
+    # Print list of individuals in department
     def printIndividuals(self):
         for person in self.individuals.values():
             person.print('name','age','fitness_score')
             print()
+        #
+    #
 #
 
 if __name__ == "__main__":
