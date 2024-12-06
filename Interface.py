@@ -9,6 +9,7 @@ Description:
 
 Authors:
     Adriean Lemoine
+    Chris Smith
 
 Date Created     :  11/26/2024
 Date Last Updated:  11/26/2024
@@ -38,8 +39,7 @@ def intfMain():
             print("==========\nMAIN MENU\n==========")
             print("1. Individuals")
             print("2. Departments")
-            print("3. Open Output folder")
-            print("4. Quit")
+            print("3. Quit")
 
             choice = input("...\nEnter your choice: ")
 
@@ -48,9 +48,8 @@ def intfMain():
                 intfInd1()
             elif choice == '2':
                 print('Accessing departments...')
+                intfDept1()
             elif choice == '3':
-                print('Opening Output folder...')
-            elif choice == '4':
                 print("Exiting...")
                 break
             else:
@@ -104,6 +103,7 @@ def intfInd2():
     people[nameStr] = ind.FitnessDataProcessing(nameStr)
 #
 
+
 # Interface when loading an individual
 def intfInd3():
     nameStr = input("...\nEnter individual name: ")
@@ -127,10 +127,11 @@ def intfInd3():
         if choice == '1':
             current.show_stats_for_month()
         elif choice == '2':
-            currentPath = f'Output/{nameStr}'
+            currentPath = f'Output\{nameStr}'
             openDirectory(currentPath)
         elif choice == '3':
-            print('Finding info via query...') # STILL NEED TO CREATE THIS ###########
+            print(f"Querying data for {nameStr}...")
+            indfInd4(nameStr)
         elif choice == '4':
             print('Going back...')
             break
@@ -139,6 +140,62 @@ def intfInd3():
         else:
             print("Invalid choice. Please try again.")
         #
+    #
+#   
+    
+
+# Interface for querying Individuals info
+def indfInd4(nameStr):
+
+    # Ensure the person exists before accessing the data
+    try:
+        current = people[nameStr]
+    except KeyError:
+        print(f'{nameStr} can\'t be found.')
+        return
+
+    dataframe_choice = input("Which dataframe would you like to query? ('steps' or 'hrv'): ").strip().lower()
+
+    if dataframe_choice == 'steps':
+        dataframe = current.df_steps
+        print("You have selected the 'steps' dataframe.")
+        column_choice = input("Which column would you like to query? ('dayOfMonth' or 'steps'): ").strip().lower()
+
+        if column_choice == 'dayofmonth':
+            column = 'dayOfMonth'
+        elif column_choice == 'steps':
+            column = 'steps'
+        else:
+            print("Invalid column choice. Returning to main menu.")
+            return 
+
+    elif dataframe_choice == 'hrv':
+        dataframe = current.df_hrv
+        print("You have selected the 'hrv' dataframe.")
+        column_choice = input("Which column would you like to query? ('dayOfMonth' or 'hrv'): ").strip().lower()
+
+        if column_choice == 'dayofmonth':
+            column = 'dayOfMonth'
+        elif column_choice == 'hrv':
+            column = 'hrv'
+        else:
+            print("Invalid column choice. Returning to main menu.")
+            return
+
+    else:
+        print("Invalid choice for dataframe. Please choose either 'steps' or 'hrv'.")
+        return
+
+    condition = input("Enter the condition for the query (e.g., '==', '>', '<', '>=', '<=', '!='): ").strip()
+
+    value = input("Enter the value to compare against: ").strip()
+
+    search_value = int(value)
+    
+    result = current.query_data(dataframe, column, condition, search_value)
+
+    return result
+
     #
 #
 
@@ -175,7 +232,7 @@ def intfDept1():
     #
 #
 
-# Interface to create individual
+# Interface to create department
 def intfDept2(): 
     deptNameStr = input("...\nEnter department name: ")
     days = input("Enter number of days in month: ")
