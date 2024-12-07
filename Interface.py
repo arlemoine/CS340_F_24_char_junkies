@@ -84,6 +84,7 @@ def intfInd1():
                 intfInd3(nameStr)
             else:
                 print(f"Individual '{nameStr}' not found.")
+        elif choice == '3':
             print("Going back...")
             break
         elif choice == '4':
@@ -104,6 +105,16 @@ def intfInd2(department=None, return_to_dept=False):
 
         nameStr = input("...\nEnter individual name (or type 'done' to finish): ")
 
+        # Ensure that individual has input data. Otherwise, break from creation.
+        filepath = f"Output/{nameStr}/age.csv"
+        try:
+            with open(filepath, 'r') as csvfile:
+                print()
+            #
+        except FileNotFoundError:
+            break
+        #
+
         if nameStr.lower() == 'done':
             if return_to_dept:
                 print(f"Returning to department menu for '{department.departmentName}'...")
@@ -111,6 +122,7 @@ def intfInd2(department=None, return_to_dept=False):
             else:
                 print("Returning to the main individual menu...")
             break
+        #
 
         if nameStr in people:
             if department:
@@ -118,6 +130,7 @@ def intfInd2(department=None, return_to_dept=False):
             else:
                 print(f"Individual '{nameStr}' already exists. No further action required.")
             continue
+        #
 
         individual = ind.FitnessDataProcessing(nameStr)
         people[nameStr] = individual 
@@ -144,29 +157,24 @@ def intfInd3(nameStr=None):
     while True:
         print("================\nINDIVIDUAL INFO\n================")
         print("1. Show stats")
-        print("2. Open directory")
-        print("3. Find info")
-        print("4. Back")
-        print("5. Quit")
+        print("2. Find info")
+        print("3. Back")
+        print("4. Quit")
 
         choice = input("...\nEnter your choice: ")
 
         if choice == '1':
             current.show_stats_for_month()
         elif choice == '2':
-            currentPath = f'Output\{nameStr}'
-            openDirectory(currentPath)
-        elif choice == '3':
             print(f"Querying data for {nameStr}...")
             intfInd4(nameStr)
-        elif choice == '4':
+        elif choice == '3':
             print('Going back...')
             break
-        elif choice == '5':
+        elif choice == '4':
             raise QuitProgram
         else:
             print("Invalid choice. Please try again.")
-
         #
     #
 #   
