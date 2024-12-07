@@ -76,13 +76,11 @@ def intfInd1():
             print('List of people:')
             for key in people:
                 print(f'\t{key}')
-            
-            # Prompt for the name after the list
+
             nameStr = input("Enter the name of the individual to load: ")
             
-            # Check if the individual exists
             if nameStr in people:
-                intfInd3(nameStr)  # Now passing nameStr
+                intfInd3(nameStr)
             else:
                 print(f"Individual '{nameStr}' not found.")
             print("Going back...")
@@ -120,13 +118,13 @@ def intfInd2(department=None, return_to_dept=False):
                 print(f"Individual '{nameStr}' already exists. No further action required.")
             continue
 
-        # Create a new individual if not found
         individual = ind.FitnessDataProcessing(nameStr)
-        people[nameStr] = individual  # Add the individual to people dictionary
+        people[nameStr] = individual 
 
         if department:
-            department.addIndividual(individual)  # Add individual object to department
-
+            department.addIndividual(individual)
+        #
+    #
 #
 
 
@@ -176,7 +174,6 @@ def intfInd3(nameStr=None):
 # Interface for querying Individuals info
 def intfInd4(nameStr):
 
-    # Ensure the person exists before accessing the data
     try:
         current = people[nameStr]
     except KeyError:
@@ -224,7 +221,6 @@ def intfInd4(nameStr):
     result = current.query_data(dataframe, column, condition, search_value)
 
     return result
-
     #
 #
 
@@ -266,24 +262,35 @@ def intfDept2():
     deptNameStr = input("...\nEnter department name: ")
     days = input("Enter number of days in the month: ")
 
-    # Create the department with an empty list of individuals
     department = dept.DepartmentDataProcessing(deptNameStr, days)
     departments[deptNameStr] = department
 
     print(f"Department '{deptNameStr}' created.")
-    print(f"Redirecting to individual creation for department '{deptNameStr}'...")
     
-    # Redirect to individual creation
     intfInd2(department, return_to_dept=True)
+    #
+#
 
-
+# Method to diplay stats data
+def intfDeptData(current):
+   
+    print("==== DATA LIST ====")
+    
+    try:
+        print(f"Step Stats:{current.df_stats_steps}")
+        print(f"HRV Stats: {current.df_stats_hrv}")
+        print(f"Fitness Score: {current.df_stats_fitness_score}")
+        print(f"Age Stats: {current.df_stats_age}")
+    except AttributeError as e:
+        print(f"Error: {e}. Ensure the object has all the required methods.")
+    #
+    
 #
 
 # Interface when loading a department
 def intfDept3():
     nameStr = input("...\nEnter department name: ")
     
-    # Ensure the department exists before accessing the menu below
     try:
         current = departments[nameStr]
     except KeyError:
@@ -301,7 +308,8 @@ def intfDept3():
 
         if choice == '1':
             print("Showing stats...")
-            current.writeStats()
+            current.getAll()
+            intfDeptData(current) 
         elif choice == '2':
             print("Accessing personnel for department...")
 
@@ -312,17 +320,16 @@ def intfDept3():
                 
                 nameStr = input("Enter the name of the individual that you'd like to view: ")
 
-                # Check if the selected name exists in the list of individuals
                 if nameStr in current.individuals:
                     print(f"Accessing information for {nameStr}...")
-                    intfInd3(nameStr)  # Call the intfInd3() for the selected individual
+                    intfInd3(nameStr) 
                 else:
                     print(f"{nameStr} is not found in this department. Please try again.")
             else:
                 print(f"No personnel data found for department '{nameStr}'.")
         elif choice == '3':
             print("Exporting/Importing data...")
-            
+
         elif choice == '4':
             print('Going back...')
             break

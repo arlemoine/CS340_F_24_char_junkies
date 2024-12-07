@@ -287,12 +287,13 @@ class DepartmentDataProcessing(DepartmentData):
     def getStats_steps(self):
         if self.df_dept_steps is None or self.df_dept_steps.empty:
             self.getSteps()
+            
         #
         if self.df_dept_steps.empty:
             return None
         #
 
-        self.df_stats_steps = self.df_dept_steps.describe()
+        self.df_stats_steps = self.df_dept_steps.describe().round(2)
         self.logger.info(f"Steps statistics calculated.")
     #
 
@@ -305,7 +306,7 @@ class DepartmentDataProcessing(DepartmentData):
             return None
         #
 
-        self.df_stats_hrv = self.df_dept_hrv.describe()
+        self.df_stats_hrv = self.df_dept_hrv.describe().round(2)
         self.logger.info(f"HRV statistics calculated.")
     #
 
@@ -318,7 +319,7 @@ class DepartmentDataProcessing(DepartmentData):
             return None
         #
 
-        self.df_stats_fitness_score = self.df_dept_fitness_scores.describe()
+        self.df_stats_fitness_score = self.df_dept_fitness_scores.describe().round(2)
         self.logger.info(f"Fitness score statistics calculated.")
     #
 
@@ -327,7 +328,7 @@ class DepartmentDataProcessing(DepartmentData):
         if self.df_dept_age is None or self.df_dept_age.empty:
             self.getAges() 
         #
-        self.df_stats_age = self.df_dept_age.describe()
+        self.df_stats_age = self.df_dept_age.describe().round(2)
         self.logger.info(f"Age statistics calculated.")
     #
 
@@ -624,5 +625,5 @@ if __name__ == "__main__":
     dept1.addIndividual(person4)
     dept1.addIndividual(person5)
     dept1.getAll()
-
+    dept1.writeStats()
     
