@@ -277,10 +277,16 @@ def intfDeptData(current):
     print("==== DATA LIST ====")
     
     try:
-        print(f"Step Stats:{current.df_stats_steps}")
-        print(f"HRV Stats: {current.df_stats_hrv}")
-        print(f"Fitness Score: {current.df_stats_fitness_score}")
-        print(f"Age Stats: {current.df_stats_age}")
+        print(f"Step Stats:\n{current.df_stats_steps}\n")
+        print(f"HRV Stats:\n{current.df_stats_hrv}\n")
+        print(f"Fitness Score:\n{current.df_stats_fitness_score}\n")
+        print(f"Age Stats:\n{current.df_stats_age}\n")
+        print(f"Joint Counts:\n{current.df_jointCounts}\n")
+        print(f"Conditional Probabilities:")
+        print(f"Joint Probabilies:\n{current.df_jointProbs}\n")
+        for key, value in current.condProbs.items():
+            print(f"\t{key} = {value}")
+
     except AttributeError as e:
         print(f"Error: {e}. Ensure the object has all the required methods.")
     #
