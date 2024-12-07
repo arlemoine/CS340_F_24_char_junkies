@@ -282,8 +282,8 @@ def intfDeptData(current):
         print(f"Fitness Score:\n{current.df_stats_fitness_score}\n")
         print(f"Age Stats:\n{current.df_stats_age}\n")
         print(f"Joint Counts:\n{current.df_jointCounts}\n")
-        print(f"Conditional Probabilities:")
         print(f"Joint Probabilies:\n{current.df_jointProbs}\n")
+        print(f"Conditional Probabilities:")
         for key, value in current.condProbs.items():
             print(f"\t{key} = {value}")
 
