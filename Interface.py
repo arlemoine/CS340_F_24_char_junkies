@@ -22,6 +22,7 @@ if __name__ == "__main__":
 #
 
 #custom imports
+import pickle
 import Individuals as ind
 import Departments as dept
 
@@ -335,7 +336,50 @@ def intfDept3():
                 print(f"No personnel data found for department '{nameStr}'.")
         elif choice == '3':
             print("Exporting/Importing data...")
-
+            print("1. Export department data to a file")
+            print("2. Import department data from a file")
+            print("3. Back")
+            print("4. Quit")
+            sub_choice = input("...\nEnter your choice: ")
+            if sub_choice == '1':
+                file_name = input("Enter file name to save department data: ")
+                folder_path = f'Output\{nameStr}'
+                if not file_name.endswith(".pkl"):
+                    file_name += ".pkl"
+                file_path = os.path.join(folder_path, file_name)
+                try:
+                    if not current or not hasattr(current, 'departmentName'):
+                        raise ValueError("The department data is invalid or empty. Cannot export.")
+                    with open(file_path, 'wb') as file:
+                        pickle.dump(current, file)
+                    print(f"Department data exported successfully to {file_name}.")
+                except Exception as e:
+                    print(f"An error occurred during export: {e}")
+            elif sub_choice == '2':
+                file_name = input("Enter a file name to import another department data: ")
+                folder_path = f'Output\{nameStr}'
+                if not file_name.endswith(".pkl"):
+                    file_name += ".pkl"
+                file_path = os.path.join(folder_path, file_name)
+                try:
+                    with open(file_path, 'rb') as file:
+                        imported_dept = pickle.load(file)
+                        if hasattr(imported_dept, 'departmentName'):
+                            departments[imported_dept.departmentName] = imported_dept
+                            print(f"Department '{imported_dept.departmentName}' imported successfully.")
+                        else:
+                            print("The file does not contain valid department data.")
+                except FileNotFoundError:
+                    print(f"File '{file_name}' not found. Please try again.")
+                except Exception as e:
+                    print(f"An error occurred during import: {e}")
+            elif sub_choice == '3':
+                print("Going back...")
+                break
+            elif sub_choice == '4':
+                raise QuitProgram
+            else:
+                print("Invalid choice. Please try again")                
         elif choice == '4':
             print('Going back...')
             break
